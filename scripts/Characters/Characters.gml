@@ -38,3 +38,67 @@ function Character() constructor
 		return sprite;
 	}
 }
+
+function CombatCharacter(_char) constructor
+{
+	character = _char;
+	tile = undefined;
+	
+	function set_sprite(_sprite)
+	{
+		character.set_sprite(_sprite);
+	}
+	
+	function get_sprite()
+	{
+		return character.get_sprite();
+	}
+	
+	function set_tile(_tile)
+	{
+		tile = _tile;
+	}
+	
+	function get_tile()
+	{
+		return tile;
+	}
+}
+
+function WorldCharacter(_char, _x, _y) constructor
+{
+	character = _char;
+	sprite = undefined;
+	pos_x = _x;
+	pos_y = _y;
+	
+	function set_sprite(_sprite)
+	{
+		character.set_sprite(_sprite);
+	}
+	
+	function get_sprite()
+	{
+		return character.get_sprite();
+	}
+	
+	function get_x()
+	{
+		return pos_x
+	}
+	
+	function get_y()
+	{
+		return pos_y
+	}
+	
+	function set_x(_x)
+	{
+		pos_x = _x
+	}
+	
+	function set_y(_y)
+	{
+		pos_y = _y
+	}
+}

@@ -36,6 +36,7 @@
   },
   "resources": [
     {"id":{"name":"WorldManager","path":"objects/WorldManager/WorldManager.yy",},"order":0,},
+    {"id":{"name":"sBckGrnd","path":"sprites/sBckGrnd/sBckGrnd.yy",},"order":0,},
     {"id":{"name":"GameManager","path":"objects/GameManager/GameManager.yy",},"order":0,},
     {"id":{"name":"World","path":"rooms/World/World.yy",},"order":0,},
     {"id":{"name":"Utils","path":"scripts/Utils/Utils.yy",},"order":0,},
@@ -43,6 +44,7 @@
     {"id":{"name":"Combat","path":"rooms/Combat/Combat.yy",},"order":0,},
     {"id":{"name":"Characters","path":"scripts/Characters/Characters.yy",},"order":0,},
     {"id":{"name":"FightManager","path":"objects/FightManager/FightManager.yy",},"order":0,},
+    {"id":{"name":"sTmp","path":"sprites/sTmp/sTmp.yy",},"order":0,},
     {"id":{"name":"MainMenu","path":"rooms/MainMenu/MainMenu.yy",},"order":0,},
   ],
   "RoomOrderNodes": [
