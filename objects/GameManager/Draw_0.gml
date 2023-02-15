@@ -19,5 +19,3 @@ for(i = 0; i < COMBATGRIDWIDTH; i++)
 		       i * COMBATCELLSIZE, j * COMBATCELLSIZE)
 	}
 }*/
-
-draw_sprite(tmp2.get_sprite(), -1, tmp2.get_x(), tmp2.get_y())

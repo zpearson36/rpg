@@ -71,6 +71,7 @@ function WorldCharacter(_char, _x, _y) constructor
 	sprite = undefined;
 	pos_x = _x;
 	pos_y = _y;
+	state = undefined
 	
 	function set_sprite(_sprite)
 	{
@@ -100,5 +101,15 @@ function WorldCharacter(_char, _x, _y) constructor
 	function set_y(_y)
 	{
 		pos_y = _y
+	}
+	
+	function get_state()
+	{
+		return state;
+	}
+	
+	function set_state(_state)
+	{
+		state = _state;
 	}
 }
