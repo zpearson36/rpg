@@ -10,7 +10,7 @@ switch(state)
 	{
 		grid = new CombatGrid()
 		grid.init()
-		grid.get_cell(irandom(COMBATGRIDWIDTH) - 1, irandom(COMBATGRIDHEIGHT) -1).set_occupant(character)
+		grid.get_cell(irandom(COMBATGRIDWIDTH - 1), irandom(COMBATGRIDHEIGHT - 1)).set_occupant(character)
 		state = FMStates.RUNNING
 		break;
 	}
