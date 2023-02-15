@@ -21,9 +21,7 @@
   "ResourceOrderSettings": [
     {"name":"sBckGrnd","order":1,"path":"sprites/sBckGrnd/sBckGrnd.yy",},
     {"name":"oPlayer","order":1,"path":"objects/oPlayer/oPlayer.yy",},
-    {"name":"World","order":1,"path":"rooms/World/World.yy",},
     {"name":"CombatGrid","order":2,"path":"scripts/CombatGrid/CombatGrid.yy",},
-    {"name":"Combat","order":2,"path":"rooms/Combat/Combat.yy",},
     {"name":"Characters","order":1,"path":"scripts/Characters/Characters.yy",},
   ],
 }

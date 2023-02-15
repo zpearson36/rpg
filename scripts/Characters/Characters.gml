@@ -68,7 +68,6 @@ function CombatCharacter(_char) constructor
 function WorldCharacter(_char, _x, _y) constructor
 {
 	character = _char;
-	sprite = undefined;
 	pos_x = _x;
 	pos_y = _y;
 	state = undefined

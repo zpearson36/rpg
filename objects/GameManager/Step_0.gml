@@ -17,29 +17,31 @@ if(mouse_check_button_pressed(mb_left))
 	grid.get_cell(mx, my).set_occupant(tmp2);
 }
 */
-
 switch(state)
 {
 	case GameStates.MAINMENU:
 	{
-		room_goto(World)
-		/*manager = instance_find(WorldManager, 0)
-		manager.set_character()*/
 		state = GameStates.WORLD
 		break;
 	}
 	case GameStates.WORLD:
 	{
-		if(instance_find(WorldManager, 0) != noone
-		   and instance_find(WorldManager, 0).get_state() == WMStates.SETUP)
+		world_manager.activate(pc)
+		if(keyboard_check_pressed(vk_space))
 		{
-			manager = instance_find(WorldManager, 0)
-			manager.set_character(new Character())
+			world_manager.deactivate()
+			state = GameStates.COMBAT
 		}
 		break;
 	}
 	case GameStates.COMBAT:
 	{
+		fight_manager.activate(pc)
+		if(keyboard_check_pressed(vk_space))
+		{
+			fight_manager.deactivate()
+			state = GameStates.WORLD
+		}
 		break;
 	}
 }
