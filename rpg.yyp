@@ -37,13 +37,16 @@
   "resources": [
     {"id":{"name":"WorldManager","path":"objects/WorldManager/WorldManager.yy",},"order":0,},
     {"id":{"name":"sBckGrnd","path":"sprites/sBckGrnd/sBckGrnd.yy",},"order":0,},
+    {"id":{"name":"sAPAvailable","path":"sprites/sAPAvailable/sAPAvailable.yy",},"order":0,},
     {"id":{"name":"GameManager","path":"objects/GameManager/GameManager.yy",},"order":0,},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":0,},
+    {"id":{"name":"sAPSpent","path":"sprites/sAPSpent/sAPSpent.yy",},"order":0,},
     {"id":{"name":"Utils","path":"scripts/Utils/Utils.yy",},"order":0,},
     {"id":{"name":"CombatGrid","path":"scripts/CombatGrid/CombatGrid.yy",},"order":0,},
     {"id":{"name":"Characters","path":"scripts/Characters/Characters.yy",},"order":0,},
     {"id":{"name":"FightManager","path":"objects/FightManager/FightManager.yy",},"order":0,},
     {"id":{"name":"sTmp","path":"sprites/sTmp/sTmp.yy",},"order":0,},
+    {"id":{"name":"Attributes","path":"scripts/Attributes/Attributes.yy",},"order":0,},
     {"id":{"name":"MainMenu","path":"rooms/MainMenu/MainMenu.yy",},"order":0,},
   ],
   "RoomOrderNodes": [

@@ -17,6 +17,8 @@ function Character() constructor
 	charID = gen_id_char();
 	name = undefined;
 	sprite = undefined;
+	attributes = new Attributes();
+	attributes.init()
 	
 	function set_name(_name)
 	{
@@ -37,12 +39,24 @@ function Character() constructor
 	{
 		return sprite;
 	}
+	
+	function get_attrs()
+	{
+		return attributes;
+	}
+	
+	function get_attr(_attr)
+	{
+		return attributes.get_attr(_attr)
+	}
 }
 
 function CombatCharacter(_char) constructor
 {
 	character = _char;
 	tile = undefined;
+	maxAP = 2;
+	currentAP = maxAP;
 	
 	function set_sprite(_sprite)
 	{
@@ -62,6 +76,26 @@ function CombatCharacter(_char) constructor
 	function get_tile()
 	{
 		return tile;
+	}
+	
+	function get_attr(_attr)
+	{
+		return character.get_attr(_attr)
+	}
+	
+	function get_ap_max()
+	{
+		return maxAP
+	}
+	
+	function get_ap()
+	{
+		return currentAP
+	}
+	
+	function spend_ap()
+	{
+		currentAP -= 1
 	}
 }
 

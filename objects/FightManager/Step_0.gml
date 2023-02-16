@@ -20,8 +20,21 @@ switch(state)
 		{
 			var mx = floor(mouse_x / COMBATCELLSIZE)
 			var my = floor(mouse_y / COMBATCELLSIZE)
-	
-			grid.get_cell(mx, my).set_occupant(character);
+			show_debug_message(string(mx) + ", " + string(my))
+			if(point_distance(mx, my,
+						  	  character.get_tile().get_x(),
+							  character.get_tile().get_y()
+							  ) <= character.get_ap() * character.get_attr("spd")
+			   and grid.get_cell(mx,my).get_occupant() == noone
+			)
+			{
+				repeat(ceil(point_distance(mx, my,
+						  	  character.get_tile().get_x(),
+							  character.get_tile().get_y()
+							  ) / character.get_attr("spd")))
+			    {character.spend_ap();}
+				grid.get_cell(mx, my).set_occupant(character);
+			}
 		}
 		break;
 	}
