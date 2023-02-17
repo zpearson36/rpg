@@ -1,4 +1,5 @@
 /// @description Insert description here
+show_debug_message(array_length(units))
 switch(state)
 {
 	case FMStates.INIT:
@@ -10,7 +11,18 @@ switch(state)
 	{
 		grid = new CombatGrid()
 		grid.init()
-		grid.get_cell(irandom(COMBATGRIDWIDTH - 1), irandom(COMBATGRIDHEIGHT - 1)).set_occupant(character)
+		for(var i = 0; i < array_length(units); i++)
+		{
+			var xx = irandom(COMBATGRIDWIDTH - 1)
+			var yy = irandom(COMBATGRIDHEIGHT - 1)
+			while(grid.get_cell(xx, yy).get_occupant() != noone)
+			{
+				xx = irandom(COMBATGRIDWIDTH - 1)
+				yy = irandom(COMBATGRIDHEIGHT - 1)
+			}
+			grid.get_cell(xx, yy).set_occupant(units[i])
+		}
+		
 		state = FMStates.RUNNING
 		break;
 	}
@@ -22,19 +34,24 @@ switch(state)
 			var my = floor(mouse_y / COMBATCELLSIZE)
 			show_debug_message(string(mx) + ", " + string(my))
 			if(point_distance(mx, my,
-						  	  character.get_tile().get_x(),
-							  character.get_tile().get_y()
-							  ) <= character.get_ap() * character.get_attr("spd")
+						  	  units[character].get_tile().get_x(),
+							  units[character].get_tile().get_y()
+							  ) <= units[character].get_ap() * units[character].get_attr("spd")
 			   and grid.get_cell(mx,my).get_occupant() == noone
 			)
 			{
 				repeat(ceil(point_distance(mx, my,
-						  	  character.get_tile().get_x(),
-							  character.get_tile().get_y()
-							  ) / character.get_attr("spd")))
-			    {character.spend_ap();}
-				grid.get_cell(mx, my).set_occupant(character);
+						  	  units[character].get_tile().get_x(),
+							  units[character].get_tile().get_y()
+							  ) / units[character].get_attr("spd")))
+			    {units[character].spend_ap();}
+				grid.get_cell(mx, my).set_occupant(units[character]);
 			}
+		}
+		if(keyboard_check_pressed(vk_tab))
+		{
+			character++;
+			if(character == array_length(units)) character = 0
 		}
 		break;
 	}

@@ -25,9 +25,9 @@ switch(state)
 					   
 				
 			    if(point_distance(i, j,
-							      character.get_tile().get_x(),
-								  character.get_tile().get_y()
-								  ) <= character.get_ap() * character.get_attr("spd")
+							      units[character].get_tile().get_x(),
+								  units[character].get_tile().get_y()
+								  ) <= units[character].get_ap() * units[character].get_attr("spd")
 					and grid.get_cell(i,j).get_occupant() == noone)
 				{
 					draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
@@ -35,13 +35,13 @@ switch(state)
 									c_yellow, c_yellow, c_yellow, c_yellow, false);
 				}
 				if(point_distance(i, j,
-							      character.get_tile().get_x(),
-								  character.get_tile().get_y()
-								  ) <= character.get_ap() * character.get_attr("spd")
+							      units[character].get_tile().get_x(),
+								  units[character].get_tile().get_y()
+								  ) <= units[character].get_ap() * units[character].get_attr("spd")
 				    and point_distance(i, j,
-							      character.get_tile().get_x(),
-								  character.get_tile().get_y()
-								  ) > character.get_attr("spd")
+							      units[character].get_tile().get_x(),
+								  units[character].get_tile().get_y()
+								  ) > units[character].get_attr("spd")
 					and grid.get_cell(i,j).get_occupant() == noone)
 				{
 					draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
@@ -54,7 +54,7 @@ switch(state)
 				       and grid.get_cell(i,j).get_occupant().get_sprite() != undefined)
 				   draw_sprite(grid.get_cell(i,j).get_occupant().get_sprite(), -1,
 				       i * COMBATCELLSIZE, j * COMBATCELLSIZE)
-			    if(grid.get_cell(i,j).get_occupant() == character)
+			    if(grid.get_cell(i,j).get_occupant() == units[character])
 				{
 					for(var k = 0; k < grid.get_cell(i,j).get_occupant().get_ap_max(); k++)
 					{

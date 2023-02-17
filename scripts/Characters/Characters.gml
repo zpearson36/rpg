@@ -16,7 +16,7 @@ function Character() constructor
 	//Character specific variables
 	charID = gen_id_char();
 	name = undefined;
-	sprite = undefined;
+	sprite = sTmp;
 	attributes = new Attributes();
 	attributes.init()
 	
@@ -48,6 +48,21 @@ function Character() constructor
 	function get_attr(_attr)
 	{
 		return attributes.get_attr(_attr)
+	}
+}
+
+function Party() constructor
+{
+	members = [];
+	
+	function add_member(_char)
+	{
+		members[array_length(members)] = _char
+	}
+	
+	function get_members()
+	{
+		return members
 	}
 }
 
