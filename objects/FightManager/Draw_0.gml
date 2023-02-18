@@ -1,5 +1,3 @@
-/// @description Insert description here
-// You can write your code in this editor
 switch(state)
 {
 	case FMStates.INIT:
@@ -24,10 +22,47 @@ switch(state)
 				draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
 				                     (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE,
 									 c_black, c_black, c_black, c_black, true);
+					   
+				
+			    if(point_distance(i, j,
+							      units[character].get_tile().get_x(),
+								  units[character].get_tile().get_y()
+								  ) <= units[character].get_ap() * units[character].get_attr("spd")
+					and grid.get_cell(i,j).get_occupant() == noone)
+				{
+					draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
+				                    (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE,
+									c_yellow, c_yellow, c_yellow, c_yellow, false);
+				}
+				if(point_distance(i, j,
+							      units[character].get_tile().get_x(),
+								  units[character].get_tile().get_y()
+								  ) <= units[character].get_ap() * units[character].get_attr("spd")
+				    and point_distance(i, j,
+							      units[character].get_tile().get_x(),
+								  units[character].get_tile().get_y()
+								  ) > units[character].get_attr("spd")
+					and grid.get_cell(i,j).get_occupant() == noone)
+				{
+					draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
+				                    (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE,
+									c_orange, c_orange, c_orange, c_orange, false);
+				}
+				
+				
 				if(grid.get_cell(i,j).get_occupant() != noone
 				       and grid.get_cell(i,j).get_occupant().get_sprite() != undefined)
 				   draw_sprite(grid.get_cell(i,j).get_occupant().get_sprite(), -1,
 				       i * COMBATCELLSIZE, j * COMBATCELLSIZE)
+			    if(grid.get_cell(i,j).get_occupant() == units[character])
+				{
+					for(var k = 0; k < grid.get_cell(i,j).get_occupant().get_ap_max(); k++)
+					{
+						var sprt = sAPSpent
+						if(grid.get_cell(i,j).get_occupant().get_ap() > k) sprt = sAPAvailable
+						draw_sprite(sprt, -1, i * COMBATCELLSIZE + (16*k), j * COMBATCELLSIZE - 16)
+					}
+				}
 			}
 		}
 		break;

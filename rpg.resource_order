@@ -20,8 +20,11 @@
   ],
   "ResourceOrderSettings": [
     {"name":"sBckGrnd","order":1,"path":"sprites/sBckGrnd/sBckGrnd.yy",},
+    {"name":"sAPAvailable","order":2,"path":"sprites/sAPAvailable/sAPAvailable.yy",},
     {"name":"oPlayer","order":1,"path":"objects/oPlayer/oPlayer.yy",},
+    {"name":"sAPSpent","order":3,"path":"sprites/sAPSpent/sAPSpent.yy",},
     {"name":"CombatGrid","order":2,"path":"scripts/CombatGrid/CombatGrid.yy",},
     {"name":"Characters","order":1,"path":"scripts/Characters/Characters.yy",},
+    {"name":"Attributes","order":3,"path":"scripts/Attributes/Attributes.yy",},
   ],
 }

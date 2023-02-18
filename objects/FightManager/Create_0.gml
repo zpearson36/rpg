@@ -1,5 +1,3 @@
-/// @description Insert description here
-// You can write your code in this editor
 enum FMStates
 {
 	INIT,
@@ -12,15 +10,20 @@ enum FMStates
 state = FMStates.INACTIVE
 character = undefined
 grid = undefined
+units = []
 function get_state()
 {
 	return state;
 }
-function activate(_player)
+function activate(_party)
 {
 	if(state == FMStates.INACTIVE)
 	{
-		character = new CombatCharacter(_player)
+		for(var i = 0; i < array_length(_party); i++)
+		{
+			units[i] = new CombatCharacter(_party[i])
+		}
+		character = 0
 		state = FMStates.INIT
 	}
 }
