@@ -1,5 +1,4 @@
 /// @description Insert description here
-show_debug_message(array_length(units))
 switch(state)
 {
 	case FMStates.INIT:
