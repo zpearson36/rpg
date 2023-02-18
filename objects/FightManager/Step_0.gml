@@ -3,6 +3,7 @@ switch(state)
 {
 	case FMStates.INIT:
 	{
+		//gui.activateGUI(self)
 		state = FMStates.SETUP;
 		break;
 	}
@@ -27,30 +28,61 @@ switch(state)
 	}
 	case FMStates.RUNNING:
 	{
-		if(mouse_check_button_pressed(mb_left))
+		switch(units[character].get_state())
 		{
-			var mx = floor(mouse_x / COMBATCELLSIZE)
-			var my = floor(mouse_y / COMBATCELLSIZE)
-			show_debug_message(string(mx) + ", " + string(my))
-			if(point_distance(mx, my,
-						  	  units[character].get_tile().get_x(),
-							  units[character].get_tile().get_y()
-							  ) <= units[character].get_ap() * units[character].get_attr("spd")
-			   and grid.get_cell(mx,my).get_occupant() == noone
-			)
+			case COMBATCHARACTERSTATES.IDLE:
 			{
-				repeat(ceil(point_distance(mx, my,
-						  	  units[character].get_tile().get_x(),
-							  units[character].get_tile().get_y()
-							  ) / units[character].get_attr("spd")))
-			    {units[character].spend_ap();}
-				grid.get_cell(mx, my).set_occupant(units[character]);
+				gui.activateGUI(self)
+				
+				if(keyboard_check_pressed(vk_tab))
+				{
+					character++;
+					if(character == array_length(units)) character = 0
+				}
+				break;
 			}
-		}
-		if(keyboard_check_pressed(vk_tab))
-		{
-			character++;
-			if(character == array_length(units)) character = 0
+			case COMBATCHARACTERSTATES.MOVING:
+			{
+				gui.deactivateGUI()
+				if(mouse_check_button_pressed(mb_right))
+				{
+					units[character].to_idle()
+					break;
+				}
+				if(mouse_check_button_pressed(mb_left))
+				{
+					var mx = floor(mouse_x / COMBATCELLSIZE)
+					var my = floor(mouse_y / COMBATCELLSIZE)
+					show_debug_message(string(mx) + ", " + string(my))
+					if(point_distance(mx, my,
+								  	  units[character].get_tile().get_x(),
+									  units[character].get_tile().get_y()
+									  ) <= units[character].get_ap() * units[character].get_attr("spd")
+					   and grid.get_cell(mx,my).get_occupant() == noone
+					)
+					{
+						repeat(ceil(point_distance(mx, my,
+								  	  units[character].get_tile().get_x(),
+									  units[character].get_tile().get_y()
+									  ) / units[character].get_attr("spd")))
+					    {units[character].spend_ap();}
+						grid.get_cell(mx, my).set_occupant(units[character]);
+						units[character].to_idle()
+						break;
+					}
+				}
+				break;
+			}
+			case COMBATCHARACTERSTATES.ATTACKING:
+			{
+				gui.deactivateGUI()
+				if(mouse_check_button_pressed(mb_right))
+				{
+					units[character].to_idle()
+					break;
+				}
+				break;
+			}
 		}
 		break;
 	}
@@ -60,6 +92,7 @@ switch(state)
 		delete grid
 		character = undefined
 		grid = undefined
+		gui.deactivateGUI()
 		state = FMStates.INACTIVE
 		break;
 	}

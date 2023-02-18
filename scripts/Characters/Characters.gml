@@ -66,12 +66,19 @@ function Party() constructor
 	}
 }
 
+enum COMBATCHARACTERSTATES
+{
+	IDLE,
+	MOVING,
+	ATTACKING
+}
 function CombatCharacter(_char) constructor
 {
 	character = _char;
 	tile = undefined;
 	maxAP = 2;
 	currentAP = maxAP;
+	state = COMBATCHARACTERSTATES.IDLE
 	
 	function set_sprite(_sprite)
 	{
@@ -111,6 +118,26 @@ function CombatCharacter(_char) constructor
 	function spend_ap()
 	{
 		currentAP -= 1
+	}
+	
+	function to_idle()
+	{
+		state = COMBATCHARACTERSTATES.IDLE
+	}
+	
+	function to_move()
+	{
+		state = COMBATCHARACTERSTATES.MOVING
+	}
+	
+	function to_attack()
+	{
+		state = COMBATCHARACTERSTATES.ATTACKING
+	}
+	
+	function get_state()
+	{
+		return state
 	}
 }
 

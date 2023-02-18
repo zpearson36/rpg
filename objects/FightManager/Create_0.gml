@@ -31,3 +31,10 @@ function deactivate()
 {
 	state = FMStates.DEACTIVATING
 }
+
+function get_character()
+{
+	return units[character];
+}
+
+gui = instance_create_layer(x, y, "Instances", FightGUI)

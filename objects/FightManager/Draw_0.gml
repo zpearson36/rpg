@@ -15,41 +15,51 @@ switch(state)
 			for(j = 0; j < COMBATGRIDHEIGHT; j++)
 			{
 				c_color = c_white
-				//if(grid.get_cell(i,j).get_occupant() != noone) c_color = c_blue;
 				draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
 				                     (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE,
 									 c_color, c_color, c_color, c_color, false);
 				draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
 				                     (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE,
 									 c_black, c_black, c_black, c_black, true);
-					   
-				
-			    if(point_distance(i, j,
-							      units[character].get_tile().get_x(),
-								  units[character].get_tile().get_y()
-								  ) <= units[character].get_ap() * units[character].get_attr("spd")
-					and grid.get_cell(i,j).get_occupant() == noone)
+				switch(units[character].get_state())
 				{
-					draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
-				                    (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE,
-									c_yellow, c_yellow, c_yellow, c_yellow, false);
+					case COMBATCHARACTERSTATES.IDLE:
+					{
+						break;
+					}
+					case COMBATCHARACTERSTATES.MOVING:
+					{
+						if(point_distance(i, j,
+									      units[character].get_tile().get_x(),
+										  units[character].get_tile().get_y()
+										  ) <= units[character].get_ap() * units[character].get_attr("spd")
+							and grid.get_cell(i,j).get_occupant() == noone)
+						{
+							draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
+						                    (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE,
+											c_yellow, c_yellow, c_yellow, c_yellow, false);
+						}
+						if(point_distance(i, j,
+									      units[character].get_tile().get_x(),
+										  units[character].get_tile().get_y()
+										  ) <= units[character].get_ap() * units[character].get_attr("spd")
+						    and point_distance(i, j,
+									      units[character].get_tile().get_x(),
+										  units[character].get_tile().get_y()
+										  ) > units[character].get_attr("spd")
+							and grid.get_cell(i,j).get_occupant() == noone)
+						{
+							draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
+						                    (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE,
+											c_orange, c_orange, c_orange, c_orange, false);
+						}
+						break;
+					}
+					case COMBATCHARACTERSTATES.ATTACKING:
+					{
+						break;
+					}
 				}
-				if(point_distance(i, j,
-							      units[character].get_tile().get_x(),
-								  units[character].get_tile().get_y()
-								  ) <= units[character].get_ap() * units[character].get_attr("spd")
-				    and point_distance(i, j,
-							      units[character].get_tile().get_x(),
-								  units[character].get_tile().get_y()
-								  ) > units[character].get_attr("spd")
-					and grid.get_cell(i,j).get_occupant() == noone)
-				{
-					draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
-				                    (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE,
-									c_orange, c_orange, c_orange, c_orange, false);
-				}
-				
-				
 				if(grid.get_cell(i,j).get_occupant() != noone
 				       and grid.get_cell(i,j).get_occupant().get_sprite() != undefined)
 				   draw_sprite(grid.get_cell(i,j).get_occupant().get_sprite(), -1,
