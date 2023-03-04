@@ -53,7 +53,6 @@ switch(state)
 				{
 					var mx = floor(mouse_x / COMBATCELLSIZE)
 					var my = floor(mouse_y / COMBATCELLSIZE)
-					show_debug_message(string(mx) + ", " + string(my))
 					if(point_distance(mx, my,
 								  	  units[character].get_tile().get_x(),
 									  units[character].get_tile().get_y()
@@ -81,6 +80,29 @@ switch(state)
 					units[character].to_idle()
 					break;
 				}
+				if(mouse_check_button_pressed(mb_left))
+				{
+					var mx = floor(mouse_x / COMBATCELLSIZE)
+					var my = floor(mouse_y / COMBATCELLSIZE)
+					var dist = point_distance(mx, my,
+								  	  units[character].get_tile().get_x(),
+									  units[character].get_tile().get_y()
+									  )
+					if(dist <= units[character].get_attack_range_max()
+					   and dist >= units[character].get_attack_range_min()
+					   and grid.get_cell(mx,my).get_occupant() != noone
+					)
+					{
+						grid.get_cell(mx,my).get_occupant().damage()
+						units[character].empty_ap()
+						units[character].to_idle()
+						break;
+					}
+				}
+				break;
+			}
+			case COMBATCHARACTERSTATES.DEAD:
+			{
 				break;
 			}
 		}

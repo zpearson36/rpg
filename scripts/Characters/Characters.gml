@@ -19,6 +19,7 @@ function Character() constructor
 	sprite = sTmp;
 	attributes = new Attributes();
 	attributes.init()
+	party = undefined
 	
 	function set_name(_name)
 	{
@@ -49,6 +50,17 @@ function Character() constructor
 	{
 		return attributes.get_attr(_attr)
 	}
+	
+	function add_party(_party)
+	{
+		party = _party
+	}
+	
+	function remove_party()
+	{
+		party.remove_member(self)
+		party = undefined
+	}
 }
 
 function Party() constructor
@@ -58,11 +70,17 @@ function Party() constructor
 	function add_member(_char)
 	{
 		members[array_length(members)] = _char
+		_char.add_party(self)
 	}
 	
 	function get_members()
 	{
 		return members
+	}
+	
+	function remove_member(_char)
+	{
+		members = array_delete_index(members, array_get_index(members, _char))
 	}
 }
 
@@ -70,7 +88,8 @@ enum COMBATCHARACTERSTATES
 {
 	IDLE,
 	MOVING,
-	ATTACKING
+	ATTACKING,
+	DEAD
 }
 function CombatCharacter(_char) constructor
 {
@@ -120,6 +139,11 @@ function CombatCharacter(_char) constructor
 		currentAP -= 1
 	}
 	
+	function empty_ap()
+	{
+		currentAP = 0
+	}
+	
 	function to_idle()
 	{
 		state = COMBATCHARACTERSTATES.IDLE
@@ -135,9 +159,31 @@ function CombatCharacter(_char) constructor
 		state = COMBATCHARACTERSTATES.ATTACKING
 	}
 	
+	function to_dead()
+	{
+		set_sprite(sTmpDead)
+		character.remove_party()
+		state = COMBATCHARACTERSTATES.DEAD
+	}
+	
+	function damage()
+	{
+		to_dead()
+	}
+	
 	function get_state()
 	{
 		return state
+	}
+	
+	function get_attack_range_max()
+	{
+		return 3
+	}
+	
+	function get_attack_range_min()
+	{
+		return 1
 	}
 }
 
