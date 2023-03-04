@@ -41,6 +41,7 @@
     {"name":"spr_slider","order":7,"path":"sprites/spr_slider/spr_slider.yy",},
     {"name":"FightGUI","order":1,"path":"objects/FightGUI/FightGUI.yy",},
     {"name":"draw_button_rectangle","order":5,"path":"scripts/draw_button_rectangle/draw_button_rectangle.yy",},
+    {"name":"sTmpDead","order":8,"path":"sprites/sTmpDead/sTmpDead.yy",},
     {"name":"spr_button","order":5,"path":"sprites/spr_button/spr_button.yy",},
     {"name":"draw_label","order":7,"path":"scripts/draw_label/draw_label.yy",},
     {"name":"Attributes","order":3,"path":"scripts/Attributes/Attributes.yy",},

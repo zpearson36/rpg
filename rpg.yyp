@@ -64,6 +64,7 @@
     {"id":{"name":"FightGUI","path":"objects/FightGUI/FightGUI.yy",},"order":0,},
     {"id":{"name":"sTmp","path":"sprites/sTmp/sTmp.yy",},"order":0,},
     {"id":{"name":"draw_button_rectangle","path":"scripts/draw_button_rectangle/draw_button_rectangle.yy",},"order":0,},
+    {"id":{"name":"sTmpDead","path":"sprites/sTmpDead/sTmpDead.yy",},"order":0,},
     {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},"order":0,},
     {"id":{"name":"draw_label","path":"scripts/draw_label/draw_label.yy",},"order":0,},
     {"id":{"name":"click_rectangle","path":"scripts/click_rectangle/click_rectangle.yy",},"order":0,},
