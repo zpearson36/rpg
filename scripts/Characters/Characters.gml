@@ -201,6 +201,11 @@ function CombatCharacter(_char) constructor
 	{
 		return 1
 	}
+	
+	function get_faction()
+	{
+		return character.get_faction()
+	}
 }
 
 function WorldCharacter(_char, _x, _y) constructor

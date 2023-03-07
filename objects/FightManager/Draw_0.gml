@@ -70,7 +70,12 @@ switch(state)
 						and ceil(dist) >= units[party][character].get_attack_range_min())
 						{
 							var c_color = c_red
-							if(grid.get_cell(i,j).get_occupant() != noone) c_color = c_lime
+							if(grid.get_cell(i,j).get_occupant() != noone)
+							{
+								var fac1 = grid.get_cell(i,j).get_occupant().get_faction()
+								var fac2 = units[party][character].get_faction()
+								if(FactionManager.get_relation(fac1, fac2) < 0) c_color = c_lime
+							}
 							draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
 						                    (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE,
 											c_color, c_color, c_color, c_color, false);

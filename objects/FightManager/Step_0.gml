@@ -94,6 +94,8 @@ switch(state)
 					if(dist <= units[party][character].get_attack_range_max()
 					   and dist >= units[party][character].get_attack_range_min()
 					   and grid.get_cell(mx,my).get_occupant() != noone
+					   and FactionManager.get_relation(grid.get_cell(mx,my).get_occupant().get_faction(),
+					                                   units[party][character].get_faction()) < 0
 					)
 					{
 						grid.get_cell(mx,my).get_occupant().damage()

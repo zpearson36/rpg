@@ -7,7 +7,8 @@ function gen_id_faction()
 
 function Faction(_name) constructor
 {
-	factionID = gen_id_faction
+	factionID = gen_id_faction()
+	show_debug_message(factionID)
 	name = _name
 	members = []
 	
@@ -40,16 +41,16 @@ function Faction(_name) constructor
 
 function FactionManager() constructor
 {
-	faction_grid = ds_grid_create(1,1)
+	static faction_grid = ds_grid_create(1,1)
 	
-	function add_faction(_fact)
+	static add_faction = function(_fact)
 	{
 		var size = ds_grid_height(faction_grid)
 		if(_fact.get_id() >= size) ds_grid_resize(faction_grid, _fact.get_id() + 1, _fact.get_id() + 1)
 		faction_grid[# _fact.get_id(), _fact.get_id()] = 0
 	}
 	
-	function set_relation(fac1, fac2, rel)
+	static set_relation = function(fac1, fac2, rel)
 	{
 		var size = ds_grid_height(faction_grid)
 		if(fac1.get_id() >= size or fac2.get_id() >= size) return false
@@ -58,7 +59,7 @@ function FactionManager() constructor
 		return true
 	}
 	
-	function get_relation(fac1, fac2)
+	static get_relation = function(fac1, fac2)
 	{
 		return faction_grid[# fac1.get_id(), fac2.get_id()]
 	}
