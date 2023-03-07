@@ -38,6 +38,7 @@
   },
   "resources": [
     {"id":{"name":"bg_gui","path":"sprites/bg_gui/bg_gui.yy",},"order":0,},
+    {"id":{"name":"Factions","path":"scripts/Factions/Factions.yy",},"order":0,},
     {"id":{"name":"point_click_sprite","path":"scripts/point_click_sprite/point_click_sprite.yy",},"order":0,},
     {"id":{"name":"draw_slider_sprite","path":"scripts/draw_slider_sprite/draw_slider_sprite.yy",},"order":0,},
     {"id":{"name":"spr_checkbox","path":"sprites/spr_checkbox/spr_checkbox.yy",},"order":0,},

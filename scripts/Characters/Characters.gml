@@ -20,6 +20,17 @@ function Character() constructor
 	attributes = new Attributes();
 	attributes.init()
 	party = undefined
+	faction = undefined
+	
+	function set_faction(_faction)
+	{
+		faction = _faction
+	}
+	
+	function get_faction()
+	{
+		return faction
+	}
 	
 	function set_name(_name)
 	{

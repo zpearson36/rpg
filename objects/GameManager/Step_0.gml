@@ -1,4 +1,3 @@
-show_debug_message(array_length(pc_party.get_members()))
 switch(state)
 {
 	case GameStates.MAINMENU:

@@ -21,6 +21,7 @@
     {"name":"tilesets","order":4,"path":"folders/Sprites/tilesets.yy",},
   ],
   "ResourceOrderSettings": [
+    {"name":"Factions","order":9,"path":"scripts/Factions/Factions.yy",},
     {"name":"point_click_sprite","order":5,"path":"scripts/point_click_sprite/point_click_sprite.yy",},
     {"name":"draw_slider_sprite","order":8,"path":"scripts/draw_slider_sprite/draw_slider_sprite.yy",},
     {"name":"spr_checkbox","order":6,"path":"sprites/spr_checkbox/spr_checkbox.yy",},
