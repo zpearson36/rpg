@@ -150,6 +150,11 @@ function CombatCharacter(_char) constructor
 		currentAP -= 1
 	}
 	
+	function reset_ap()
+	{
+		currentAP = maxAP
+	}
+	
 	function empty_ap()
 	{
 		currentAP = 0

@@ -17,7 +17,7 @@ switch(state)
 	}
 	case GameStates.COMBAT:
 	{
-		fight_manager.activate(pc_party.get_members())
+		fight_manager.activate(pc_party.get_members(), enemy_party.get_members())
 		if(keyboard_check_pressed(vk_space))
 		{
 			fight_manager.deactivate()

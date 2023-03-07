@@ -12,6 +12,9 @@ switch(state)
 		if(draw_button_sprite(spr_button, 1, 1, room_width - 400, 100, c_blue, c_aqua, c_white, "Attack", c_white, false, is_available))		{
 			fight_manager.get_character().to_attack()
 		}
+		if(draw_button_sprite(spr_button, 1, 1, room_width - 400, room_height - 100, c_blue, c_aqua, c_white, "End Turn", c_white, false, true))		{
+			fight_manager.next_party()
+		}
 		break;
 	}
 	case FIGHTGUISTATES.INACTIVE:
