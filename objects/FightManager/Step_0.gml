@@ -110,7 +110,7 @@ switch(state)
 	}
 	case FMStates.DEACTIVATING:
 	{
-		delete character
+		array_delete(units, 0, array_length(units))
 		delete grid
 		character = undefined
 		grid = undefined
