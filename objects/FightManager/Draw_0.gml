@@ -21,16 +21,6 @@ switch(state)
 				draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
 				                     (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE,
 									 c_black, c_black, c_black, c_black, true);
-				if(grid.get_cell(i,j).get_occupant() != noone
-				   and grid.get_cell(i,j).get_occupant().get_state() == COMBATCHARACTERSTATES.DEAD)
-				   {
-					   var deadIndex = array_get_index(units[party], grid.get_cell(i,j).get_occupant())
-					   if(deadIndex != -1)
-					   {
-						   if(deadIndex <= character) character--
-						   units[party] = array_delete_index(units[party], deadIndex)
-					   }
-				   }
 				switch(units[party][character].get_state())
 				{
 					case COMBATCHARACTERSTATES.IDLE:

@@ -23,6 +23,8 @@ switch(state)
 			fight_manager.deactivate()
 			state = GameStates.WORLD
 		}
+		if(fight_manager.get_state() == FMStates.INACTIVE)
+			state = GameStates.WORLD
 		break;
 	}
 }

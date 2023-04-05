@@ -10,6 +10,27 @@ switch(state)
 	}
 	case FMStates.RUNNING:
 	{
+		for(i = 0; i < COMBATGRIDWIDTH; i++)
+		{
+			for(j = 0; j < COMBATGRIDHEIGHT; j++)
+			{
+				if(grid.get_cell(i,j).get_occupant() != noone
+				   and grid.get_cell(i,j).get_occupant().get_state() == COMBATCHARACTERSTATES.DEAD)
+				{
+					var deadIndex = array_get_index(units[party], grid.get_cell(i,j).get_occupant())
+					if(deadIndex != -1)
+					{
+						if(deadIndex <= character) character--
+						if(deadIndex < 0)
+						{
+							state = FMStates.DEACTIVATING
+							break;
+						}
+						units[party] = array_delete_index(units[party], deadIndex)
+					}
+				}
+			}
+		}
 		var num_chars = 0
 		while(units[party][character].get_ap() == 0)
 		{
