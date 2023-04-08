@@ -17,16 +17,20 @@ switch(state)
 				if(grid.get_cell(i,j).get_occupant() != noone
 				   and grid.get_cell(i,j).get_occupant().get_state() == COMBATCHARACTERSTATES.DEAD)
 				{
-					var deadIndex = array_get_index(units[party], grid.get_cell(i,j).get_occupant())
-					if(deadIndex != -1)
+					for(var k = 0; k < array_length(units); k++)
 					{
-						if(deadIndex <= character) character--
-						if(deadIndex < 0)
+						var deadIndex = array_get_index(units[k], grid.get_cell(i,j).get_occupant())
+						if(deadIndex != -1)
 						{
-							state = FMStates.DEACTIVATING
-							break;
+							if(deadIndex <= character) character = max(character - 1, 0)
+							if(deadIndex < 0)
+							{
+								state = FMStates.DEACTIVATING
+								break;
+							}
+							units[k] = array_delete_index(units[k], deadIndex)
+						
 						}
-						units[party] = array_delete_index(units[party], deadIndex)
 					}
 				}
 			}

@@ -90,6 +90,14 @@ switch(state)
 		}
 		break;
 	}
+	case FMStates.COMBATFINISHED:
+	{
+		draw_rectangle_color(0,0, room_width, room_height, c_gray, c_gray, c_gray, c_gray, false)
+		draw_set_font(fnt_combat_finished)
+		draw_text_color(350, 350, "COMBAT FINISHED", c_black, c_black, c_black, c_black, 1)
+		draw_set_font(fnt_button)
+		break
+	}
 	case FMStates.DEACTIVATING:
 	{
 		break;

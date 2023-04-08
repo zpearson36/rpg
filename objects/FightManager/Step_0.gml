@@ -31,6 +31,15 @@ switch(state)
 	}
 	case FMStates.RUNNING:
 	{
+		for(var i = 0; i < array_length(units); i++)
+		{
+			if(array_length(units[i]) == 0)
+			{
+				state = FMStates.COMBATFINISHED
+				alarm[0] = 180
+				break;
+			}
+		}
 		switch(units[party][character].get_state())
 		{
 			case COMBATCHARACTERSTATES.IDLE:
@@ -111,6 +120,11 @@ switch(state)
 				break;
 			}
 		}
+		break;
+	}
+	case FMStates.COMBATFINISHED:
+	{
+		gui.deactivateGUI()
 		break;
 	}
 	case FMStates.DEACTIVATING:

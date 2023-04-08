@@ -13,3 +13,8 @@ function array_delete_index(_array, _index)
 	
 	return new_array
 }
+
+function print(str)
+{
+	show_debug_message(str)
+}

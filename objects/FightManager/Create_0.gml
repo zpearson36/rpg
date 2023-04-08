@@ -3,6 +3,7 @@ enum FMStates
 	INIT,
 	SETUP,
 	RUNNING,
+	COMBATFINISHED,
 	DEACTIVATING,
 	INACTIVE
 }
@@ -20,13 +21,10 @@ function activate()
 {
 	if(state == FMStates.INACTIVE)
 	{
-		show_debug_message(argument_count)
 		for(var k = 0; k < argument_count; k++)
 		{
-			show_debug_message(array_length(argument[k]))
 			for(var i = 0; i < array_length(argument[k]); i++)
 			{
-				show_debug_message(string(k) + ", " + string(i))
 				units[k][i] = new CombatCharacter(argument[k][i])
 			}
 		}
