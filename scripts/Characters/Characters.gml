@@ -20,6 +20,17 @@ function Character() constructor
 	attributes = new Attributes();
 	attributes.init()
 	party = undefined
+	faction = undefined
+	
+	function set_faction(_faction)
+	{
+		faction = _faction
+	}
+	
+	function get_faction()
+	{
+		return faction
+	}
 	
 	function set_name(_name)
 	{
@@ -139,6 +150,11 @@ function CombatCharacter(_char) constructor
 		currentAP -= 1
 	}
 	
+	function reset_ap()
+	{
+		currentAP = maxAP
+	}
+	
 	function empty_ap()
 	{
 		currentAP = 0
@@ -184,6 +200,11 @@ function CombatCharacter(_char) constructor
 	function get_attack_range_min()
 	{
 		return 1
+	}
+	
+	function get_faction()
+	{
+		return character.get_faction()
 	}
 }
 

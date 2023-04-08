@@ -11,11 +11,13 @@ fight_manager = undefined
 
 function activateGUI(_mgr)
 {
+	print("bitch")
 	fight_manager = _mgr
 	state = FIGHTGUISTATES.ACTIVE
 }
 
 function deactivateGUI()
 {
+	print("tit")
 	state = FIGHTGUISTATES.INACTIVE
 }

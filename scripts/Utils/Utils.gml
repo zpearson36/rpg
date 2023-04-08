@@ -1,9 +1,4 @@
-function gen_id_faction()
-{
-	static faction = 0;
-	faction++;
-	return faction;
-}
+
 
 function array_delete_index(_array, _index)
 {
@@ -17,4 +12,9 @@ function array_delete_index(_array, _index)
 	}
 	
 	return new_array
+}
+
+function print(str)
+{
+	show_debug_message(str)
 }

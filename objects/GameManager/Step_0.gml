@@ -1,4 +1,3 @@
-show_debug_message(array_length(pc_party.get_members()))
 switch(state)
 {
 	case GameStates.MAINMENU:
@@ -13,17 +12,20 @@ switch(state)
 		{
 			world_manager.deactivate()
 			state = GameStates.COMBAT
+			fight_manager.activate(pc_party.get_members(), enemy_party.get_members())
 		}
 		break;
 	}
 	case GameStates.COMBAT:
 	{
-		fight_manager.activate(pc_party.get_members())
 		if(keyboard_check_pressed(vk_space))
 		{
 			fight_manager.deactivate()
 			state = GameStates.WORLD
 		}
+		if(fight_manager.get_state() == FMStates.INACTIVE)
+			state = GameStates.WORLD
 		break;
 	}
 }
+//show_debug_message(ds_grid_height(FactionManager.faction_grid))
