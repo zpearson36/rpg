@@ -29,9 +29,9 @@ switch(state)
 					}
 					case COMBATCHARACTERSTATES.MOVING:
 					{
-						var dist = point_distance(i, j,
-									      units[party][character].get_tile().get_x(),
-										  units[party][character].get_tile().get_y()
+						var dist = dist_to_targ(
+						                  units[party][character].get_tile(),
+										  grid.get_cell(i, j)
 										  )
 						if     (dist <= units[party][character].get_ap() * units[party][character].get_attr("spd")
 							and grid.get_cell(i,j).get_occupant() == noone)
@@ -52,9 +52,9 @@ switch(state)
 					}
 					case COMBATCHARACTERSTATES.ATTACKING:
 					{
-						var dist = point_distance(i, j,
-									      units[party][character].get_tile().get_x(),
-										  units[party][character].get_tile().get_y()
+						var dist = dist_to_targ(
+						                  units[party][character].get_tile(),
+										  grid.get_cell(i, j)
 										  )
 						if (ceil(dist) <= units[party][character].get_attack_range_max()
 						and ceil(dist) >= units[party][character].get_attack_range_min())

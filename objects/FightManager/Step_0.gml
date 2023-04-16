@@ -40,84 +40,111 @@ switch(state)
 				break;
 			}
 		}
-		switch(units[party][character].get_state())
+		//Logic for player control
+		if(units[party][character].get_faction() == GameManager.player_faction)
 		{
-			case COMBATCHARACTERSTATES.IDLE:
+			switch(units[party][character].get_state())
 			{
-				gui.activateGUI(self)
+				case COMBATCHARACTERSTATES.IDLE:
+				{
+					gui.activateGUI(self)
 				
-				if(keyboard_check_pressed(vk_tab))
-				{
-					character++;
-					if(character == array_length(units[party])) character = 0
-				}
-				break;
-			}
-			case COMBATCHARACTERSTATES.MOVING:
-			{
-				gui.deactivateGUI()
-				if(mouse_check_button_pressed(mb_right))
-				{
-					units[party][character].to_idle()
+					if(keyboard_check_pressed(vk_tab))
+					{
+						character++;
+						if(character == array_length(units[party])) character = 0
+					}
 					break;
 				}
-				if(mouse_check_button_pressed(mb_left))
+				case COMBATCHARACTERSTATES.MOVING:
 				{
-					var mx = floor(mouse_x / COMBATCELLSIZE)
-					var my = floor(mouse_y / COMBATCELLSIZE)
-					if(point_distance(mx, my,
-								  	  units[party][character].get_tile().get_x(),
-									  units[party][character].get_tile().get_y()
-									  ) <= units[party][character].get_ap() * units[party][character].get_attr("spd")
-					   and grid.get_cell(mx,my).get_occupant() == noone
-					)
+					gui.deactivateGUI()
+					if(mouse_check_button_pressed(mb_right))
 					{
-						repeat(ceil(point_distance(mx, my,
-								  	  units[party][character].get_tile().get_x(),
-									  units[party][character].get_tile().get_y()
-									  ) / units[party][character].get_attr("spd")))
-					    {units[party][character].spend_ap();}
-						grid.get_cell(mx, my).set_occupant(units[party][character]);
 						units[party][character].to_idle()
 						break;
 					}
-				}
-				break;
-			}
-			case COMBATCHARACTERSTATES.ATTACKING:
-			{
-				gui.deactivateGUI()
-				if(mouse_check_button_pressed(mb_right))
-				{
-					units[party][character].to_idle()
+					if(mouse_check_button_pressed(mb_left))
+					{
+						var mx = floor(mouse_x / COMBATCELLSIZE)
+						var my = floor(mouse_y / COMBATCELLSIZE)
+						if(dist_to_targ(
+						                  units[party][character].get_tile(),
+										  grid.get_cell(mx, my)
+										  ) <= units[party][character].get_ap() * units[party][character].get_attr("spd")
+						   and grid.get_cell(mx,my).get_occupant() == noone
+						)
+						{
+							repeat(ceil(dist_to_targ(
+						                  units[party][character].get_tile(),
+										  grid.get_cell(mx, my)
+										  ) / units[party][character].get_attr("spd")))
+						    {units[party][character].spend_ap();}
+							grid.get_cell(mx, my).set_occupant(units[party][character]);
+							units[party][character].to_idle()
+							break;
+						}
+					}
 					break;
 				}
-				if(mouse_check_button_pressed(mb_left))
+				case COMBATCHARACTERSTATES.ATTACKING:
 				{
-					var mx = floor(mouse_x / COMBATCELLSIZE)
-					var my = floor(mouse_y / COMBATCELLSIZE)
-					var dist = point_distance(mx, my,
-								  	  units[party][character].get_tile().get_x(),
-									  units[party][character].get_tile().get_y()
-									  )
-					if(dist <= units[party][character].get_attack_range_max()
-					   and dist >= units[party][character].get_attack_range_min()
-					   and grid.get_cell(mx,my).get_occupant() != noone
-					   and FactionManager.get_relation(grid.get_cell(mx,my).get_occupant().get_faction(),
-					                                   units[party][character].get_faction()) < 0
-					)
+					gui.deactivateGUI()
+					if(mouse_check_button_pressed(mb_right))
 					{
-						grid.get_cell(mx,my).get_occupant().damage()
-						units[party][character].empty_ap()
 						units[party][character].to_idle()
 						break;
 					}
+					if(mouse_check_button_pressed(mb_left))
+					{
+						var mx = floor(mouse_x / COMBATCELLSIZE)
+						var my = floor(mouse_y / COMBATCELLSIZE)
+						var dist = dist_to_targ(
+						                  units[party][character].get_tile(),
+										  grid.get_cell(mx, my)
+										  )
+						if(dist <= units[party][character].get_attack_range_max()
+						   and dist >= units[party][character].get_attack_range_min()
+						   and grid.get_cell(mx,my).get_occupant() != noone
+						   and FactionManager.get_relation(grid.get_cell(mx,my).get_occupant().get_faction(),
+						                                   units[party][character].get_faction()) < 0
+						)
+						{
+							grid.get_cell(mx,my).get_occupant().damage()
+							units[party][character].empty_ap()
+							units[party][character].to_idle()
+							break;
+						}
+					}
+					break;
 				}
-				break;
+				case COMBATCHARACTERSTATES.DEAD:
+				{
+					break;
+				}
 			}
-			case COMBATCHARACTERSTATES.DEAD:
+		}
+		//logic for AI control
+		else
+		{
+			switch(units[party][character].get_state())
 			{
-				break;
+				case COMBATCHARACTERSTATES.IDLE:
+				{
+					break;
+				}
+				case COMBATCHARACTERSTATES.MOVING:
+				{
+					break;
+				}
+				case COMBATCHARACTERSTATES.ATTACKING:
+				{
+					break;
+				}
+				case COMBATCHARACTERSTATES.DEAD:
+				{
+					break;
+				}
 			}
 		}
 		break;

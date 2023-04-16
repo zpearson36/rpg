@@ -18,3 +18,20 @@ function print(str)
 {
 	show_debug_message(str)
 }
+
+function chance_to_hit(_atkr, _targ)
+{
+}
+
+function ap_to_move(current_pos, targ_pos)
+{
+}
+
+function dist_to_targ(_curr, _targ)
+{
+	return point_distance(_targ.get_x(),
+	                      _targ.get_y(),
+						  _curr.get_x(),
+						  _curr.get_y()
+						  )
+}

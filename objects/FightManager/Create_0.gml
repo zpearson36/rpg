@@ -45,6 +45,7 @@ function get_character()
 
 function next_party()
 {
+	gui.deactivateGUI()
 	party++;
 	if(party == array_length(units)) party = 0
 	for(var i = 0; i < array_length(units[party]); i++)
