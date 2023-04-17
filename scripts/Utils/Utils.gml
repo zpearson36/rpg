@@ -21,6 +21,12 @@ function print(str)
 
 function chance_to_hit(_atkr, _targ)
 {
+	var dist =  dist_to_targ(_atkr.get_tile(), _targ.get_tile())
+	var hit_chance = 0
+	if(dist >= _atkr.get_attack_range_min() and dist <= _atkr.get_attack_range_max())
+	    hit_chance = .40
+	
+	return hit_chance
 }
 
 function ap_to_move(current_pos, targ_pos)

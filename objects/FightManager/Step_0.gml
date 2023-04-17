@@ -99,18 +99,16 @@ switch(state)
 					{
 						var mx = floor(mouse_x / COMBATCELLSIZE)
 						var my = floor(mouse_y / COMBATCELLSIZE)
-						var dist = dist_to_targ(
-						                  units[party][character].get_tile(),
-										  grid.get_cell(mx, my)
-										  )
-						if(dist <= units[party][character].get_attack_range_max()
-						   and dist >= units[party][character].get_attack_range_min()
-						   and grid.get_cell(mx,my).get_occupant() != noone
+						var ch = random(1)
+						show_debug_message(ch)
+						show_debug_message(1 - chance_to_hit(units[party][character], grid.get_cell(mx,my).get_occupant()))
+						var hit = ch > (1 - chance_to_hit(units[party][character], grid.get_cell(mx,my).get_occupant()))
+						if(grid.get_cell(mx,my).get_occupant() != noone
 						   and FactionManager.get_relation(grid.get_cell(mx,my).get_occupant().get_faction(),
 						                                   units[party][character].get_faction()) < 0
 						)
 						{
-							grid.get_cell(mx,my).get_occupant().damage()
+							if(hit) grid.get_cell(mx,my).get_occupant().damage()
 							units[party][character].empty_ap()
 							units[party][character].to_idle()
 							break;
@@ -131,6 +129,11 @@ switch(state)
 			{
 				case COMBATCHARACTERSTATES.IDLE:
 				{
+					var attack
+					var targ
+					var dest
+					
+					
 					break;
 				}
 				case COMBATCHARACTERSTATES.MOVING:

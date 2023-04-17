@@ -63,6 +63,7 @@
     {"id":{"name":"Characters","path":"scripts/Characters/Characters.yy",},},
     {"id":{"name":"click_sprite","path":"scripts/click_sprite/click_sprite.yy",},},
     {"id":{"name":"hover_rectangle","path":"scripts/hover_rectangle/hover_rectangle.yy",},},
+    {"id":{"name":"fnt_hitchance","path":"fonts/fnt_hitchance/fnt_hitchance.yy",},},
     {"id":{"name":"FightManager","path":"objects/FightManager/FightManager.yy",},},
     {"id":{"name":"spr_slider","path":"sprites/spr_slider/spr_slider.yy",},},
     {"id":{"name":"FightGUI","path":"objects/FightGUI/FightGUI.yy",},},
