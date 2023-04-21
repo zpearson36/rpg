@@ -144,15 +144,6 @@ switch(state)
 							}
 						}
 					}
-					
-					for(var i = 0; i < COMBATGRIDWIDTH; i++)
-					{
-						print(action_array[i])
-					}
-					print(tile_targ[0][0])
-					print(tile_targ[0][1])
-					print(action_grid[# tile_targ[0][0], tile_targ[0][1]][1])
-					print(tile_targ[1])
 					units[party][character].set_targ(tile_targ[1])
 					units[party][character].set_dest(grid.get_cell(tile_targ[0][0],tile_targ[0][1]))
 					
@@ -169,18 +160,15 @@ switch(state)
 					{units[party][character].spend_ap();}
 					units[party][character].get_dest().set_occupant(units[party][character]);
 					units[party][character].to_idle()
-				//	show_debug_message("IS MOVING")
 					break;
 				}
 				case COMBATCHARACTERSTATES.ATTACKING:
 				{
 					var ch = random(1)
-					//print(units[party][character].get_targ())
 					var hit = ch > (1 - chance_to_hit(units[party][character], units[party][character].get_targ()))
 					if(hit) units[party][character].get_targ().damage()
 					units[party][character].empty_ap()
 					units[party][character].to_idle()
-					show_debug_message("IS ATTACKING")
 					break;
 				}
 				case COMBATCHARACTERSTATES.DEAD:

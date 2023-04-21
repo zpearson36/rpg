@@ -59,7 +59,8 @@ function find_target(char, grid, tile)
 		for(var j = 0; j < COMBATGRIDHEIGHT; j++)
 		{
 			if(grid.get_cell(i, j).get_occupant() != noone
-			   and FactionManager.get_relation(char.get_faction(), grid.get_cell(i, j).get_occupant().get_faction()) < 0)
+			   and FactionManager.get_relation(char.get_faction(), grid.get_cell(i, j).get_occupant().get_faction()) < 0
+			   and not grid.get_cell(i, j).get_occupant().is_dead())
 			{
 				var dist = dist_to_targ(tile, grid.get_cell(i, j))
 				if(ceil(dist) <= char.get_attack_range_max()
@@ -70,11 +71,9 @@ function find_target(char, grid, tile)
 						targ       = grid.get_cell(i, j).get_occupant()
 						hit_chance = chance_to_hit(char, grid.get_cell(i, j).get_occupant(), tile)
 						targ_dist  = dist
-						//print(hit_chance)
 					}
 					else if(chance_to_hit(char, grid.get_cell(i, j).get_occupant()) > chance_to_hit(char, targ))
 					{
-						//print("poop")
 						targ = grid.get_cell(i, j).get_occupant()
 						hit_chance = chance_to_hit(char, grid.get_cell(i, j).get_occupant(), tile)
 						targ_dist  = dist
@@ -97,14 +96,12 @@ function find_target(char, grid, tile)
 					    var dist = dist_to_targ(tile, grid.get_cell(i, j))
 						if(targ == noone)
 						{
-						//print(3)
 							targ = grid.get_cell(i, j).get_occupant()
 							hit_chance = 0
 							targ_dist  = dist_to_targ(tile, grid.get_cell(i, j))
 						}
 						else if(dist_to_targ(tile, grid.get_cell(i, j)) < dist_to_targ(tile, targ.get_tile()))
 						{
-						//print(4)
 							targ = grid.get_cell(i, j).get_occupant()
 							hit_chance = 0
 							targ_dist  = dist_to_targ(tile, grid.get_cell(i, j))
@@ -113,7 +110,6 @@ function find_target(char, grid, tile)
 			}
 		}
 	}
-	//print(hit_chance)
 	return [targ, hit_chance, targ_dist]
 }
 

@@ -186,8 +186,14 @@ function CombatCharacter(_char) constructor
 		state = COMBATCHARACTERSTATES.DEAD
 	}
 	
+	function is_dead()
+	{
+		return state == COMBATCHARACTERSTATES.DEAD
+	}
+	
 	function damage()
 	{
+		print("HIT")
 		to_dead()
 	}
 	

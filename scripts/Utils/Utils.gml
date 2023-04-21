@@ -22,14 +22,8 @@ function print(str)
 function chance_to_hit(_atkr, _targ, _tile = undefined)
 {
 	if(_tile == undefined) _tile = _atkr.get_tile()
-	//print(_targ)
 	var dist =  dist_to_targ(_tile, _targ.get_tile())
 	var hit_chance = -1
-	//print("================")
-	//print(dist)
-	//print(_atkr.get_attack_range_min())
-	//print(_atkr.get_attack_range_max())
-	//print("================")
 	if(dist >= _atkr.get_attack_range_min() and dist <= _atkr.get_attack_range_max())
 	    hit_chance = .40
 	
