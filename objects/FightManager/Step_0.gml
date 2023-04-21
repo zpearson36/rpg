@@ -139,12 +139,20 @@ switch(state)
 							action_array[i][j] = action_grid[# i, j][1]
 							if(action_grid[# i, j] != noone)
 							{
-								if(tile_targ == undefined) tile_targ = [[i, j], action_grid[# i, j]]
-								else if(action_grid[# i, j][1] > action_grid[# tile_targ[0][0], tile_targ[0][1]][1]) tile_targ = [[i, j], action_grid[# i, j]]
+								if(tile_targ == undefined) tile_targ = [[i, j], action_grid[# i, j][0]]
+								else if(action_grid[# i, j][1] > action_grid[# tile_targ[0][0], tile_targ[0][1]][1]) tile_targ = [[i, j], action_grid[# i, j][0]]
 							}
 						}
 					}
 					
+					for(var i = 0; i < COMBATGRIDWIDTH; i++)
+					{
+						print(action_array[i])
+					}
+					print(tile_targ[0][0])
+					print(tile_targ[0][1])
+					print(action_grid[# tile_targ[0][0], tile_targ[0][1]][1])
+					print(tile_targ[1])
 					units[party][character].set_targ(tile_targ[1])
 					units[party][character].set_dest(grid.get_cell(tile_targ[0][0],tile_targ[0][1]))
 					
@@ -154,11 +162,24 @@ switch(state)
 				}
 				case COMBATCHARACTERSTATES.MOVING:
 				{
-					show_debug_message("IS MOVING")
+					repeat(ceil(dist_to_targ(
+						            units[party][character].get_tile(),
+									units[party][character].get_dest()
+									) / units[party][character].get_attr("spd")))
+					{units[party][character].spend_ap();}
+					units[party][character].get_dest().set_occupant(units[party][character]);
+					units[party][character].to_idle()
+				//	show_debug_message("IS MOVING")
 					break;
 				}
 				case COMBATCHARACTERSTATES.ATTACKING:
 				{
+					var ch = random(1)
+					//print(units[party][character].get_targ())
+					var hit = ch > (1 - chance_to_hit(units[party][character], units[party][character].get_targ()))
+					if(hit) units[party][character].get_targ().damage()
+					units[party][character].empty_ap()
+					units[party][character].to_idle()
 					show_debug_message("IS ATTACKING")
 					break;
 				}

@@ -22,7 +22,7 @@ function generate_action_grid(char, grid)
 							    	grid.get_cell(i, j))
 			
 			//[target, Action Value] -- Action Value = (Chance to hit target) - (AP needed to move / available AP)
-			action_grid[# i, j] = [targ_array[0], hit_chance - (ceil(distance_to_tile / char.get_attr("spd")) / char.get_ap())]
+			action_grid[# i, j] = [targ_array[0], (hit_chance * 100) - (ceil(distance_to_tile / char.get_attr("spd")) / char.get_ap())]
 		}
 	}
 	
@@ -68,13 +68,15 @@ function find_target(char, grid, tile)
 					if(targ == noone)
 					{
 						targ       = grid.get_cell(i, j).get_occupant()
-						hit_chance = chance_to_hit(char, grid.get_cell(i, j).get_occupant())
+						hit_chance = chance_to_hit(char, grid.get_cell(i, j).get_occupant(), tile)
 						targ_dist  = dist
+						//print(hit_chance)
 					}
 					else if(chance_to_hit(char, grid.get_cell(i, j).get_occupant()) > chance_to_hit(char, targ))
 					{
+						//print("poop")
 						targ = grid.get_cell(i, j).get_occupant()
-						hit_chance = chance_to_hit(char, grid.get_cell(i, j).get_occupant())
+						hit_chance = chance_to_hit(char, grid.get_cell(i, j).get_occupant(), tile)
 						targ_dist  = dist
 					}
 					
@@ -95,12 +97,14 @@ function find_target(char, grid, tile)
 					    var dist = dist_to_targ(tile, grid.get_cell(i, j))
 						if(targ == noone)
 						{
+						//print(3)
 							targ = grid.get_cell(i, j).get_occupant()
 							hit_chance = 0
 							targ_dist  = dist_to_targ(tile, grid.get_cell(i, j))
 						}
 						else if(dist_to_targ(tile, grid.get_cell(i, j)) < dist_to_targ(tile, targ.get_tile()))
 						{
+						//print(4)
 							targ = grid.get_cell(i, j).get_occupant()
 							hit_chance = 0
 							targ_dist  = dist_to_targ(tile, grid.get_cell(i, j))
@@ -109,7 +113,7 @@ function find_target(char, grid, tile)
 			}
 		}
 	}
-	
+	//print(hit_chance)
 	return [targ, hit_chance, targ_dist]
 }
 

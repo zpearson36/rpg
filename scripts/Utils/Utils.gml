@@ -19,10 +19,17 @@ function print(str)
 	show_debug_message(str)
 }
 
-function chance_to_hit(_atkr, _targ)
+function chance_to_hit(_atkr, _targ, _tile = undefined)
 {
-	var dist =  dist_to_targ(_atkr.get_tile(), _targ.get_tile())
-	var hit_chance = 0
+	if(_tile == undefined) _tile = _atkr.get_tile()
+	//print(_targ)
+	var dist =  dist_to_targ(_tile, _targ.get_tile())
+	var hit_chance = -1
+	//print("================")
+	//print(dist)
+	//print(_atkr.get_attack_range_min())
+	//print(_atkr.get_attack_range_max())
+	//print("================")
 	if(dist >= _atkr.get_attack_range_min() and dist <= _atkr.get_attack_range_max())
 	    hit_chance = .40
 	
