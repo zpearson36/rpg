@@ -29,8 +29,9 @@ function chance_to_hit(_atkr, _targ)
 	return hit_chance
 }
 
-function ap_to_move(current_pos, targ_pos)
+function ap_to_move(char, targ_pos)
 {
+	return ceil(dist_to_targ(char.get_tile(), targ_pos) / char.get_attr("spd"))
 }
 
 function dist_to_targ(_curr, _targ)

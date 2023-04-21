@@ -129,19 +129,37 @@ switch(state)
 			{
 				case COMBATCHARACTERSTATES.IDLE:
 				{
-					var attack
-					var targ
-					var dest
+					var action_grid = generate_action_grid(units[party][character], grid)
+					var action_array = []
+					var tile_targ = undefined
+					for(var i = 0; i < COMBATGRIDWIDTH; i++)
+					{
+						for(var j = 0; j < COMBATGRIDHEIGHT; j++)
+						{
+							action_array[i][j] = action_grid[# i, j][1]
+							if(action_grid[# i, j] != noone)
+							{
+								if(tile_targ == undefined) tile_targ = [[i, j], action_grid[# i, j]]
+								else if(action_grid[# i, j][1] > action_grid[# tile_targ[0][0], tile_targ[0][1]][1]) tile_targ = [[i, j], action_grid[# i, j]]
+							}
+						}
+					}
 					
+					units[party][character].set_targ(tile_targ[1])
+					units[party][character].set_dest(grid.get_cell(tile_targ[0][0],tile_targ[0][1]))
 					
+					if(units[party][character].get_tile() == units[party][character].get_dest()) units[party][character].to_attack()
+					else units[party][character].to_move()
 					break;
 				}
 				case COMBATCHARACTERSTATES.MOVING:
 				{
+					show_debug_message("IS MOVING")
 					break;
 				}
 				case COMBATCHARACTERSTATES.ATTACKING:
 				{
+					show_debug_message("IS ATTACKING")
 					break;
 				}
 				case COMBATCHARACTERSTATES.DEAD:

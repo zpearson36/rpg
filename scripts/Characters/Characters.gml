@@ -110,6 +110,10 @@ function CombatCharacter(_char) constructor
 	currentAP = maxAP;
 	state = COMBATCHARACTERSTATES.IDLE
 	
+	//variable for NPC AI
+	targ = noone
+	dest = undefined
+	
 	function set_sprite(_sprite)
 	{
 		character.set_sprite(_sprite);
@@ -205,6 +209,28 @@ function CombatCharacter(_char) constructor
 	function get_faction()
 	{
 		return character.get_faction()
+	}
+	
+	
+	//AI Functions
+	function set_targ(_targ)
+	{
+		targ = _targ;
+	}
+	
+	function get_targ()
+	{
+		return targ;
+	}
+	
+	function set_dest(_dest)
+	{
+		dest = _dest;
+	}
+	
+	function get_dest()
+	{
+		return dest;
 	}
 }
 

@@ -5,10 +5,34 @@ enum AI_ACTIONS
 	ATTACK
 }
 
+function generate_action_grid(char, grid)
+{
+	var target_grid = generate_target_grid(char, grid)
+	var action_grid = ds_grid_create(COMBATGRIDWIDTH, COMBATGRIDHEIGHT)
+	ds_grid_clear(action_grid, 0)
+	
+	for(var i = 0; i < COMBATGRIDWIDTH; i++)
+	{
+		for(var j = 0; j < COMBATGRIDHEIGHT; j++)
+		{
+			var targ_array = target_grid[# i, j]
+			var hit_chance = targ_array[1]
+			//var distance_to_targ = targ_array[2]
+			var distance_to_tile = dist_to_targ(char.get_tile(),
+							    	grid.get_cell(i, j))
+			
+			//[target, Action Value] -- Action Value = (Chance to hit target) - (AP needed to move / available AP)
+			action_grid[# i, j] = [targ_array[0], hit_chance - (ceil(distance_to_tile / char.get_attr("spd")) / char.get_ap())]
+		}
+	}
+	
+	return action_grid
+}
+
 function generate_target_grid(char, grid)
 {
 	var target_grid = ds_grid_create(COMBATGRIDWIDTH, COMBATGRIDHEIGHT)
-	ds_grid_clear(target_grid, -1)
+	ds_grid_clear(target_grid, [noone, -100, 1000])
 	for(var i = 0; i < COMBATGRIDWIDTH; i++)
 	{
 		for(var j = 0; j < COMBATGRIDHEIGHT; j++)
@@ -22,6 +46,7 @@ function generate_target_grid(char, grid)
 			}
 		}
 	}
+	return target_grid
 }
 
 function find_target(char, grid, tile)
