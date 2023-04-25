@@ -41,7 +41,12 @@ switch(state)
 			character++
 			num_chars++
 			if(character == array_length(units[party])) character = 0
-			if(num_chars == array_length(units[party])) next_party()
+			if(num_chars == array_length(units[party]))
+			{
+				next_party()
+				character = 0
+			}
+		if(array_length(units[party]) == 0) next_party()
 		}
 		switch(units[party][character].get_state())
 		{

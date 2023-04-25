@@ -45,12 +45,15 @@ function get_character()
 
 function next_party()
 {
+	
+	gui.deactivateGUI()
 	party++;
 	if(party == array_length(units)) party = 0
 	for(var i = 0; i < array_length(units[party]); i++)
 	{
 		units[party][i].reset_ap()
 	}
+	character = 0
 }
 
 gui = instance_create_layer(x, y, "Instances", FightGUI)

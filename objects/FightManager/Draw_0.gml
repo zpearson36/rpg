@@ -29,9 +29,9 @@ switch(state)
 					}
 					case COMBATCHARACTERSTATES.MOVING:
 					{
-						var dist = point_distance(i, j,
-									      units[party][character].get_tile().get_x(),
-										  units[party][character].get_tile().get_y()
+						var dist = dist_to_targ(
+						                  units[party][character].get_tile(),
+										  grid.get_cell(i, j)
 										  )
 						if     (dist <= units[party][character].get_ap() * units[party][character].get_attr("spd")
 							and grid.get_cell(i,j).get_occupant() == noone)
@@ -52,9 +52,16 @@ switch(state)
 					}
 					case COMBATCHARACTERSTATES.ATTACKING:
 					{
-						var dist = point_distance(i, j,
-									      units[party][character].get_tile().get_x(),
-										  units[party][character].get_tile().get_y()
+						draw_set_font(fnt_hitchance)
+						var mx = floor(mouse_x / COMBATCELLSIZE)
+						var my = floor(mouse_y / COMBATCELLSIZE)
+						if(mx >= 0 and mx < COMBATGRIDWIDTH and my >= 0 and my < COMBATGRIDHEIGHT and grid.get_cell(mx,my).get_occupant() != noone)
+							    draw_text_color(mx * COMBATCELLSIZE, my * COMBATCELLSIZE,
+								chance_to_hit(units[party][character], grid.get_cell(mx,my).get_occupant()),
+								c_black, c_black, c_black, c_black, 1)
+						var dist = dist_to_targ(
+						                  units[party][character].get_tile(),
+										  grid.get_cell(i, j)
 										  )
 						if (ceil(dist) <= units[party][character].get_attack_range_max()
 						and ceil(dist) >= units[party][character].get_attack_range_min())
