@@ -204,12 +204,12 @@ function CombatCharacter(_char) constructor
 	
 	function get_attack_range_max()
 	{
-		return 3
+		return 4
 	}
 	
 	function get_attack_range_min()
 	{
-		return 1
+		return 3
 	}
 	
 	function get_faction()

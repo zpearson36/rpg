@@ -46,6 +46,7 @@ switch(state)
 				next_party()
 				character = 0
 			}
+		if(array_length(units[party]) == 0) next_party()
 		}
 		switch(units[party][character].get_state())
 		{

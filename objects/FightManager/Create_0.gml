@@ -53,6 +53,7 @@ function next_party()
 	{
 		units[party][i].reset_ap()
 	}
+	character = 0
 }
 
 gui = instance_create_layer(x, y, "Instances", FightGUI)
