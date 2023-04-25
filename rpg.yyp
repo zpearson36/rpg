@@ -46,6 +46,7 @@
     {"id":{"name":"WorldManager","path":"objects/WorldManager/WorldManager.yy",},},
     {"id":{"name":"sBckGrnd","path":"sprites/sBckGrnd/sBckGrnd.yy",},},
     {"id":{"name":"draw_button_sprite","path":"scripts/draw_button_sprite/draw_button_sprite.yy",},},
+    {"id":{"name":"sTmp10","path":"sprites/sTmp10/sTmp10.yy",},},
     {"id":{"name":"slider_sprite","path":"scripts/slider_sprite/slider_sprite.yy",},},
     {"id":{"name":"AI","path":"scripts/AI/AI.yy",},},
     {"id":{"name":"hover_sprite","path":"scripts/hover_sprite/hover_sprite.yy",},},

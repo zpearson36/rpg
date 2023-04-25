@@ -27,6 +27,7 @@
     {"name":"spr_checkbox","order":6,"path":"sprites/spr_checkbox/spr_checkbox.yy",},
     {"name":"sBckGrnd","order":1,"path":"sprites/sBckGrnd/sBckGrnd.yy",},
     {"name":"draw_button_sprite","order":6,"path":"scripts/draw_button_sprite/draw_button_sprite.yy",},
+    {"name":"sTmp10","order":9,"path":"sprites/sTmp10/sTmp10.yy",},
     {"name":"slider_sprite","order":8,"path":"scripts/slider_sprite/slider_sprite.yy",},
     {"name":"AI","order":10,"path":"scripts/AI/AI.yy",},
     {"name":"hover_sprite","order":3,"path":"scripts/hover_sprite/hover_sprite.yy",},

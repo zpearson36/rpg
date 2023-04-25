@@ -16,13 +16,20 @@ function generate_action_grid(char, grid)
 		for(var j = 0; j < COMBATGRIDHEIGHT; j++)
 		{
 			var targ_array = target_grid[# i, j]
+			if(targ_array[0] == noone)
+			{
+				action_grid[# i, j] = [noone, -10000]
+				continue
+			}
 			var hit_chance = targ_array[1]
-			//var distance_to_targ = targ_array[2]
+			var distance_to_targ = targ_array[2]
 			var distance_to_tile = dist_to_targ(char.get_tile(),
 							    	grid.get_cell(i, j))
 			
 			//[target, Action Value] -- Action Value = (Chance to hit target) - (AP needed to move / available AP)
-			action_grid[# i, j] = [targ_array[0], (hit_chance * 100) - (ceil(distance_to_tile / char.get_attr("spd")) / char.get_ap())]
+			var val = (hit_chance * 100) / max(ceil(distance_to_tile / char.get_attr("spd")), .1) + (1 - (distance_to_targ / COMBATGRIDHEIGHT)) // - ceil(distance_to_tile / char.get_attr("spd")) + (char.get_attack_range_max() - distance_to_targ) + (distance_to_targ - char.get_attack_range_min())
+			print("Grid: " + string(i) + ", " + string(j) + " - " + string(val))
+			action_grid[# i, j] = [targ_array[0], val]
 		}
 	}
 	
@@ -32,7 +39,7 @@ function generate_action_grid(char, grid)
 function generate_target_grid(char, grid)
 {
 	var target_grid = ds_grid_create(COMBATGRIDWIDTH, COMBATGRIDHEIGHT)
-	ds_grid_clear(target_grid, [noone, -100, 1000])
+	ds_grid_clear(target_grid, [noone, -10000, 10000])
 	for(var i = 0; i < COMBATGRIDWIDTH; i++)
 	{
 		for(var j = 0; j < COMBATGRIDHEIGHT; j++)
@@ -91,7 +98,8 @@ function find_target(char, grid, tile)
 			for(var j = 0; j < COMBATGRIDHEIGHT; j++)
 			{
 				if(grid.get_cell(i, j).get_occupant() != noone
-				   and FactionManager.get_relation(char.get_faction(), grid.get_cell(i, j).get_occupant().get_faction()) < 0)
+				   and FactionManager.get_relation(char.get_faction(), grid.get_cell(i, j).get_occupant().get_faction()) < 0
+				   and not grid.get_cell(i, j).get_occupant().is_dead())
 				{
 					    var dist = dist_to_targ(tile, grid.get_cell(i, j))
 						if(targ == noone)
