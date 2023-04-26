@@ -1,0 +1,22 @@
+combat:
+ - terrain
+ - - Terrain Cost
+ - - Terrain Height
+ - - A* path-finding
+ - Character Customization
+ - - Skills
+ - - - Base Skills (Str, Int, Dex, End, Spd, Agl)
+ - - - - Thought: Available action points are determined by Agl.
+             Each action point left at EoT grants a dodge roll during combat.
+ - - - Weapon Skills (based on weapon type)
+ - - Equipment 
+ - - - Weapons
+ - - - - Varied types (sword, spear, bow for starters, can expand later)
+ - - - - Each weapon will have associated Base Skills.
+ - - - - Weapon Skill determines hit chance
+ - - - - Associated base skills modify damage
+ - - - Armour
+ - - - - Armour Rating gives flat damage reduction
+ - - - - Heavy Armours have higher DR but have negative impact on Spd and Agl
+
+
