@@ -48,7 +48,7 @@ switch(state)
 					}
 					break;
 				}
-				case COMBATCHARACTERSTATES.MOVING:
+				case COMBATCHARACTERSTATES.INITIATE_MOVE:
 				{
 					gui.deactivateGUI()
 					if(mouse_check_button_pressed(mb_right))
@@ -65,16 +65,19 @@ switch(state)
 						   and grid.get_cell(mx,my).get_occupant() == noone
 						)
 						{
-							repeat(ceil(dist_to_targ(
-						                  units[party][character].get_tile(),
-										  grid.get_cell(mx, my)
-										  ) / units[party][character].get_attr("spd")))
-						    {units[party][character].spend_ap();}
-							grid.get_cell(mx, my).set_occupant(units[party][character]);
-							units[party][character].to_idle()
-							break;
+							units[party][character].set_dest(grid.get_cell(mx, my))
+							units[party][character].to_move()
 						}
 					}
+					break; 
+				}
+				case COMBATCHARACTERSTATES.MOVING:
+				{
+					repeat(ceil(units[party][character].get_dest().get_path_cost()
+					               / units[party][character].get_attr("spd")))
+					{units[party][character].spend_ap();}
+					units[party][character].get_dest().set_occupant(units[party][character]);
+					units[party][character].to_idle()
 					break;
 				}
 				case COMBATCHARACTERSTATES.ATTACKING:
@@ -145,10 +148,8 @@ switch(state)
 				}
 				case COMBATCHARACTERSTATES.MOVING:
 				{
-					repeat(ceil(dist_to_targ(
-						            units[party][character].get_tile(),
-									units[party][character].get_dest()
-									) / units[party][character].get_attr("spd")))
+					repeat(ceil(units[party][character].get_dest().get_path_cost()
+					               / units[party][character].get_attr("spd")))
 					{units[party][character].spend_ap();}
 					units[party][character].get_dest().set_occupant(units[party][character]);
 					units[party][character].to_idle()

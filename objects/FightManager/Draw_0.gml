@@ -22,7 +22,7 @@ switch(state)
 					{
 						break;
 					}
-					case COMBATCHARACTERSTATES.MOVING:
+					case COMBATCHARACTERSTATES.INITIATE_MOVE:
 					{
 						draw_set_alpha(.3)
 						if     (grid.get_cell(i, j).get_path_cost() <= units[party][character].get_ap() * units[party][character].get_attr("spd")

@@ -39,6 +39,16 @@ function ClearTerrain()
 	return new Terrain(TerrainType.CLEAR, 1, sTileClear)
 }
 
+function MuddyTerrain()
+{
+	return new Terrain(TerrainType.MUDDY, 2, sTileClear)
+}
+
+function ShallowWaterTerrain()
+{
+	return new Terrain(TerrainType.SHALLOWWATER, 6, sTileClear)
+}
+
 function CombatCell(_x, _y) constructor
 {
 	pos_x = _x;

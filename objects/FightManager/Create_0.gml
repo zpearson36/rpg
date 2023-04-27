@@ -61,7 +61,7 @@ function prepare_move()
 			}
 		}
 	}
-	get_character().to_move()
+	get_character().to_init_move()
 }
 
 function get_grid()
