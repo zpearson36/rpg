@@ -27,8 +27,10 @@ function generate_action_grid(char, grid)
 							    	grid.get_cell(i, j))
 			
 			//[target, Action Value] -- Action Value = (Chance to hit target) / (AP needed to move / available AP) + (1 - (Distance to target / Size of Grid)
-			var val = (hit_chance) / max(ceil(distance_to_tile / char.get_attr("spd")), .5) + (1 - (distance_to_targ / COMBATGRIDHEIGHT)) // - ceil(distance_to_tile / char.get_attr("spd")) + (char.get_attack_range_max() - distance_to_targ) + (distance_to_targ - char.get_attack_range_min())
-			print("Grid: " + string(i) + ", " + string(j) + " - " + string(val))
+			var t = 0
+			if(grid.get_cell(i, j).get_occupant() != noone and grid.get_cell(i, j).get_occupant() != char) t = -10000
+			var val = t + (hit_chance * 100) / max(ceil(distance_to_tile / char.get_attr("spd")), .1) + (1 - (distance_to_targ / COMBATGRIDHEIGHT))// - ceil(distance_to_tile / char.get_attr("spd")) + (char.get_attack_range_max() - distance_to_targ) + (distance_to_targ - char.get_attack_range_min())
+			
 			action_grid[# i, j] = [targ_array[0], val]
 		}
 	}

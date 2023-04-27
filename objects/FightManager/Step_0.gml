@@ -60,10 +60,8 @@ switch(state)
 					{
 						var mx = floor(mouse_x / COMBATCELLSIZE)
 						var my = floor(mouse_y / COMBATCELLSIZE)
-						if(dist_to_targ(
-						                  units[party][character].get_tile(),
-										  grid.get_cell(mx, my)
-										  ) <= units[party][character].get_ap() * units[party][character].get_attr("spd")
+						if(grid.get_cell(mx, my).get_path_cost()
+										   <= units[party][character].get_ap() * units[party][character].get_attr("spd")
 						   and grid.get_cell(mx,my).get_occupant() == noone
 						)
 						{
@@ -137,14 +135,6 @@ switch(state)
 						}
 					}
 					
-					/*for(var i = 0; i < COMBATGRIDWIDTH; i++)
-					{
-						print(action_array[i])
-					}*/
-					print("Chosen: " + string(tile_targ[0][0]) + ", " + string(tile_targ[0][1]))
-					print()/*
-					print(action_grid[# tile_targ[0][0], tile_targ[0][1]][1])
-					print(tile_targ[1])*/
 					units[party][character].set_targ(tile_targ[1])
 					units[party][character].set_dest(grid.get_cell(tile_targ[0][0],tile_targ[0][1]))
 					
@@ -166,7 +156,7 @@ switch(state)
 				case COMBATCHARACTERSTATES.ATTACKING:
 				{
 					var ch = random(1)
-					//print(units[party][character].get_targ())
+					print("Attack!")
 					var hit = ch > (1 - chance_to_hit(units[party][character], units[party][character].get_targ()))
 					if(hit) units[party][character].get_targ().damage()
 					units[party][character].empty_ap()

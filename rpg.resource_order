@@ -51,7 +51,6 @@
     {"name":"sTmpDead","order":8,"path":"sprites/sTmpDead/sTmpDead.yy",},
     {"name":"spr_button","order":5,"path":"sprites/spr_button/spr_button.yy",},
     {"name":"draw_label","order":7,"path":"scripts/draw_label/draw_label.yy",},
-    {"name":"FightAI","order":2,"path":"objects/FightAI/FightAI.yy",},
     {"name":"Attributes","order":3,"path":"scripts/Attributes/Attributes.yy",},
   ],
 }
