@@ -21,6 +21,7 @@
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings": [
+    {"name":"CombatMapGen","order":12,"path":"scripts/CombatMapGen/CombatMapGen.yy",},
     {"name":"Factions","order":9,"path":"scripts/Factions/Factions.yy",},
     {"name":"point_click_sprite","order":5,"path":"scripts/point_click_sprite/point_click_sprite.yy",},
     {"name":"draw_slider_sprite","order":8,"path":"scripts/draw_slider_sprite/draw_slider_sprite.yy",},
@@ -44,6 +45,7 @@
     {"name":"Characters","order":1,"path":"scripts/Characters/Characters.yy",},
     {"name":"sTileMuddy","order":11,"path":"sprites/sTileMuddy/sTileMuddy.yy",},
     {"name":"click_sprite","order":1,"path":"scripts/click_sprite/click_sprite.yy",},
+    {"name":"sTileDeepWater","order":13,"path":"sprites/sTileDeepWater/sTileDeepWater.yy",},
     {"name":"hover_rectangle","order":2,"path":"scripts/hover_rectangle/hover_rectangle.yy",},
     {"name":"fnt_hitchance","order":2,"path":"fonts/fnt_hitchance/fnt_hitchance.yy",},
     {"name":"spr_slider","order":7,"path":"sprites/spr_slider/spr_slider.yy",},

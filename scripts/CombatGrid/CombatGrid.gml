@@ -49,6 +49,11 @@ function ShallowWaterTerrain()
 	return new Terrain(TerrainType.SHALLOWWATER, 3, sTileShallowWater)
 }
 
+function DeepWaterTerrain()
+{
+	return new Terrain(TerrainType.DEEPWATER, 10, sTileDeepWater)
+}
+
 function CombatCell(_x, _y) constructor
 {
 	pos_x = _x;

@@ -39,6 +39,7 @@
   },
   "resources": [
     {"id":{"name":"bg_gui","path":"sprites/bg_gui/bg_gui.yy",},},
+    {"id":{"name":"CombatMapGen","path":"scripts/CombatMapGen/CombatMapGen.yy",},},
     {"id":{"name":"Factions","path":"scripts/Factions/Factions.yy",},},
     {"id":{"name":"point_click_sprite","path":"scripts/point_click_sprite/point_click_sprite.yy",},},
     {"id":{"name":"draw_slider_sprite","path":"scripts/draw_slider_sprite/draw_slider_sprite.yy",},},
@@ -66,6 +67,7 @@
     {"id":{"name":"Characters","path":"scripts/Characters/Characters.yy",},},
     {"id":{"name":"sTileMuddy","path":"sprites/sTileMuddy/sTileMuddy.yy",},},
     {"id":{"name":"click_sprite","path":"scripts/click_sprite/click_sprite.yy",},},
+    {"id":{"name":"sTileDeepWater","path":"sprites/sTileDeepWater/sTileDeepWater.yy",},},
     {"id":{"name":"hover_rectangle","path":"scripts/hover_rectangle/hover_rectangle.yy",},},
     {"id":{"name":"fnt_hitchance","path":"fonts/fnt_hitchance/fnt_hitchance.yy",},},
     {"id":{"name":"FightManager","path":"objects/FightManager/FightManager.yy",},},

@@ -11,21 +11,34 @@ switch(state)
 	{
 		grid = new CombatGrid()
 		grid.init()
+		var deepwater    = Generate_Map(1, 30)
+		var shallowwater = Generate_Map(1, 30)
+		var muddy        = Generate_Map(1, 30)
+		for(var i = 0; i < COMBATGRIDWIDTH; i++)
+		{
+			for(var j = 0; j < COMBATGRIDWIDTH; j++)
+			{
+				if(muddy[i][j] == 1)        grid.get_cell(i, j).set_terrain(MuddyTerrain())
+				if(shallowwater[i][j] == 1) grid.get_cell(i, j).set_terrain(ShallowWaterTerrain())
+				if(deepwater[i][j] == 1)    grid.get_cell(i, j).set_terrain(DeepWaterTerrain())
+			}
+		}
 		for(var k = 0; k < array_length(units); k++)
 		{
 			for(var i = 0; i < array_length(units[k]); i++)
 			{
 				var xx = irandom(COMBATGRIDWIDTH - 1)
 				var yy = irandom(COMBATGRIDHEIGHT - 1)
-				while(grid.get_cell(xx, yy).get_occupant() != noone)
+				while(grid.get_cell(xx, yy).get_occupant() != noone
+				      or grid.get_cell(xx, yy).get_terrain().get_type() == TerrainType.DEEPWATER)
 				{
 					xx = irandom(COMBATGRIDWIDTH - 1)
 					yy = irandom(COMBATGRIDHEIGHT - 1)
 				}
+				print(grid.get_cell(xx, yy).get_terrain().get_type())
 				grid.get_cell(xx, yy).set_occupant(units[k][i])
 			}
 		}
-		
 		state = FMStates.RUNNING
 		break;
 	}
