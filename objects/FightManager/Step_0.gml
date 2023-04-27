@@ -119,6 +119,7 @@ switch(state)
 			{
 				case COMBATCHARACTERSTATES.IDLE:
 				{
+					prepare_move()
 					var action_grid = generate_action_grid(units[party][character], grid)
 					var action_array = []
 					var tile_targ = undefined

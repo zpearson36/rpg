@@ -16,7 +16,7 @@ function generate_action_grid(char, grid)
 		for(var j = 0; j < COMBATGRIDHEIGHT; j++)
 		{
 			var targ_array = target_grid[# i, j]
-			if(targ_array[0] == noone)
+			if(targ_array[0] == noone or grid.get_cell(i, j).get_path_cost() == undefined)
 			{
 				action_grid[# i, j] = [noone, -10000]
 				continue
@@ -29,7 +29,7 @@ function generate_action_grid(char, grid)
 			//[target, Action Value] -- Action Value = (Chance to hit target) / (AP needed to move / available AP) + (1 - (Distance to target / Size of Grid)
 			var t = 0
 			if(grid.get_cell(i, j).get_occupant() != noone and grid.get_cell(i, j).get_occupant() != char) t = -10000
-			var val = t + (hit_chance * 100) / max(ceil(distance_to_tile / char.get_attr("spd")), .1) + (1 - (distance_to_targ / COMBATGRIDHEIGHT))// - ceil(distance_to_tile / char.get_attr("spd")) + (char.get_attack_range_max() - distance_to_targ) + (distance_to_targ - char.get_attack_range_min())
+			var val = t + (hit_chance * 100) / max(ceil(grid.get_cell(i, j).get_path_cost() / char.get_attr("spd")), .1) + (1 - (distance_to_targ / COMBATGRIDHEIGHT))// - ceil(distance_to_tile / char.get_attr("spd")) + (char.get_attack_range_max() - distance_to_targ) + (distance_to_targ - char.get_attack_range_min())
 			
 			action_grid[# i, j] = [targ_array[0], val]
 		}

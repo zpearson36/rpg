@@ -43,6 +43,27 @@ function get_character()
 	return units[party][character];
 }
 
+function prepare_move()
+{
+	for(var i = 0; i < COMBATGRIDWIDTH; i++)
+	{
+		for(var j = 0; j < COMBATGRIDWIDTH; j++)
+		{
+			grid.get_cell(i, j).set_path(undefined, undefined)
+			var dist = dist_to_targ(get_character().get_tile(),
+									grid.get_cell(i, j)) 
+			if(grid.get_cell(i, j).get_occupant() == get_character()) grid.get_cell(i, j).set_path([], 0)
+			else if(dist <= get_character().get_attr("spd") * 2 and grid.get_cell(i, j).get_occupant() == noone)
+			{
+				var path = pathfinding(get_character().get_tile(), grid.get_cell(i, j), grid)
+				var path_cost = grid.get_path_cost(path)
+				grid.get_cell(i, j).set_path(path, path_cost)
+			}
+		}
+	}
+	get_character().to_move()
+}
+
 function get_grid()
 {
 	return grid
