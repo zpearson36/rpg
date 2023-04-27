@@ -122,6 +122,7 @@ switch(state)
 			{
 				case COMBATCHARACTERSTATES.IDLE:
 				{
+					print("TO IDLE")
 					prepare_move()
 					var action_grid = generate_action_grid(units[party][character], grid)
 					var action_array = []
@@ -141,13 +142,16 @@ switch(state)
 					
 					units[party][character].set_targ(tile_targ[1])
 					units[party][character].set_dest(grid.get_cell(tile_targ[0][0],tile_targ[0][1]))
-					
+					print(string(tile_targ[0][0]) + ", " + string(tile_targ[0][1]) + ": " + string(grid.get_cell(tile_targ[0][0],tile_targ[0][1]).get_path_cost()))
 					if(units[party][character].get_tile() == units[party][character].get_dest()) units[party][character].to_attack()
 					else units[party][character].to_move()
 					break;
 				}
 				case COMBATCHARACTERSTATES.MOVING:
 				{
+					//print(units[party][character].get_dest().get_x())
+					//print(units[party][character].get_dest().get_y())
+					//print(units[party][character].get_ap());
 					repeat(ceil(units[party][character].get_dest().get_path_cost()
 					               / units[party][character].get_attr("spd")))
 					{units[party][character].spend_ap();}

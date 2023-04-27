@@ -53,11 +53,15 @@ function prepare_move()
 			var dist = dist_to_targ(get_character().get_tile(),
 									grid.get_cell(i, j)) 
 			if(grid.get_cell(i, j).get_occupant() == get_character()) grid.get_cell(i, j).set_path([], 0)
-			else if(dist <= get_character().get_attr("spd") * 2 and grid.get_cell(i, j).get_occupant() == noone)
+			else if(dist <= get_character().get_attr("spd") * get_character().get_ap() and grid.get_cell(i, j).get_occupant() == noone)
 			{
+				var tm = ""
+				if(i < 10) tm += " "
+				if(j < 10) tm += " "
 				var path = pathfinding(get_character().get_tile(), grid.get_cell(i, j), grid)
 				var path_cost = grid.get_path_cost(path)
 				grid.get_cell(i, j).set_path(path, path_cost)
+				//print(string(i) + ", " + string(j) + ": " + tm + string(path_cost))
 			}
 		}
 	}

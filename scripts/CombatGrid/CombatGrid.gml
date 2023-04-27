@@ -41,12 +41,12 @@ function ClearTerrain()
 
 function MuddyTerrain()
 {
-	return new Terrain(TerrainType.MUDDY, 2, sTileClear)
+	return new Terrain(TerrainType.MUDDY, 2, sTileMuddy)
 }
 
 function ShallowWaterTerrain()
 {
-	return new Terrain(TerrainType.SHALLOWWATER, 6, sTileClear)
+	return new Terrain(TerrainType.SHALLOWWATER, 3, sTileShallowWater)
 }
 
 function CombatCell(_x, _y) constructor
@@ -57,6 +57,11 @@ function CombatCell(_x, _y) constructor
 	terrain = ClearTerrain()
 	path = undefined
 	path_cost = undefined
+	
+	function set_terrain(_ter)
+	{
+		terrain = _ter
+	}
 	
 	function set_path(_path, _cost)
 	{
