@@ -31,15 +31,7 @@ switch(state)
 	}
 	case FMStates.RUNNING:
 	{
-		for(var i = 0; i < array_length(units); i++)
-		{
-			if(array_length(units[i]) == 0)
-			{
-				state = FMStates.COMBATFINISHED
-				alarm[0] = 180
-				break;
-			}
-		}
+		
 		//Logic for player control
 		if(units[party][character].get_faction() == GameManager.player_faction)
 		{

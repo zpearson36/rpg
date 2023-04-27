@@ -109,10 +109,30 @@ function CombatCharacter(_char) constructor
 	maxAP = 2;
 	currentAP = maxAP;
 	state = COMBATCHARACTERSTATES.IDLE
+	path = undefined
+	pathPos = -1
 	
 	//variable for NPC AI
 	targ = noone
 	dest = undefined
+	
+	function set_path(_path)
+	{
+		path = _path
+		pathPos = 0
+	}
+	
+	function get_path()
+	{
+		return path
+	}
+	
+	function proceed_on_path()
+	{
+		pathPos++
+		if(pathPos >= array_length(path)) return noone
+		return path[pathPos]
+	}
 	
 	function set_sprite(_sprite)
 	{

@@ -43,6 +43,10 @@ function get_character()
 	return units[party][character];
 }
 
+function get_grid()
+{
+	return grid
+}
 function next_party()
 {
 	
