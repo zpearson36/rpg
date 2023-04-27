@@ -11,35 +11,40 @@ switch(state)
 	{
 		grid = new CombatGrid()
 		grid.init()
+		var deepwater    = Generate_Map(1, 30)
+		var shallowwater = Generate_Map(1, 30)
+		var muddy        = Generate_Map(1, 30)
+		for(var i = 0; i < COMBATGRIDWIDTH; i++)
+		{
+			for(var j = 0; j < COMBATGRIDWIDTH; j++)
+			{
+				if(muddy[i][j] == 1)        grid.get_cell(i, j).set_terrain(MuddyTerrain())
+				if(shallowwater[i][j] == 1) grid.get_cell(i, j).set_terrain(ShallowWaterTerrain())
+				if(deepwater[i][j] == 1)    grid.get_cell(i, j).set_terrain(DeepWaterTerrain())
+			}
+		}
 		for(var k = 0; k < array_length(units); k++)
 		{
 			for(var i = 0; i < array_length(units[k]); i++)
 			{
 				var xx = irandom(COMBATGRIDWIDTH - 1)
 				var yy = irandom(COMBATGRIDHEIGHT - 1)
-				while(grid.get_cell(xx, yy).get_occupant() != noone)
+				while(grid.get_cell(xx, yy).get_occupant() != noone
+				      or grid.get_cell(xx, yy).get_terrain().get_type() == TerrainType.DEEPWATER)
 				{
 					xx = irandom(COMBATGRIDWIDTH - 1)
 					yy = irandom(COMBATGRIDHEIGHT - 1)
 				}
+				print(grid.get_cell(xx, yy).get_terrain().get_type())
 				grid.get_cell(xx, yy).set_occupant(units[k][i])
 			}
 		}
-		
 		state = FMStates.RUNNING
 		break;
 	}
 	case FMStates.RUNNING:
 	{
-		for(var i = 0; i < array_length(units); i++)
-		{
-			if(array_length(units[i]) == 0)
-			{
-				state = FMStates.COMBATFINISHED
-				alarm[0] = 180
-				break;
-			}
-		}
+		
 		//Logic for player control
 		if(units[party][character].get_faction() == GameManager.player_faction)
 		{
@@ -56,7 +61,7 @@ switch(state)
 					}
 					break;
 				}
-				case COMBATCHARACTERSTATES.MOVING:
+				case COMBATCHARACTERSTATES.INITIATE_MOVE:
 				{
 					gui.deactivateGUI()
 					if(mouse_check_button_pressed(mb_right))
@@ -68,23 +73,24 @@ switch(state)
 					{
 						var mx = floor(mouse_x / COMBATCELLSIZE)
 						var my = floor(mouse_y / COMBATCELLSIZE)
-						if(dist_to_targ(
-						                  units[party][character].get_tile(),
-										  grid.get_cell(mx, my)
-										  ) <= units[party][character].get_ap() * units[party][character].get_attr("spd")
+						if(grid.get_cell(mx, my).get_path_cost()
+										   <= units[party][character].get_ap() * units[party][character].get_attr("spd")
 						   and grid.get_cell(mx,my).get_occupant() == noone
 						)
 						{
-							repeat(ceil(dist_to_targ(
-						                  units[party][character].get_tile(),
-										  grid.get_cell(mx, my)
-										  ) / units[party][character].get_attr("spd")))
-						    {units[party][character].spend_ap();}
-							grid.get_cell(mx, my).set_occupant(units[party][character]);
-							units[party][character].to_idle()
-							break;
+							units[party][character].set_dest(grid.get_cell(mx, my))
+							units[party][character].to_move()
 						}
 					}
+					break; 
+				}
+				case COMBATCHARACTERSTATES.MOVING:
+				{
+					repeat(ceil(units[party][character].get_dest().get_path_cost()
+					               / units[party][character].get_attr("spd")))
+					{units[party][character].spend_ap();}
+					units[party][character].get_dest().set_occupant(units[party][character]);
+					units[party][character].to_idle()
 					break;
 				}
 				case COMBATCHARACTERSTATES.ATTACKING:
@@ -129,6 +135,8 @@ switch(state)
 			{
 				case COMBATCHARACTERSTATES.IDLE:
 				{
+					print("TO IDLE")
+					prepare_move()
 					var action_grid = generate_action_grid(units[party][character], grid)
 					var action_array = []
 					var tile_targ = undefined
@@ -145,27 +153,20 @@ switch(state)
 						}
 					}
 					
-					/*for(var i = 0; i < COMBATGRIDWIDTH; i++)
-					{
-						print(action_array[i])
-					}*/
-					print("Chosen: " + string(tile_targ[0][0]) + ", " + string(tile_targ[0][1]))
-					print()/*
-					print(action_grid[# tile_targ[0][0], tile_targ[0][1]][1])
-					print(tile_targ[1])*/
 					units[party][character].set_targ(tile_targ[1])
 					units[party][character].set_dest(grid.get_cell(tile_targ[0][0],tile_targ[0][1]))
-					
+					print(string(tile_targ[0][0]) + ", " + string(tile_targ[0][1]) + ": " + string(grid.get_cell(tile_targ[0][0],tile_targ[0][1]).get_path_cost()))
 					if(units[party][character].get_tile() == units[party][character].get_dest()) units[party][character].to_attack()
 					else units[party][character].to_move()
 					break;
 				}
 				case COMBATCHARACTERSTATES.MOVING:
 				{
-					repeat(ceil(dist_to_targ(
-						            units[party][character].get_tile(),
-									units[party][character].get_dest()
-									) / units[party][character].get_attr("spd")))
+					//print(units[party][character].get_dest().get_x())
+					//print(units[party][character].get_dest().get_y())
+					//print(units[party][character].get_ap());
+					repeat(ceil(units[party][character].get_dest().get_path_cost()
+					               / units[party][character].get_attr("spd")))
 					{units[party][character].spend_ap();}
 					units[party][character].get_dest().set_occupant(units[party][character]);
 					units[party][character].to_idle()
@@ -174,7 +175,7 @@ switch(state)
 				case COMBATCHARACTERSTATES.ATTACKING:
 				{
 					var ch = random(1)
-					//print(units[party][character].get_targ())
+					print("Attack!")
 					var hit = ch > (1 - chance_to_hit(units[party][character], units[party][character].get_targ()))
 					if(hit) units[party][character].get_targ().damage()
 					units[party][character].empty_ap()

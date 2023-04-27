@@ -7,6 +7,7 @@ enum AI_ACTIONS
 
 function generate_action_grid(char, grid)
 {
+    print("Entering Generate Action Grid")
 	var target_grid = generate_target_grid(char, grid)
 	var action_grid = ds_grid_create(COMBATGRIDWIDTH, COMBATGRIDHEIGHT)
 	ds_grid_clear(action_grid, 0)
@@ -16,23 +17,31 @@ function generate_action_grid(char, grid)
 		for(var j = 0; j < COMBATGRIDHEIGHT; j++)
 		{
 			var targ_array = target_grid[# i, j]
-			if(targ_array[0] == noone)
-			{
-				action_grid[# i, j] = [noone, -10000]
-				continue
-			}
-			var hit_chance = targ_array[1]
-			var distance_to_targ = targ_array[2]
-			var distance_to_tile = dist_to_targ(char.get_tile(),
-							    	grid.get_cell(i, j))
+			action_grid[# i, j] = [noone, -10000]
 			
-			//[target, Action Value] -- Action Value = (Chance to hit target) / (AP needed to move / available AP) + (1 - (Distance to target / Size of Grid)
-			var val = (hit_chance) / max(ceil(distance_to_tile / char.get_attr("spd")), .5) + (1 - (distance_to_targ / COMBATGRIDHEIGHT)) // - ceil(distance_to_tile / char.get_attr("spd")) + (char.get_attack_range_max() - distance_to_targ) + (distance_to_targ - char.get_attack_range_min())
-			print("Grid: " + string(i) + ", " + string(j) + " - " + string(val))
-			action_grid[# i, j] = [targ_array[0], val]
+			if(grid.get_cell(i, j).get_path_cost() != undefined)
+				{
+					
+					var hit_chance = targ_array[1]
+					var distance_to_targ = targ_array[2]
+					var distance_to_tile = dist_to_targ(char.get_tile(),
+										    grid.get_cell(i, j))
+			
+					//[target, Action Value] -- Action Value = (Chance to hit target) / (AP needed to move / available AP) + (1 - (Distance to target / Size of Grid)
+					var t = 0
+					if(grid.get_cell(i, j).get_occupant() != noone and grid.get_cell(i, j).get_occupant() != char) t = -10000
+					var val = (t + 
+					(hit_chance * 100) / 
+					    max(ceil(grid.get_cell(i, j).get_path_cost() / 
+					    char.get_attr("spd")), .1) + 
+					(1 - (distance_to_targ / COMBATGRIDHEIGHT)))// - ceil(distance_to_tile / char.get_attr("spd")) + (char.get_attack_range_max() - distance_to_targ) + (distance_to_targ - char.get_attack_range_min())
+			
+					action_grid[# i, j] = [targ_array[0], val]
+				}
 		}
 	}
 	
+    print("Leaving Generate Action Grid")
 	return action_grid
 }
 
@@ -47,7 +56,7 @@ function generate_target_grid(char, grid)
 			var dist = dist_to_targ(char.get_tile(),
 							    	grid.get_cell(i, j)
 								    )
-			if(dist <= char.get_ap() * char.get_attr("spd"))
+			if(grid.get_cell(i, j).get_path_cost() <= char.get_ap() * char.get_attr("spd"))
 			{
 				target_grid[# i, j] = find_target(char, grid, grid.get_cell(i, j))
 			}
@@ -106,13 +115,13 @@ function find_target(char, grid, tile)
 						{
 							targ = grid.get_cell(i, j).get_occupant()
 							hit_chance = 0
-							targ_dist  = dist_to_targ(tile, grid.get_cell(i, j))
+							targ_dist  = ceil(dist)
 						}
-						else if(dist_to_targ(tile, grid.get_cell(i, j)) < dist_to_targ(tile, targ.get_tile()))
+						else if(ceil(dist_to_targ(tile, grid.get_cell(i, j))) < ceil(dist_to_targ(tile, targ.get_tile())))
 						{
 							targ = grid.get_cell(i, j).get_occupant()
 							hit_chance = 0
-							targ_dist  = dist_to_targ(tile, grid.get_cell(i, j))
+							targ_dist  = ceil(dist)
 						}
 				}
 			}

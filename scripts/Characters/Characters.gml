@@ -98,6 +98,7 @@ function Party() constructor
 enum COMBATCHARACTERSTATES
 {
 	IDLE,
+	INITIATE_MOVE,
 	MOVING,
 	ATTACKING,
 	DEAD
@@ -106,13 +107,35 @@ function CombatCharacter(_char) constructor
 {
 	character = _char;
 	tile = undefined;
+	xpos = undefined;
+	ypos = undefined;
 	maxAP = 2;
 	currentAP = maxAP;
 	state = COMBATCHARACTERSTATES.IDLE
+	path = undefined
+	pathPos = -1
+	dest = undefined
 	
 	//variable for NPC AI
 	targ = noone
-	dest = undefined
+	
+	function set_path(_path)
+	{
+		path = _path
+		pathPos = 0
+	}
+	
+	function get_path()
+	{
+		return path
+	}
+	
+	function proceed_on_path()
+	{
+		pathPos++
+		if(pathPos >= array_length(path)) return noone
+		return path[pathPos]
+	}
 	
 	function set_sprite(_sprite)
 	{
@@ -167,6 +190,11 @@ function CombatCharacter(_char) constructor
 	function to_idle()
 	{
 		state = COMBATCHARACTERSTATES.IDLE
+	}
+	
+	function to_init_move()
+	{
+		state = COMBATCHARACTERSTATES.INITIATE_MOVE
 	}
 	
 	function to_move()
