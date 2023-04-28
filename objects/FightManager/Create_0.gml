@@ -45,6 +45,7 @@ function get_character()
 
 function prepare_move()
 {
+	var fuck = 0
 	for(var i = 0; i < COMBATGRIDWIDTH; i++)
 	{
 		for(var j = 0; j < COMBATGRIDWIDTH; j++)
@@ -53,18 +54,23 @@ function prepare_move()
 			var dist = dist_to_targ(get_character().get_tile(),
 									grid.get_cell(i, j)) 
 			if(grid.get_cell(i, j).get_occupant() == get_character()) grid.get_cell(i, j).set_path([], 0)
-			else if(dist <= get_character().get_attr("spd") * get_character().get_ap() and grid.get_cell(i, j).get_occupant() == noone)
+			else if(dist <= get_character().get_attr("spd") * get_character().get_ap() and grid.get_cell(i, j).get_occupant() == noone
+			and (grid.get_cell(i, j).get_terrain().get_type() != TerrainType.IMPASSIBLE))
 			{
 				var tm = ""
 				if(i < 10) tm += " "
 				if(j < 10) tm += " "
-				var path = pathfinding(get_character().get_tile(), grid.get_cell(i, j), grid)
+				var path = []
+				var tmp = pathfinding(get_character().get_tile(), grid.get_cell(i, j), grid)
+				path = tmp[0]
+				fuck += tmp[1]
 				var path_cost = grid.get_path_cost(path)
 				grid.get_cell(i, j).set_path(path, path_cost)
 				//print(string(i) + ", " + string(j) + ": " + tm + string(path_cost))
 			}
 		}
 	}
+	print(fuck)
 	get_character().to_init_move()
 }
 

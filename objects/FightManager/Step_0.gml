@@ -30,12 +30,12 @@ switch(state)
 				var xx = irandom(COMBATGRIDWIDTH - 1)
 				var yy = irandom(COMBATGRIDHEIGHT - 1)
 				while(grid.get_cell(xx, yy).get_occupant() != noone
-				      or grid.get_cell(xx, yy).get_terrain().get_type() == TerrainType.DEEPWATER)
+				      or grid.get_cell(xx, yy).get_terrain().get_type() == TerrainType.IMPASSIBLE)
 				{
 					xx = irandom(COMBATGRIDWIDTH - 1)
 					yy = irandom(COMBATGRIDHEIGHT - 1)
 				}
-				print(grid.get_cell(xx, yy).get_terrain().get_type())
+				//print(grid.get_cell(xx, yy).get_terrain().get_type())
 				grid.get_cell(xx, yy).set_occupant(units[k][i])
 			}
 		}
@@ -155,7 +155,6 @@ switch(state)
 					
 					units[party][character].set_targ(tile_targ[1])
 					units[party][character].set_dest(grid.get_cell(tile_targ[0][0],tile_targ[0][1]))
-					print(string(tile_targ[0][0]) + ", " + string(tile_targ[0][1]) + ": " + string(grid.get_cell(tile_targ[0][0],tile_targ[0][1]).get_path_cost()))
 					if(units[party][character].get_tile() == units[party][character].get_dest()) units[party][character].to_attack()
 					else units[party][character].to_move()
 					break;

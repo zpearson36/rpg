@@ -23,20 +23,6 @@ switch(state)
 			fight_manager.deactivate()
 			state = GameStates.WORLD
 		}
-		if(mouse_check_button_pressed(mb_middle))
-		{
-			var mx = floor(mouse_x / COMBATCELLSIZE)
-			var my = floor(mouse_y / COMBATCELLSIZE)
-			var ter = ClearTerrain()
-			switch(fight_manager.get_grid().get_cell(mx, my).get_terrain().get_type())
-			{
-				case TerrainType.CLEAR:       {ter = MuddyTerrain();        break;}
-				case TerrainType.MUDDY:       {ter = ShallowWaterTerrain(); break;}
-				case TerrainType.SHALLOWWATER:{ter = ClearTerrain();        break;}
-			}
-			
-			fight_manager.get_grid().get_cell(mx, my).set_terrain(ter)
-		}
 		if(fight_manager.get_state() == FMStates.INACTIVE)
 			state = GameStates.WORLD
 		break;

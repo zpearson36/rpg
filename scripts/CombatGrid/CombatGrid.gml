@@ -5,10 +5,8 @@
 enum TerrainType
 {
 	NONE, //Not meant to be used
-	CLEAR,
-	MUDDY,
-	SHALLOWWATER,
-	DEEPWATER,
+	NORMAL,
+	DIFFICULT,
 	IMPASSIBLE
 }
 
@@ -36,22 +34,22 @@ function Terrain(_type, _cost, _sprite) constructor
 
 function ClearTerrain()
 {
-	return new Terrain(TerrainType.CLEAR, 1, sTileClear)
+	return new Terrain(TerrainType.NORMAL, 1, sTileClear)
 }
 
 function MuddyTerrain()
 {
-	return new Terrain(TerrainType.MUDDY, 2, sTileMuddy)
+	return new Terrain(TerrainType.DIFFICULT, 2, sTileMuddy)
 }
 
 function ShallowWaterTerrain()
 {
-	return new Terrain(TerrainType.SHALLOWWATER, 3, sTileShallowWater)
+	return new Terrain(TerrainType.DIFFICULT, 3, sTileShallowWater)
 }
 
 function DeepWaterTerrain()
 {
-	return new Terrain(TerrainType.DEEPWATER, 10, sTileDeepWater)
+	return new Terrain(TerrainType.IMPASSIBLE, 10, sTileDeepWater)
 }
 
 function CombatCell(_x, _y) constructor

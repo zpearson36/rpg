@@ -55,8 +55,9 @@ function pathfinding(_obj1, _objDest, grid){
 	
 	array_push(openList, start)
 	var done = false
+	var fuck = 0
 	while(not done and array_length(openList))
-	{
+	{fuck++
 		currentNode = get_lowest_f(openList)
 		array_push(closedList, currentNode)
 		if(currentNode.xpos == dest.xpos and currentNode.ypos == dest.ypos){done = true; continue}
@@ -79,6 +80,7 @@ function pathfinding(_obj1, _objDest, grid){
 			children[i].set_f(children[i].get_g() + children[i].get_h())
 			var tmpind = check_is_in_array(openList, children[i])
 			if(tmpind >= 0 and children[i].get_g() > openList[tmpind].get_g()) continue
+			if(tmpind >= 0) array_delete(openList, tmpind, 1)
 			array_push(openList, children[i])
 		}
 	}
@@ -90,7 +92,7 @@ function pathfinding(_obj1, _objDest, grid){
 		current = current.get_parent()
 	}
 	
-	return path
+	return [path, fuck]
 }
 
 function get_lowest_f(_array)
