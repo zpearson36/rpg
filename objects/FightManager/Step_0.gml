@@ -35,8 +35,9 @@ switch(state)
 					xx = irandom(COMBATGRIDWIDTH - 1)
 					yy = irandom(COMBATGRIDHEIGHT - 1)
 				}
-				//print(grid.get_cell(xx, yy).get_terrain().get_type())
 				grid.get_cell(xx, yy).set_occupant(units[k][i])
+				units[k][i].set_xpos(xx * COMBATCELLSIZE)
+				units[k][i].set_ypos(yy * COMBATCELLSIZE)
 			}
 		}
 		state = FMStates.RUNNING
@@ -86,11 +87,7 @@ switch(state)
 				}
 				case COMBATCHARACTERSTATES.MOVING:
 				{
-					repeat(ceil(units[party][character].get_dest().get_path_cost()
-					               / units[party][character].get_attr("spd")))
-					{units[party][character].spend_ap();}
-					units[party][character].get_dest().set_occupant(units[party][character]);
-					units[party][character].to_idle()
+					move_character(get_character())
 					break;
 				}
 				case COMBATCHARACTERSTATES.ATTACKING:
@@ -161,14 +158,7 @@ switch(state)
 				}
 				case COMBATCHARACTERSTATES.MOVING:
 				{
-					//print(units[party][character].get_dest().get_x())
-					//print(units[party][character].get_dest().get_y())
-					//print(units[party][character].get_ap());
-					repeat(ceil(units[party][character].get_dest().get_path_cost()
-					               / units[party][character].get_attr("spd")))
-					{units[party][character].spend_ap();}
-					units[party][character].get_dest().set_occupant(units[party][character]);
-					units[party][character].to_idle()
+					move_character(get_character())
 					break;
 				}
 				case COMBATCHARACTERSTATES.ATTACKING:

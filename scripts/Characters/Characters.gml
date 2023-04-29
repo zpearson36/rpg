@@ -119,6 +119,26 @@ function CombatCharacter(_char) constructor
 	//variable for NPC AI
 	targ = noone
 	
+	function get_xpos()
+	{
+		return xpos
+	}
+	
+	function get_ypos()
+	{
+		return ypos
+	}
+	
+	function set_xpos(_x)
+	{
+		xpos = _x
+	}
+	
+	function set_ypos(_y)
+	{
+		ypos = _y
+	}
+	
 	function set_path(_path)
 	{
 		path = _path
@@ -130,6 +150,10 @@ function CombatCharacter(_char) constructor
 		return path
 	}
 	
+	function get_path_step()
+	{	
+		return path[pathPos]
+	}
 	function proceed_on_path()
 	{
 		pathPos++
@@ -150,6 +174,8 @@ function CombatCharacter(_char) constructor
 	function set_tile(_tile)
 	{
 		tile = _tile;
+		xpos = tile.get_x() * COMBATCELLSIZE
+		ypos = tile.get_y() * COMBATCELLSIZE
 	}
 	
 	function get_tile()
@@ -260,6 +286,7 @@ function CombatCharacter(_char) constructor
 	function set_dest(_dest)
 	{
 		dest = _dest;
+		set_path(dest.get_path())
 	}
 	
 	function get_dest()

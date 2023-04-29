@@ -111,6 +111,7 @@ function CombatCell(_x, _y) constructor
 			if(tmp != undefined) tmp.set_occupant(noone);
 			occupant.set_tile(self);
 		}
+		
 		return true
 	}
 }
