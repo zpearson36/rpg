@@ -7,8 +7,7 @@ enum AI_ACTIONS
 
 function generate_action_grid(char, grid)
 {
-    print("Entering Generate Action Grid")
-	var target_grid = generate_target_grid(char, grid)
+    var target_grid = generate_target_grid(char, grid)
 	var action_grid = ds_grid_create(COMBATGRIDWIDTH, COMBATGRIDHEIGHT)
 	ds_grid_clear(action_grid, 0)
 	
@@ -41,7 +40,6 @@ function generate_action_grid(char, grid)
 		}
 	}
 	
-    print("Leaving Generate Action Grid")
 	return action_grid
 }
 

@@ -45,7 +45,6 @@ function get_character()
 
 function prepare_move()
 {
-	var fuck = 0
 	for(var i = 0; i < COMBATGRIDWIDTH; i++)
 	{
 		for(var j = 0; j < COMBATGRIDWIDTH; j++)
@@ -60,17 +59,13 @@ function prepare_move()
 				var tm = ""
 				if(i < 10) tm += " "
 				if(j < 10) tm += " "
-				var path = []
-				var tmp = pathfinding(get_character().get_tile(), grid.get_cell(i, j), grid)
-				path = tmp[0]
-				fuck += tmp[1]
+				var path = pathfinding(get_character().get_tile(), grid.get_cell(i, j), grid)
+
 				var path_cost = grid.get_path_cost(path)
 				grid.get_cell(i, j).set_path(path, path_cost)
-				//print(string(i) + ", " + string(j) + ": " + tm + string(path_cost))
 			}
 		}
 	}
-	print(fuck)
 	get_character().to_init_move()
 }
 
@@ -91,4 +86,30 @@ function next_party()
 	character = 0
 }
 
+function move_character(_char)
+{
+	var dx = _char.get_path_step()[0] - _char.get_tile().get_x()
+	var dy = _char.get_path_step()[1] - _char.get_tile().get_y()
+	_char.set_xpos(_char.get_xpos() + (spd * dx))
+	_char.set_ypos(_char.get_ypos() + (spd * dy))
+	
+	if(    ( ceil(_char.get_xpos() / COMBATCELLSIZE) != _char.get_tile().get_x() and dx == -1)
+		or (floor(_char.get_xpos() / COMBATCELLSIZE) != _char.get_tile().get_x() and dx ==  1)
+		or ( ceil(_char.get_ypos() / COMBATCELLSIZE) != _char.get_tile().get_y() and dy == -1)
+		or (floor(_char.get_ypos() / COMBATCELLSIZE) != _char.get_tile().get_y() and dy ==  1)
+		)
+	{
+		grid.get_cell(_char.get_path_step()[0], _char.get_path_step()[1]).set_occupant(_char)
+		_char.proceed_on_path()
+	}
+	if(_char.get_tile() == _char.get_dest())
+	{
+		repeat(ceil(_char.get_dest().get_path_cost()
+					/ _char.get_attr("spd")))
+		{_char.spend_ap();}
+		_char.to_idle()
+	}
+}
+
 gui = instance_create_layer(x, y, "Instances", FightGUI)
+spd = 3
