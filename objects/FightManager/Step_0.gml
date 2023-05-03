@@ -110,16 +110,16 @@ switch(state)
 						var my = floor(mouse_y / COMBATCELLSIZE)
 						var ch = random(1)
 						show_debug_message(ch)
-						show_debug_message(1 - chance_to_hit(units[party][character], grid.get_cell(mx,my).get_occupant()))
-						var hit = ch > (1 - chance_to_hit(units[party][character], grid.get_cell(mx,my).get_occupant()))
+						show_debug_message(1 - chance_to_hit(get_character(), grid.get_cell(mx,my).get_occupant()))
+						var hit = ch > (1 - chance_to_hit(get_character(), grid.get_cell(mx,my).get_occupant()))
 						if(grid.get_cell(mx,my).get_occupant() != noone and not grid.get_cell(mx,my).is_obstructed()
 						   and FactionManager.get_relation(grid.get_cell(mx,my).get_occupant().get_faction(),
-						                                   units[party][character].get_faction()) < 0
+						                                   get_character().get_faction()) < 0
 						)
 						{
-							if(hit) grid.get_cell(mx,my).get_occupant().damage()
-							units[party][character].empty_ap()
-							units[party][character].to_idle()
+							if(hit) grid.get_cell(mx,my).get_occupant().damage(get_character().get_damage())
+							get_character().empty_ap()
+							get_character().to_idle()
 							break;
 						}
 					}
@@ -172,7 +172,7 @@ switch(state)
 					var ch = random(1)
 					print("Attack!")
 					var hit = ch > (1 - chance_to_hit(units[party][character], units[party][character].get_targ()))
-					if(hit) units[party][character].get_targ().damage()
+					if(hit) units[party][character].get_targ().damage(get_character().get_damage())
 					units[party][character].empty_ap()
 					units[party][character].to_idle()
 					break;

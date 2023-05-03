@@ -21,6 +21,17 @@ function Character() constructor
 	attributes.init()
 	party = undefined
 	faction = undefined
+	weapon = CreateSword()
+	
+	function get_weapon()
+	{
+		return weapon
+	}
+	
+	function set_weapon(_weapon)
+	{
+		weapon = _weapon
+	}
 	
 	function set_faction(_faction)
 	{
@@ -118,6 +129,16 @@ function CombatCharacter(_char) constructor
 	
 	//variable for NPC AI
 	targ = noone
+	
+	function get_weapon()
+	{
+		return character.get_weapon()
+	}
+	
+	function set_weapon(_weapon)
+	{
+		character.set_weapon(_weapon)
+	}
 	
 	function get_xpos()
 	{
@@ -245,9 +266,9 @@ function CombatCharacter(_char) constructor
 		return state == COMBATCHARACTERSTATES.DEAD
 	}
 	
-	function damage()
+	function damage(dam)
 	{
-		print("HIT")
+		print("HIT for " + string(dam))
 		to_dead()
 	}
 	
@@ -256,14 +277,19 @@ function CombatCharacter(_char) constructor
 		return state
 	}
 	
+	function get_damage()
+	{
+		return random_range(get_weapon().get_min_damage(), get_weapon().get_max_damage())
+	}
+	
 	function get_attack_range_max()
 	{
-		return 4
+		return character.get_weapon().get_max_range()
 	}
 	
 	function get_attack_range_min()
 	{
-		return 3
+		return character.get_weapon().get_max_range()
 	}
 	
 	function get_faction()
