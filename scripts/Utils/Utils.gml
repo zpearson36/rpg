@@ -24,7 +24,7 @@ function chance_to_hit(_atkr, _targ, _tile = undefined)
 	if(_tile == undefined) _tile = _atkr.get_tile()
 	var dist =  dist_to_targ(_tile, _targ.get_tile())
 	var hit_chance = -1
-	if(dist >= _atkr.get_attack_range_min() and dist <= _atkr.get_attack_range_max())
+	if(dist >= _atkr.get_attack_range_min() and dist <= _atkr.get_attack_range_max() and not _targ.get_tile().is_obstructed())
 	    hit_chance = .10
 	
 	return hit_chance

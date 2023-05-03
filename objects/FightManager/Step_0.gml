@@ -12,15 +12,21 @@ switch(state)
 		grid = new CombatGrid()
 		grid.init()
 		var deepwater    = Generate_Map(1, 30)
+		var walls        = Generate_Map(1, 30)
 		var shallowwater = Generate_Map(1, 30)
 		var muddy        = Generate_Map(1, 30)
 		for(var i = 0; i < COMBATGRIDWIDTH; i++)
 		{
-			for(var j = 0; j < COMBATGRIDWIDTH; j++)
+			for(var j = 0; j < COMBATGRIDHEIGHT; j++)
 			{
 				if(muddy[i][j] == 1)        grid.get_cell(i, j).set_terrain(MuddyTerrain())
 				if(shallowwater[i][j] == 1) grid.get_cell(i, j).set_terrain(ShallowWaterTerrain())
 				if(deepwater[i][j] == 1)    grid.get_cell(i, j).set_terrain(DeepWaterTerrain())
+				if(walls[i][j] == 1)
+				{
+					grid.get_cell(i, j).set_terrain(ObstructionTerrain())
+					instance_create_layer(i * COMBATCELLSIZE, j * COMBATCELLSIZE, layer, oWall)
+				}
 			}
 		}
 		for(var k = 0; k < array_length(units); k++)
@@ -106,7 +112,7 @@ switch(state)
 						show_debug_message(ch)
 						show_debug_message(1 - chance_to_hit(units[party][character], grid.get_cell(mx,my).get_occupant()))
 						var hit = ch > (1 - chance_to_hit(units[party][character], grid.get_cell(mx,my).get_occupant()))
-						if(grid.get_cell(mx,my).get_occupant() != noone
+						if(grid.get_cell(mx,my).get_occupant() != noone and not grid.get_cell(mx,my).is_obstructed()
 						   and FactionManager.get_relation(grid.get_cell(mx,my).get_occupant().get_faction(),
 						                                   units[party][character].get_faction()) < 0
 						)

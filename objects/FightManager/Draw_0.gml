@@ -95,6 +95,11 @@ switch(state)
 						draw_set_font(fnt_hitchance)
 						var mx = floor(mouse_x / COMBATCELLSIZE)
 						var my = floor(mouse_y / COMBATCELLSIZE)
+						
+									   draw_line(units[party][character].get_tile().get_x(), units[party][character].get_tile().get_y(),
+						               grid.get_cell(i, j).get_x(), grid.get_cell(i, j).get_y())
+						//print(obstructed == noone)
+						
 						if(mx >= 0 and mx < COMBATGRIDWIDTH and my >= 0 and my < COMBATGRIDHEIGHT
 						           and grid.get_cell(mx,my).get_occupant() != noone)
 								draw_text_color(mx * COMBATCELLSIZE, my * COMBATCELLSIZE,
@@ -105,7 +110,8 @@ switch(state)
 											grid.get_cell(i, j)
 											)
 						if (ceil(dist) <= units[party][character].get_attack_range_max()
-						and ceil(dist) >= units[party][character].get_attack_range_min())
+						and ceil(dist) >= units[party][character].get_attack_range_min()
+						and not grid.get_cell(i, j).is_obstructed())
 						{
 							var c_color = c_red
 							var to_draw = true

@@ -20,6 +20,16 @@ switch(state)
 	}
 	case FMStates.RUNNING:
 	{
+		for(i = 0; i < COMBATGRIDWIDTH; i++)
+		{
+			for(j = 0; j < COMBATGRIDHEIGHT; j++)
+			{
+				grid.get_cell(i, j).set_unobstructed()
+				var obstructed = collision_line((units[party][character].get_tile().get_x() + .5) * COMBATCELLSIZE, (units[party][character].get_tile().get_y() + .5) * COMBATCELLSIZE,
+						        grid.get_cell(i, j).get_x() * COMBATCELLSIZE, grid.get_cell(i, j).get_y() * COMBATCELLSIZE, oWall, false, false)
+				if(obstructed != noone) grid.get_cell(i, j).set_obstructed()
+			}
+		}
 		switch(units[party][character].get_state())
 		{
 			case COMBATCHARACTERSTATES.IDLE:

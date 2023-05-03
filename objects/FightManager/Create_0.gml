@@ -13,6 +13,7 @@ character = undefined
 party = undefined
 grid = undefined
 units = []
+obstructions = []
 function get_state()
 {
 	return state;
