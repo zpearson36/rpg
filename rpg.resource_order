@@ -22,6 +22,7 @@
   ],
   "ResourceOrderSettings": [
     {"name":"CombatMapGen","order":12,"path":"scripts/CombatMapGen/CombatMapGen.yy",},
+    {"name":"oWall","order":2,"path":"objects/oWall/oWall.yy",},
     {"name":"Factions","order":9,"path":"scripts/Factions/Factions.yy",},
     {"name":"point_click_sprite","order":5,"path":"scripts/point_click_sprite/point_click_sprite.yy",},
     {"name":"draw_slider_sprite","order":8,"path":"scripts/draw_slider_sprite/draw_slider_sprite.yy",},
@@ -55,6 +56,7 @@
     {"name":"sTmpDead","order":8,"path":"sprites/sTmpDead/sTmpDead.yy",},
     {"name":"spr_button","order":5,"path":"sprites/spr_button/spr_button.yy",},
     {"name":"draw_label","order":7,"path":"scripts/draw_label/draw_label.yy",},
+    {"name":"sTileObstruction","order":14,"path":"sprites/sTileObstruction/sTileObstruction.yy",},
     {"name":"Attributes","order":3,"path":"scripts/Attributes/Attributes.yy",},
   ],
 }

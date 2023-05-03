@@ -40,6 +40,7 @@
   "resources": [
     {"id":{"name":"bg_gui","path":"sprites/bg_gui/bg_gui.yy",},},
     {"id":{"name":"CombatMapGen","path":"scripts/CombatMapGen/CombatMapGen.yy",},},
+    {"id":{"name":"oWall","path":"objects/oWall/oWall.yy",},},
     {"id":{"name":"Factions","path":"scripts/Factions/Factions.yy",},},
     {"id":{"name":"point_click_sprite","path":"scripts/point_click_sprite/point_click_sprite.yy",},},
     {"id":{"name":"draw_slider_sprite","path":"scripts/draw_slider_sprite/draw_slider_sprite.yy",},},
@@ -79,6 +80,7 @@
     {"id":{"name":"sTmpDead","path":"sprites/sTmpDead/sTmpDead.yy",},},
     {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},},
     {"id":{"name":"draw_label","path":"scripts/draw_label/draw_label.yy",},},
+    {"id":{"name":"sTileObstruction","path":"sprites/sTileObstruction/sTileObstruction.yy",},},
     {"id":{"name":"click_rectangle","path":"scripts/click_rectangle/click_rectangle.yy",},},
     {"id":{"name":"Attributes","path":"scripts/Attributes/Attributes.yy",},},
     {"id":{"name":"MainMenu","path":"rooms/MainMenu/MainMenu.yy",},},

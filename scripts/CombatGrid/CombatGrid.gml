@@ -52,6 +52,11 @@ function DeepWaterTerrain()
 	return new Terrain(TerrainType.IMPASSIBLE, 10, sTileDeepWater)
 }
 
+function ObstructionTerrain()
+{
+	return new Terrain(TerrainType.IMPASSIBLE, 10, sTileObstruction)
+}
+
 function CombatCell(_x, _y) constructor
 {
 	pos_x = _x;
@@ -60,6 +65,22 @@ function CombatCell(_x, _y) constructor
 	terrain = ClearTerrain()
 	path = undefined
 	path_cost = undefined
+	obstructed = false
+	
+	function set_obstructed()
+	{
+		obstructed = true
+	}
+	
+	function set_unobstructed()
+	{
+		obstructed = false
+	}
+	
+	function is_obstructed()
+	{
+		return obstructed
+	}
 	
 	function set_terrain(_ter)
 	{
