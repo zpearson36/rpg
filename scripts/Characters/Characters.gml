@@ -289,7 +289,7 @@ function CombatCharacter(_char) constructor
 	
 	function get_attack_range_min()
 	{
-		return character.get_weapon().get_max_range()
+		return character.get_weapon().get_min_range()
 	}
 	
 	function get_faction()
