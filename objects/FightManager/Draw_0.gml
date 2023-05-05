@@ -39,13 +39,23 @@ switch(state)
 			{
 				draw_sprite(units[i][j].get_sprite(), -1,
 				       units[i][j].get_xpos(), units[i][j].get_ypos())
+				draw_sprite(units[i][j].get_armour().get_sprite(), -1,
+				       units[i][j].get_xpos(), units[i][j].get_ypos())
+				draw_sprite(units[i][j].get_weapon().get_sprite(), -1,
+				       units[i][j].get_xpos(), units[i][j].get_ypos())
+				for(var k = 0; k < units[i][j].get_hp_max(); k++)
+				{
+					var sprt = sHPSpent
+					if(units[i][j].get_hp() > k) sprt = sHPAvailable
+					draw_sprite(sprt, -1, units[i][j].get_xpos() + (16*k), units[i][j].get_ypos() - 16)
+				}
 				if(i == party and j == character)
 				{
 					for(var k = 0; k < units[i][j].get_ap_max(); k++)
 					{
 						var sprt = sAPSpent
 						if(units[i][j].get_ap() > k) sprt = sAPAvailable
-						draw_sprite(sprt, -1, units[i][j].get_xpos() + (16*k), units[i][j].get_ypos() - 16)
+						draw_sprite(sprt, -1, units[i][j].get_xpos() + (16*k), units[i][j].get_ypos() - 32)
 					}
 				}
 			}

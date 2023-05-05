@@ -1,3 +1,4 @@
+randomize()
 enum GameStates
 {
 	MAINMENU,

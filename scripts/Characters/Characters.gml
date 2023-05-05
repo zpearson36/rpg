@@ -21,6 +21,49 @@ function Character() constructor
 	attributes.init()
 	party = undefined
 	faction = undefined
+	weapon = script_execute((choose(CreateSword, CreateBow)))
+	armour = script_execute(choose(CreateUnarmoured, CreateLightArmour, CreateMediumArmour, CreateHeavyArmour))
+	max_hp = attributes.get_attr("end")
+	hp = max_hp
+	
+	function get_armour()
+	{
+		return armour
+	}
+	function get_hp()
+	{
+		return hp
+	}
+	
+	function get_hp_max()
+	{
+		return max_hp
+	}
+	
+	function set_max_hp()
+	{
+		max_hp = attributes.get_attr("end")
+	}
+	
+	function reset_hp()
+	{
+		hp = max_hp
+	}
+	
+	function modify_hp(_mod)
+	{
+		hp += _mod
+	}
+	
+	function get_weapon()
+	{
+		return weapon
+	}
+	
+	function set_weapon(_weapon)
+	{
+		weapon = _weapon
+	}
 	
 	function set_faction(_faction)
 	{
@@ -119,6 +162,21 @@ function CombatCharacter(_char) constructor
 	//variable for NPC AI
 	targ = noone
 	
+	function get_armour()
+	{
+		return character.get_armour()
+	}
+	
+	function get_weapon()
+	{
+		return character.get_weapon()
+	}
+	
+	function set_weapon(_weapon)
+	{
+		character.set_weapon(_weapon)
+	}
+	
 	function get_xpos()
 	{
 		return xpos
@@ -188,6 +246,16 @@ function CombatCharacter(_char) constructor
 		return character.get_attr(_attr)
 	}
 	
+	function get_hp_max()
+	{
+		return character.get_hp_max()
+	}
+	
+	function get_hp()
+	{
+		return character.get_hp()
+	}
+	
 	function get_ap_max()
 	{
 		return maxAP
@@ -245,10 +313,11 @@ function CombatCharacter(_char) constructor
 		return state == COMBATCHARACTERSTATES.DEAD
 	}
 	
-	function damage()
+	function damage(dam)
 	{
-		print("HIT")
-		to_dead()
+		print("HIT for " + string(dam))
+		character.modify_hp(-dam)
+		if(character.get_hp() <= 0) to_dead()
 	}
 	
 	function get_state()
@@ -256,14 +325,19 @@ function CombatCharacter(_char) constructor
 		return state
 	}
 	
+	function get_damage()
+	{
+		return irandom_range(get_weapon().get_min_damage(), get_weapon().get_max_damage())
+	}
+	
 	function get_attack_range_max()
 	{
-		return 4
+		return character.get_weapon().get_max_range()
 	}
 	
 	function get_attack_range_min()
 	{
-		return 3
+		return character.get_weapon().get_min_range()
 	}
 	
 	function get_faction()

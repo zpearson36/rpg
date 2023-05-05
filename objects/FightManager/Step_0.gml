@@ -12,20 +12,20 @@ switch(state)
 		grid = new CombatGrid()
 		grid.init()
 		var deepwater    = Generate_Map(1, 30)
-		var walls        = Generate_Map(1, 30)
+		var walls        = Generate_Map(1, 40)
 		var shallowwater = Generate_Map(1, 30)
 		var muddy        = Generate_Map(1, 30)
 		for(var i = 0; i < COMBATGRIDWIDTH; i++)
 		{
 			for(var j = 0; j < COMBATGRIDHEIGHT; j++)
 			{
-				if(muddy[i][j] == 1)        grid.get_cell(i, j).set_terrain(MuddyTerrain())
-				if(shallowwater[i][j] == 1) grid.get_cell(i, j).set_terrain(ShallowWaterTerrain())
-				if(deepwater[i][j] == 1)    grid.get_cell(i, j).set_terrain(DeepWaterTerrain())
+				//if(muddy[i][j] == 1)        grid.get_cell(i, j).set_terrain(MuddyTerrain())
+				//if(shallowwater[i][j] == 1) grid.get_cell(i, j).set_terrain(ShallowWaterTerrain())
+				//if(deepwater[i][j] == 1)    grid.get_cell(i, j).set_terrain(DeepWaterTerrain())
 				if(walls[i][j] == 1)
 				{
 					grid.get_cell(i, j).set_terrain(ObstructionTerrain())
-					instance_create_layer(i * COMBATCELLSIZE, j * COMBATCELLSIZE, layer, oWall)
+					array_push(obstructions, instance_create_layer(i * COMBATCELLSIZE, j * COMBATCELLSIZE, layer, oWall))
 				}
 			}
 		}
@@ -110,16 +110,16 @@ switch(state)
 						var my = floor(mouse_y / COMBATCELLSIZE)
 						var ch = random(1)
 						show_debug_message(ch)
-						show_debug_message(1 - chance_to_hit(units[party][character], grid.get_cell(mx,my).get_occupant()))
-						var hit = ch > (1 - chance_to_hit(units[party][character], grid.get_cell(mx,my).get_occupant()))
+						show_debug_message(1 - chance_to_hit(get_character(), grid.get_cell(mx,my).get_occupant()))
+						var hit = ch > (1 - chance_to_hit(get_character(), grid.get_cell(mx,my).get_occupant()))
 						if(grid.get_cell(mx,my).get_occupant() != noone and not grid.get_cell(mx,my).is_obstructed()
 						   and FactionManager.get_relation(grid.get_cell(mx,my).get_occupant().get_faction(),
-						                                   units[party][character].get_faction()) < 0
+						                                   get_character().get_faction()) < 0
 						)
 						{
-							if(hit) grid.get_cell(mx,my).get_occupant().damage()
-							units[party][character].empty_ap()
-							units[party][character].to_idle()
+							if(hit) grid.get_cell(mx,my).get_occupant().damage(get_character().get_damage())
+							get_character().empty_ap()
+							get_character().to_idle()
 							break;
 						}
 					}
@@ -172,7 +172,7 @@ switch(state)
 					var ch = random(1)
 					print("Attack!")
 					var hit = ch > (1 - chance_to_hit(units[party][character], units[party][character].get_targ()))
-					if(hit) units[party][character].get_targ().damage()
+					if(hit) units[party][character].get_targ().damage(get_character().get_damage())
 					units[party][character].empty_ap()
 					units[party][character].to_idle()
 					break;
@@ -192,7 +192,21 @@ switch(state)
 	}
 	case FMStates.DEACTIVATING:
 	{
+		for(var i = 0; i < array_length(units); i++)
+		{
+			for(var j = 0; j < array_length(units[i]); j++)
+			{
+				instance_destroy(units[i][j])
+			}
+			
+			array_delete(units[i], 0, array_length(units[i]))
+		}
 		array_delete(units, 0, array_length(units))
+		for(var i = 0; i < array_length(obstructions); i++)
+		{
+			instance_destroy(obstructions[i])
+		}
+		array_delete(obstructions, 0, array_length(obstructions))
 		delete grid
 		character = undefined
 		grid = undefined
