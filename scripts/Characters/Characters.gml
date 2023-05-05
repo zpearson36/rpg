@@ -22,9 +22,14 @@ function Character() constructor
 	party = undefined
 	faction = undefined
 	weapon = script_execute((choose(CreateSword, CreateBow)))
+	armour = script_execute(choose(CreateUnarmoured, CreateLightArmour, CreateMediumArmour, CreateHeavyArmour))
 	max_hp = attributes.get_attr("end")
 	hp = max_hp
 	
+	function get_armour()
+	{
+		return armour
+	}
 	function get_hp()
 	{
 		return hp
@@ -156,6 +161,11 @@ function CombatCharacter(_char) constructor
 	
 	//variable for NPC AI
 	targ = noone
+	
+	function get_armour()
+	{
+		return character.get_armour()
+	}
 	
 	function get_weapon()
 	{
