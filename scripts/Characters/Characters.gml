@@ -21,7 +21,34 @@ function Character() constructor
 	attributes.init()
 	party = undefined
 	faction = undefined
-	weapon = CreateSword()
+	weapon = script_execute((choose(CreateSword, CreateBow)))
+	max_hp = attributes.get_attr("end")
+	hp = max_hp
+	
+	function get_hp()
+	{
+		return hp
+	}
+	
+	function get_hp_max()
+	{
+		return max_hp
+	}
+	
+	function set_max_hp()
+	{
+		max_hp = attributes.get_attr("end")
+	}
+	
+	function reset_hp()
+	{
+		hp = max_hp
+	}
+	
+	function modify_hp(_mod)
+	{
+		hp += _mod
+	}
 	
 	function get_weapon()
 	{
@@ -209,6 +236,16 @@ function CombatCharacter(_char) constructor
 		return character.get_attr(_attr)
 	}
 	
+	function get_hp_max()
+	{
+		return character.get_hp_max()
+	}
+	
+	function get_hp()
+	{
+		return character.get_hp()
+	}
+	
 	function get_ap_max()
 	{
 		return maxAP
@@ -269,7 +306,8 @@ function CombatCharacter(_char) constructor
 	function damage(dam)
 	{
 		print("HIT for " + string(dam))
-		to_dead()
+		character.modify_hp(-dam)
+		if(character.get_hp() <= 0) to_dead()
 	}
 	
 	function get_state()
@@ -279,7 +317,7 @@ function CombatCharacter(_char) constructor
 	
 	function get_damage()
 	{
-		return random_range(get_weapon().get_min_damage(), get_weapon().get_max_damage())
+		return irandom_range(get_weapon().get_min_damage(), get_weapon().get_max_damage())
 	}
 	
 	function get_attack_range_max()

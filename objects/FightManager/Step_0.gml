@@ -12,20 +12,20 @@ switch(state)
 		grid = new CombatGrid()
 		grid.init()
 		var deepwater    = Generate_Map(1, 30)
-		var walls        = Generate_Map(1, 30)
+		var walls        = Generate_Map(1, 40)
 		var shallowwater = Generate_Map(1, 30)
 		var muddy        = Generate_Map(1, 30)
 		for(var i = 0; i < COMBATGRIDWIDTH; i++)
 		{
 			for(var j = 0; j < COMBATGRIDHEIGHT; j++)
 			{
-				if(muddy[i][j] == 1)        grid.get_cell(i, j).set_terrain(MuddyTerrain())
-				if(shallowwater[i][j] == 1) grid.get_cell(i, j).set_terrain(ShallowWaterTerrain())
-				if(deepwater[i][j] == 1)    grid.get_cell(i, j).set_terrain(DeepWaterTerrain())
+				//if(muddy[i][j] == 1)        grid.get_cell(i, j).set_terrain(MuddyTerrain())
+				//if(shallowwater[i][j] == 1) grid.get_cell(i, j).set_terrain(ShallowWaterTerrain())
+				//if(deepwater[i][j] == 1)    grid.get_cell(i, j).set_terrain(DeepWaterTerrain())
 				if(walls[i][j] == 1)
 				{
 					grid.get_cell(i, j).set_terrain(ObstructionTerrain())
-					instance_create_layer(i * COMBATCELLSIZE, j * COMBATCELLSIZE, layer, oWall)
+					array_push(obstructions, instance_create_layer(i * COMBATCELLSIZE, j * COMBATCELLSIZE, layer, oWall))
 				}
 			}
 		}
@@ -192,7 +192,21 @@ switch(state)
 	}
 	case FMStates.DEACTIVATING:
 	{
+		for(var i = 0; i < array_length(units); i++)
+		{
+			for(var j = 0; j < array_length(units[i]); j++)
+			{
+				instance_destroy(units[i][j])
+			}
+			
+			array_delete(units[i], 0, array_length(units[i]))
+		}
 		array_delete(units, 0, array_length(units))
+		for(var i = 0; i < array_length(obstructions); i++)
+		{
+			instance_destroy(obstructions[i])
+		}
+		array_delete(obstructions, 0, array_length(obstructions))
 		delete grid
 		character = undefined
 		grid = undefined

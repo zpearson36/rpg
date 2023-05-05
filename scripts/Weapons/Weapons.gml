@@ -7,7 +7,12 @@ enum WEAPONTYPE
 
 function CreateSword()
 {
-	return new Weapon("Sword", WEAPONTYPE.SWORD, 1, 1, 1, 2)
+	return new Weapon("Sword", WEAPONTYPE.SWORD, 1, 2, 1, 2)
+}
+
+function CreateBow()
+{
+	return new Weapon("Bow", WEAPONTYPE.SWORD, 3, 4, 1, 2)
 }
 
 function Weapon(_name, _type, _min_range, _max_range, _min_damage, _max_damage) constructor

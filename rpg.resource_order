@@ -41,6 +41,7 @@
     {"name":"oPlayer","order":1,"path":"objects/oPlayer/oPlayer.yy",},
     {"name":"slider_rectangle","order":7,"path":"scripts/slider_rectangle/slider_rectangle.yy",},
     {"name":"sAPSpent","order":3,"path":"sprites/sAPSpent/sAPSpent.yy",},
+    {"name":"sHPAvailable","order":15,"path":"sprites/sHPAvailable/sHPAvailable.yy",},
     {"name":"Armour","order":15,"path":"scripts/Armour/Armour.yy",},
     {"name":"fnt_combat_finished","order":1,"path":"fonts/fnt_combat_finished/fnt_combat_finished.yy",},
     {"name":"Pathfinding","order":11,"path":"scripts/Pathfinding/Pathfinding.yy",},
@@ -60,6 +61,7 @@
     {"name":"draw_label","order":7,"path":"scripts/draw_label/draw_label.yy",},
     {"name":"Weapons","order":13,"path":"scripts/Weapons/Weapons.yy",},
     {"name":"sTileObstruction","order":14,"path":"sprites/sTileObstruction/sTileObstruction.yy",},
+    {"name":"sHPSpent","order":17,"path":"sprites/sHPSpent/sHPSpent.yy",},
     {"name":"Attributes","order":3,"path":"scripts/Attributes/Attributes.yy",},
   ],
 }
