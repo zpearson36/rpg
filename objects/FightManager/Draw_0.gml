@@ -41,6 +41,8 @@ switch(state)
 				       units[i][j].get_xpos(), units[i][j].get_ypos())
 				draw_sprite(units[i][j].get_armour().get_sprite(), -1,
 				       units[i][j].get_xpos(), units[i][j].get_ypos())
+				draw_sprite(units[i][j].get_weapon().get_sprite(), -1,
+				       units[i][j].get_xpos(), units[i][j].get_ypos())
 				for(var k = 0; k < units[i][j].get_hp_max(); k++)
 				{
 					var sprt = sHPSpent
