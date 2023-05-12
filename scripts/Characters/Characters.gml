@@ -305,6 +305,7 @@ function CombatCharacter(_char) constructor
 	{
 		set_sprite(sTmpDead)
 		character.remove_party()
+		//character.get_tile().set_occupant(noone)
 		state = COMBATCHARACTERSTATES.DEAD
 	}
 	

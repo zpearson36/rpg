@@ -67,7 +67,7 @@ function pathfinding(_obj1, _objDest, grid){
 			var node = new Node(currentNode.xpos + cardinals[i][0], currentNode.ypos + cardinals[i][1])
 			if(node.xpos < 0 or node.xpos >= COMBATGRIDWIDTH or node.ypos < 0 or node.ypos >= COMBATGRIDHEIGHT) continue
 			if(grid.get_cell(node.xpos, node.ypos).get_terrain().get_type() == TerrainType.IMPASSIBLE) continue
-			if(grid.get_cell(node.xpos, node.ypos).get_occupant() != noone) continue
+			if(grid.get_cell(node.xpos, node.ypos).get_occupant() != noone and not grid.get_cell(node.xpos, node.ypos).get_occupant().is_dead()) continue
 			node.set_parent(currentNode)
 			array_push(children, node)
 		}

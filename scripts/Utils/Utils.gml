@@ -19,12 +19,17 @@ function print(str)
 	show_debug_message(str)
 }
 
-function chance_to_hit(_atkr, _targ, _tile = undefined)
+function chance_to_hit(_atkr, _targ, t = false, _tile = undefined)
 {
 	if(_tile == undefined) _tile = _atkr.get_tile()
+	if(t) print("==========")
+	if(t) print(_targ.get_tile().is_obstructed())
 	var dist =  dist_to_targ(_tile, _targ.get_tile())
+	if(t) print(dist)
+	if(t) print(_atkr.get_attack_range_min())
+	if(t) print(_atkr.get_attack_range_max())
 	var hit_chance = -1
-	if(dist >= _atkr.get_attack_range_min() and dist <= _atkr.get_attack_range_max() and not _targ.get_tile().is_obstructed())
+	if(ceil(dist) >= _atkr.get_attack_range_min() and ceil(dist) <= _atkr.get_attack_range_max() and not _targ.get_tile().is_obstructed())
 	    hit_chance = .5 - (_targ.get_armour().get_rating() / 10)
 	
 	return hit_chance
