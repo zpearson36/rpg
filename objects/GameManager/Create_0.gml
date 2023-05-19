@@ -29,3 +29,8 @@ enemy_party.get_members()[1].set_sprite(sTmp10)
 FactionManager.add_faction(player_faction)
 FactionManager.add_faction(enemy_faction)
 FactionManager.set_relation(player_faction, enemy_faction, -100)
+
+function get_player_faction()
+{
+	return player_faction
+}

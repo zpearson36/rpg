@@ -16,20 +16,12 @@ switch(state)
 			{
 				var c_color = c_white
 				draw_sprite(grid.get_cell(i, j).get_terrain().get_sprite(), -1, i * COMBATCELLSIZE, j * COMBATCELLSIZE)
-				
-				/*if(grid.get_cell(i,j).get_occupant() != noone
-				       and grid.get_cell(i,j).get_occupant().get_sprite() != undefined)
-				   draw_sprite(grid.get_cell(i,j).get_occupant().get_sprite(), -1,
-				       i * COMBATCELLSIZE, j * COMBATCELLSIZE)*/
-			   /* if(grid.get_cell(i,j).get_occupant() == units[party][character])
-				{
-					for(var k = 0; k < grid.get_cell(i,j).get_occupant().get_ap_max(); k++)
-					{
-						var sprt = sAPSpent
-						if(grid.get_cell(i,j).get_occupant().get_ap() > k) sprt = sAPAvailable
-						draw_sprite(sprt, -1, i * COMBATCELLSIZE + (16*k), j * COMBATCELLSIZE - 16)
-					}
-				}*/
+				draw_set_color(c_black)
+				draw_set_alpha(.5)
+				if(grid.get_cell(i, j).is_obstructed()) draw_rectangle(i * COMBATCELLSIZE, j * COMBATCELLSIZE, (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE, false)
+				draw_set_color(c_white)
+				draw_set_alpha(1)
+
 			}
 		}
 		
@@ -37,18 +29,22 @@ switch(state)
 		{
 			for(var j = 0; j < array_length(units[i]); j++)
 			{
-				draw_sprite(units[i][j].get_sprite(), -1,
-				       units[i][j].get_xpos(), units[i][j].get_ypos())
-				draw_sprite(units[i][j].get_armour().get_sprite(), -1,
-				       units[i][j].get_xpos(), units[i][j].get_ypos())
-				draw_sprite(units[i][j].get_weapon().get_sprite(), -1,
-				       units[i][j].get_xpos(), units[i][j].get_ypos())
-				for(var k = 0; k < units[i][j].get_hp_max(); k++)
+				if(not units[i][j].get_tile().is_obstructed() || units[i][j].get_faction().get_id() == GameManager.get_player_faction().get_id())
 				{
-					var sprt = sHPSpent
-					if(units[i][j].get_hp() > k) sprt = sHPAvailable
-					draw_sprite(sprt, -1, units[i][j].get_xpos() + (16*k), units[i][j].get_ypos() - 16)
+					// Draw Character and Equipment
+					draw_sprite(units[i][j].get_sprite(), -1,
+					       units[i][j].get_xpos(), units[i][j].get_ypos())
+					draw_sprite(units[i][j].get_armour().get_sprite(), -1,
+					       units[i][j].get_xpos(), units[i][j].get_ypos())
+					draw_sprite(units[i][j].get_weapon().get_sprite(), -1,
+					       units[i][j].get_xpos(), units[i][j].get_ypos())
+						   
+					// Draw Health Bar
+					draw_healthbar(units[i][j].get_xpos(), units[i][j].get_ypos() - 14, units[i][j].get_xpos() + 64, units[i][j].get_ypos() - 6,
+					               (units[i][j].get_hp()/units[i][j].get_hp_max()) * 100, c_gray, c_red, c_green,0,true,true)
 				}
+				
+				// Draw Action Points if Currently Selected
 				if(i == party and j == character)
 				{
 					for(var k = 0; k < units[i][j].get_ap_max(); k++)
@@ -113,7 +109,7 @@ switch(state)
 						if(mx >= 0 and mx < COMBATGRIDWIDTH and my >= 0 and my < COMBATGRIDHEIGHT
 						           and grid.get_cell(mx,my).get_occupant() != noone)
 								draw_text_color(mx * COMBATCELLSIZE, my * COMBATCELLSIZE,
-								chance_to_hit(units[party][character], grid.get_cell(mx,my).get_occupant()),
+								string(chance_to_hit(units[party][character], grid.get_cell(mx,my).get_occupant(), true)) + "%",
 								c_black, c_black, c_black, c_black, 1)
 						var dist = dist_to_targ(
 								            units[party][character].get_tile(),

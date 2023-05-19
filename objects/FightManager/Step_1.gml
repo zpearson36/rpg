@@ -28,6 +28,7 @@ switch(state)
 				var obstructed = collision_line((units[party][character].get_tile().get_x() + .5) * COMBATCELLSIZE, (units[party][character].get_tile().get_y() + .5) * COMBATCELLSIZE,
 						        grid.get_cell(i, j).get_x() * COMBATCELLSIZE, grid.get_cell(i, j).get_y() * COMBATCELLSIZE, oWall, false, false)
 				if(obstructed != noone) grid.get_cell(i, j).set_obstructed()
+				if(grid.get_cell(i, j).get_occupant() != noone and grid.get_cell(i, j).get_occupant().is_dead()) grid.get_cell(i, j).set_occupant(noone)
 			}
 		}
 		switch(units[party][character].get_state())
