@@ -344,8 +344,8 @@ function CombatCharacter(_char) constructor
 	
 	function damage(dam)
 	{
-		print("HIT for " + string(dam))
-		character.modify_hp(-dam)
+		print("HIT for " + string(dam - max(get_armour().get_threshold(), get_armour().get_resistance() * dam)))
+		character.modify_hp(-(dam - max(get_armour().get_threshold(), get_armour().get_resistance() * dam)))
 		if(character.get_hp() <= 0) to_dead()
 	}
 	
