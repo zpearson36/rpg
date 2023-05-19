@@ -19,12 +19,35 @@ function Character() constructor
 	sprite = sTmp;
 	attributes = new Attributes();
 	attributes.init()
+	skills = new Skills();
+	skills.init([irandom_range(15,100), irandom_range(15,100)])
 	party = undefined
 	faction = undefined
 	weapon = script_execute((choose(CreateSword, CreateBow)))
+	level = 1
 	armour = script_execute(choose(CreateUnarmoured, CreateLightArmour, CreateMediumArmour, CreateHeavyArmour))
-	max_hp = attributes.get_attr("end")
+	max_hp = 30 + 4 * attributes.get_attr("end") + level * (4 + (1.2 * attributes.get_attr("end")))
 	hp = max_hp
+	
+	function get_skills()
+	{
+		return skills
+	}
+	
+	function get_level()
+	{
+		return level
+	}
+	
+	function set_level(_level)
+	{
+		level = _level
+	}
+	
+	function increase_level()
+	{
+		level++
+	}
 	
 	function get_armour()
 	{
@@ -161,6 +184,11 @@ function CombatCharacter(_char) constructor
 	
 	//variable for NPC AI
 	targ = noone
+	
+	function get_skills()
+	{
+		return character.get_skills()
+	}
 	
 	function get_armour()
 	{

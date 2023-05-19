@@ -31,19 +31,20 @@ switch(state)
 			{
 				if(not units[i][j].get_tile().is_obstructed() || units[i][j].get_faction().get_id() == GameManager.get_player_faction().get_id())
 				{
+					// Draw Character and Equipment
 					draw_sprite(units[i][j].get_sprite(), -1,
 					       units[i][j].get_xpos(), units[i][j].get_ypos())
 					draw_sprite(units[i][j].get_armour().get_sprite(), -1,
 					       units[i][j].get_xpos(), units[i][j].get_ypos())
 					draw_sprite(units[i][j].get_weapon().get_sprite(), -1,
 					       units[i][j].get_xpos(), units[i][j].get_ypos())
-					for(var k = 0; k < units[i][j].get_hp_max(); k++)
-					{
-						var sprt = sHPSpent
-						if(units[i][j].get_hp() > k) sprt = sHPAvailable
-						draw_sprite(sprt, -1, units[i][j].get_xpos() + (16*k), units[i][j].get_ypos() - 16)
-					}
+						   
+					// Draw Health Bar
+					draw_healthbar(units[i][j].get_xpos(), units[i][j].get_ypos() - 14, units[i][j].get_xpos() + 64, units[i][j].get_ypos() - 6,
+					               (units[i][j].get_hp()/units[i][j].get_hp_max()) * 100, c_gray, c_red, c_green,0,true,true)
 				}
+				
+				// Draw Action Points if Currently Selected
 				if(i == party and j == character)
 				{
 					for(var k = 0; k < units[i][j].get_ap_max(); k++)
@@ -108,7 +109,7 @@ switch(state)
 						if(mx >= 0 and mx < COMBATGRIDWIDTH and my >= 0 and my < COMBATGRIDHEIGHT
 						           and grid.get_cell(mx,my).get_occupant() != noone)
 								draw_text_color(mx * COMBATCELLSIZE, my * COMBATCELLSIZE,
-								chance_to_hit(units[party][character], grid.get_cell(mx,my).get_occupant(), true),
+								string(chance_to_hit(units[party][character], grid.get_cell(mx,my).get_occupant(), true)) + "%",
 								c_black, c_black, c_black, c_black, 1)
 						var dist = dist_to_targ(
 								            units[party][character].get_tile(),
