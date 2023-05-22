@@ -1,3 +1,4 @@
+pc.equip(CreateUnarmed())
 switch(state)
 {
 	case GameStates.MAINMENU:
@@ -28,4 +29,3 @@ switch(state)
 		break;
 	}
 }
-//show_debug_message(ds_grid_height(FactionManager.faction_grid))

@@ -5,6 +5,11 @@ enum WEAPONTYPE
 	BOW
 }
 
+function CreateUnarmed()
+{
+	return new Weapon("Unarmed", WEAPONTYPE.UNARMED, 1, 1, 1, 5, sArmourNone)
+}
+
 function CreateSword()
 {
 	return new Weapon("Sword", WEAPONTYPE.SWORD, 1, 2, 7, 15, sWeaponSword)

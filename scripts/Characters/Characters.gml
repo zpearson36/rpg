@@ -20,14 +20,29 @@ function Character() constructor
 	attributes = new Attributes();
 	attributes.init()
 	skills = new Skills();
-	skills.init([irandom_range(15,100), irandom_range(15,100)])
+	skills.init([irandom_range(15,100), irandom_range(15,100), irandom_range(15,100)])
 	party = undefined
 	faction = undefined
 	weapon = script_execute((choose(CreateSword, CreateBow)))
 	level = 1
 	armour = script_execute(choose(CreateUnarmoured, CreateLightArmour, CreateMediumArmour, CreateHeavyArmour))
+	equipment = new Equipment()
+	inventory = new Inventory()
 	max_hp = 30 + 4 * attributes.get_attr("end") + level * (4 + (1.2 * attributes.get_attr("end")))
 	hp = max_hp
+	
+	function equip(_item)
+	{
+		var tmp = equipment.equip(_item)
+		if(tmp.get_name() == "Unarmed" or tmp.get_name() == "Unarmoured")
+		{
+			delete tmp
+		}
+		else
+		{
+			inventory.add_item(tmp)
+		}
+	}
 	
 	function get_skills()
 	{
@@ -51,7 +66,7 @@ function Character() constructor
 	
 	function get_armour()
 	{
-		return armour
+		return equipment.get_armour()
 	}
 	function get_hp()
 	{
@@ -80,12 +95,7 @@ function Character() constructor
 	
 	function get_weapon()
 	{
-		return weapon
-	}
-	
-	function set_weapon(_weapon)
-	{
-		weapon = _weapon
+		return equipment.get_weapon()
 	}
 	
 	function set_faction(_faction)
@@ -198,11 +208,6 @@ function CombatCharacter(_char) constructor
 	function get_weapon()
 	{
 		return character.get_weapon()
-	}
-	
-	function set_weapon(_weapon)
-	{
-		character.set_weapon(_weapon)
 	}
 	
 	function get_xpos()
