@@ -52,4 +52,9 @@ function Skills() constructor
 			skill_map[? "Bow"].set_value(_skills[1])
 		}
 	}
+	
+	function get_skills()
+	{
+		return skill_map
+	}
 }

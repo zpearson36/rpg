@@ -18,8 +18,8 @@ op_space = 25
 
 options = []
 //menu functions
-function to_main()      {options_list = 0}
-function to_party()     {options_list = 1}
+function to_main()      {options_list = 0; select_character = false; selected_character = noone}
+function to_party()     {options_list = 1; select_character = true}
 function to_inventory() {options_list = 2}
 function to_equipment() {options_list = 3}
 
@@ -38,6 +38,9 @@ options[2][0] = ["Back", to_main]
 //equipment options
 options[3][0] = ["Back", to_main]
 
+//character options
+options[4][0] = ["Back", to_main]
+
 op_length = array_length(options[0])
 
 currently_selected = 0
@@ -48,5 +51,8 @@ function set_party(_party)
 {
 	party = _party
 }
+selected_character = noone
+select_character = false
 
-
+side_menu = false
+char_menu = false
