@@ -1,21 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
-switch(state)
-{
-	case MENUSTATES.ACTIVE:
-	{
-		draw_sprite_ext(sMenuBackground, -1, x, y, w / sprite_width, h / sprite_height, 0, c_white, 1)
-		draw_sprite_ext(sMenuBackground, -1, x + w, y, width / sprite_width, height / sprite_height, 0, c_white, 1)
-		for(var i = 0; i < array_length(options[options_list]); i++)
-		{
-			if(currently_selected == i and side_menu) draw_set_color(c_yellow)
-			draw_text(x + w + op_border, y + op_border + op_space*i, options[options_list][i][0])
-			draw_set_color(c_white)
-		}
-		break;
-	}
-}
-/*
+draw_sprite_ext(sMenuBackground, -1, x, y, w / sprite_width, h / sprite_height, 0, c_white, 1)
+draw_sprite_ext(sMenuBackground, -1, x + w, y, width / sprite_width, height / sprite_height, 0, c_white, 1)
+
 switch(options_list)
 {
 	case 0:
@@ -125,5 +112,9 @@ switch(options_list)
 	}
 }
 
-
-*/
+for(var i = 0; i < array_length(options[options_list]); i++)
+{
+	if(currently_selected == i and side_menu) draw_set_color(c_yellow)
+	draw_text(x + w + op_border, y + op_border + op_space*i, options[options_list][i][0])
+	draw_set_color(c_white)
+}

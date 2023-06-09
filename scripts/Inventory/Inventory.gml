@@ -6,7 +6,7 @@ function Inventory() constructor
 	
 	function add_item(_item)
 	{
-		ds_map_add(inv_list,_item.get_name(), _item)
+		ds_map_add(inv_map,$"{_item.get_name()}{_item.get_id()}", _item)
 	}
 	
 	function get_item(_item)
@@ -15,5 +15,10 @@ function Inventory() constructor
 		ds_map_delete(inv_map, _item.get_name())
 		
 		return tmp
+	}
+	
+	function get_inv()
+	{
+		return inv_map
 	}
 }

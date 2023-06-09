@@ -1,25 +1,5 @@
 /// @description Insert description here
 // You can write your code in this editor
-switch(state)
-{
-	case MENUSTATES.ACTIVE:
-	{
-		if(mouse_x > x + w + op_border and mouse_x < x + w + width - op_border)
-		{
-			side_menu = true
-			currently_selected = floor((mouse_y - (y + op_border))/ op_space)
-			if(currently_selected >= array_length(options[options_list])) currently_selected = -1
-			if(currently_selected < 0) currently_selected = -1
-
-			if(mouse_check_button_pressed(mb_left) and currently_selected != -1)
-			{
-				//script_execute(options[options_list][currently_selected][1])
-			}
-		}
-		break;
-	}
-}
-/*
 if(party != undefined)
 {
 	function to_main() {options_list = 0; select_character = false; selected_character = noone}
@@ -42,7 +22,19 @@ side_menu = false
 char_menu = false
 currently_selected = -1
 
+if(mouse_x > x + w + op_border and mouse_x < x + w + width - op_border)
+{
+	side_menu = true
+	currently_selected = floor((mouse_y - (y + op_border))/ op_space)
+	if(currently_selected >= array_length(options[options_list])) currently_selected = -1
+	if(currently_selected < 0) currently_selected = -1
 
+	if(mouse_check_button_pressed(mb_left) and currently_selected != -1)
+	{
+		//print(options[options_list][currently_selected][0])
+		script_execute(options[options_list][currently_selected][1])
+	}
+}
 if(mouse_x > x + op_border and mouse_x < x + w - op_border)
 {
 	char_menu = true
@@ -80,4 +72,3 @@ if(mouse_x > x + op_border and mouse_x < x + w - op_border)
 
 //show_debug_message(currently_selected)
 print($"char:{currently_selected} equip:{selected_equipment}")
-*/

@@ -27,7 +27,7 @@ function Character() constructor
 	level = 1
 	armour = script_execute(choose(CreateUnarmoured, CreateLightArmour, CreateMediumArmour, CreateHeavyArmour))
 	equipment = new Equipment()
-	inventory = new Inventory()
+	//inventory = new Inventory()
 	max_hp = 30 + 4 * attributes.get_attr("end") + level * (4 + (1.2 * attributes.get_attr("end")))
 	hp = max_hp
 	
@@ -40,7 +40,7 @@ function Character() constructor
 		}
 		else
 		{
-			inventory.add_item(tmp)
+			party.get_inventory().add_item(tmp)
 		}
 	}
 	
@@ -153,6 +153,7 @@ function Character() constructor
 function Party() constructor
 {
 	members = [];
+	inventory = new Inventory()
 	
 	function add_member(_char)
 	{
@@ -168,6 +169,11 @@ function Party() constructor
 	function remove_member(_char)
 	{
 		members = array_delete_index(members, array_get_index(members, _char))
+	}
+	
+	function get_inventory()
+	{
+		return inventory
 	}
 }
 

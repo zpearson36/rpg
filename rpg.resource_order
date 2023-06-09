@@ -6,6 +6,7 @@
     {"name":"Notes","order":13,"path":"folders/Notes.yy",},
     {"name":"Objects","order":9,"path":"folders/Objects.yy",},
     {"name":"Combat","order":3,"path":"folders/Objects/Combat.yy",},
+    {"name":"Menus","order":6,"path":"folders/Objects/Menus.yy",},
     {"name":"Utils","order":5,"path":"folders/Objects/Utils.yy",},
     {"name":"World","order":4,"path":"folders/Objects/World.yy",},
     {"name":"Paths","order":4,"path":"folders/Paths.yy",},
@@ -23,7 +24,6 @@
     {"name":"tilesets","order":4,"path":"folders/Sprites/tilesets.yy",},
     {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
-    {"name":"Menus","order":6,"path":"folders/Objects/Menus.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"CombatMapGen","order":1,"path":"scripts/CombatMapGen/CombatMapGen.yy",},
@@ -51,6 +51,7 @@
     {"name":"Skills","order":3,"path":"scripts/Skills/Skills.yy",},
     {"name":"sMenuBackground","order":25,"path":"sprites/sMenuBackground/sMenuBackground.yy",},
     {"name":"sAPSpent","order":3,"path":"sprites/sAPSpent/sAPSpent.yy",},
+    {"name":"oMenu","order":1,"path":"objects/oMenu/oMenu.yy",},
     {"name":"fnt_combat_finished","order":1,"path":"fonts/fnt_combat_finished/fnt_combat_finished.yy",},
     {"name":"Utils","order":2,"path":"scripts/Utils/Utils.yy",},
     {"name":"Pathfinding","order":1,"path":"scripts/Pathfinding/Pathfinding.yy",},

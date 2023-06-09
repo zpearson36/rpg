@@ -31,7 +31,17 @@ FactionManager.add_faction(enemy_faction)
 FactionManager.set_relation(player_faction, enemy_faction, -100)
 
 menu = instance_create_layer(x, y, layer, oMenu)
-menu.set_party(pc_party)
+pc_party.get_inventory().add_item(CreateBow())
+pc_party.get_inventory().add_item(CreateBow())
+pc_party.get_inventory().add_item(CreateSword())
+pc_party.get_inventory().add_item(CreateSword())
+pc_party.get_inventory().add_item(CreateLightArmour())
+pc_party.get_inventory().add_item(CreateLightArmour())
+pc_party.get_inventory().add_item(CreateMediumArmour())
+pc_party.get_inventory().add_item(CreateMediumArmour())
+pc_party.get_inventory().add_item(CreateHeavyArmour())
+pc_party.get_inventory().add_item(CreateHeavyArmour())
+//menu.set_party(pc_party)
 function get_player_faction()
 {
 	return player_faction

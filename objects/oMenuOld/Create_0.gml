@@ -1,10 +1,12 @@
 /// @description Insert description here
 // You can write your code in this editor
+/*
 enum MENUSTATES
 {
 	ACTIVE,
 	INACTIVE
 }
+*/
 x = 50
 y = 50
 state = MENUSTATES.INACTIVE
@@ -29,11 +31,6 @@ options[0][1] = ["Inventory", to_inventory]
 options[0][2] = ["Equipment", to_equipment]
 options[0][3] = ["Exit", game_end]
 
-options_list = 0
-currently_selected = 0
-side_menu = false
-char_menu = false
-/*
 //Characters options
 options[1][0] = ["Back", to_main]
 
@@ -54,6 +51,8 @@ options[6][0] = ["Back", to_equipment]
 
 //op_length = array_length(options[0])
 
+currently_selected = 0
+options_list = 0
 
 party = undefined
 function set_party(_party)
@@ -63,4 +62,6 @@ function set_party(_party)
 selected_character = noone
 selected_equipment = noone
 select_character = false
-select_equipment = false*/
+select_equipment = false
+side_menu = false
+char_menu = false
