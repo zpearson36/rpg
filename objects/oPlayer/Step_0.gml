@@ -14,22 +14,22 @@ if(manager.get_state() == WMStates.RUNNING)
 				
 				xSpd = 0;
 				ySpd = 0;
-				if(keyboard_check(vk_right))
+				     if(keyboard_check(ord("D")))
 				{
 					character.set_state(PCStates.MOVING);
 					xSpd = spd;
 				}
-				else if(keyboard_check(vk_up))
+				else if(keyboard_check(ord("W")))
 				{
 					character.set_state(PCStates.MOVING);
 					ySpd = -spd;
 				}
-				else if(keyboard_check(vk_down))
+				else if(keyboard_check(ord("S")))
 				{
 					character.set_state(PCStates.MOVING);
 					ySpd = spd;
 				}
-				else if(keyboard_check(vk_left))
+				else if(keyboard_check(ord("A")))
 				{
 					character.set_state(PCStates.MOVING);
 					xSpd = -spd;
@@ -38,10 +38,10 @@ if(manager.get_state() == WMStates.RUNNING)
 			}
 			case PCStates.MOVING:
 			{
-				if(keyboard_check_released(vk_right)
-				   or keyboard_check_released(vk_up)
-				   or keyboard_check_released(vk_down)
-				   or keyboard_check_released(vk_left))
+				if(   keyboard_check_released(ord("D"))
+				   or keyboard_check_released(ord("S"))
+				   or keyboard_check_released(ord("A"))
+				   or keyboard_check_released(ord("W")))
 				{
 					character.set_state(PCStates.IDLE);
 					break;

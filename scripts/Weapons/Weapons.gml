@@ -1,8 +1,20 @@
+function gen_id_weapon()
+{
+	static weapon = 0;
+	weapon++;
+	return weapon;
+}
+
 enum WEAPONTYPE
 {
 	UNARMED,
 	SWORD,
 	BOW
+}
+
+function CreateUnarmed()
+{
+	return new Weapon("Unarmed", WEAPONTYPE.UNARMED, 1, 1, 1, 5, sArmourNone)
 }
 
 function CreateSword()
@@ -25,6 +37,12 @@ function Weapon(_name, _type, _min_range, _max_range, _min_damage, _max_damage, 
 	max_damage = _max_damage
 	item_type = ItemTypes.WEAPON
 	sprite = _sprite
+	id_num = gen_id_weapon()
+	
+	function get_id()
+	{
+		return id_num
+	}
 	
 	function get_sprite()
 	{

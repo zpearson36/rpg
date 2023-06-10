@@ -40,4 +40,9 @@ function Attributes() constructor
 	{
 		return attribute_list[? _attr].get_value()
 	}
+	
+	function get_attributes()
+	{
+		return attribute_list
+	}
 }

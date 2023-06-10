@@ -34,6 +34,7 @@ function Skill(_name) constructor
 function Skills() constructor
 {
 	skill_map = ds_map_create()
+	skill_map[? "Unarmed"] = new Skill("Unarmed")
 	skill_map[? "Sword"] = new Skill("Sword")
 	skill_map[? "Bow"] = new Skill("Bow")
 	
@@ -46,8 +47,14 @@ function Skills() constructor
 	{
 		if(array_length(_skills) > 0)
 		{
-			skill_map[? "Sword"].set_value(_skills[0])
-			skill_map[? "Bow"].set_value(_skills[1])
+			skill_map[? "Unarmed"].set_value(_skills[0])
+			skill_map[? "Sword"].set_value(_skills[1])
+			skill_map[? "Bow"].set_value(_skills[2])
 		}
+	}
+	
+	function get_skills()
+	{
+		return skill_map
 	}
 }

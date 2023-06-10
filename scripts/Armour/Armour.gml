@@ -1,3 +1,10 @@
+function gen_id_armour()
+{
+	static armour = 0;
+	armour++;
+	return armour;
+}
+
 enum ARMOURTYPES
 {
 	UNARMOURED,
@@ -34,6 +41,12 @@ function Armour(_name, _threshold, _resistance, _type, _sprite) constructor
 	resistance = _resistance
 	item_type = ItemTypes.ARMOUR
 	sprite = _sprite
+	id_num = gen_id_armour()
+	
+	function get_id()
+	{
+		return id_num
+	}
 	
 	function get_sprite()
 	{
