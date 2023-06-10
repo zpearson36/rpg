@@ -1,13 +1,8 @@
 /// @description Insert description here
-// You can write your code in this editor
-enum MENUSTATES
-{
-	ACTIVE,
-	INACTIVE
-}
+// You can write your code in this editor\
 x = 50
 y = 50
-state = MENUSTATES.INACTIVE
+state = 1
 
 w = 640
 h = 512
@@ -15,34 +10,43 @@ width = 256
 height = 512
 op_border = 25
 op_space = 25
-
+manager = undefined
 options = []
 //menu functions
-function to_main()       {options_list = 0; select_character = false; selected_character = noone}
-function to_characters() {options_list = 1; select_character = true}
-function to_inventory()  {options_list = 2}
-function to_equipment()  {options_list = 3; select_character = true; selected_equipment = noone; select_equipment = false}
+function to_characters() {manager.set_menu(oMenuCharacterSelect, [oMenuCharacterStats])}
+function to_inventory()  {}//{manager.set_menu(oMenuCharacters)}
+function to_equipment()  {manager.set_menu(oMenuCharacterSelect, [oMenuCharacterEquipment])}
 
 //first level options
-options[0][0] = ["Characters", to_characters]
-options[0][1] = ["Inventory", to_inventory]
-options[0][2] = ["Equipment", to_equipment]
-options[0][3] = ["Exit", game_end]
+options[0] = ["Characters", to_characters]
+options[1] = ["Inventory", to_inventory]
+options[2] = ["Equipment", to_equipment]
+options[3] = ["Exit", game_end]
 
 options_list = 0
 currently_selected = 0
 side_menu = false
 char_menu = false
-/*
+party = GameManager.get_player_party()
 //Characters options
-options[1][0] = ["Back", to_main]
+//options[1][0] = ["Back", to_main]
 
 //inventory options
-options[2][0] = ["boob", to_main]
+//options[2][0] = ["Back", to_main]
 
 //equipment options
-options[3][0] = ["Back", to_main]
+//options[3][0] = ["Back", to_main]
 
+function set_manager(_manager)
+{
+	manager = _manager
+}
+
+function set_args(_args)
+{
+	return
+}
+/*
 //character options
 options[4][0] = ["Back", to_characters]
 

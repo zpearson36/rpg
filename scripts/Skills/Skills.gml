@@ -49,7 +49,7 @@ function Skills() constructor
 		{
 			skill_map[? "Unarmed"].set_value(_skills[0])
 			skill_map[? "Sword"].set_value(_skills[1])
-			skill_map[? "Bow"].set_value(_skills[1])
+			skill_map[? "Bow"].set_value(_skills[2])
 		}
 	}
 	
