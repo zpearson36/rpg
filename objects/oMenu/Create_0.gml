@@ -4,10 +4,17 @@ x = 50
 y = 50
 state = 1
 
+//left side menu sizes
 w = 640
 h = 512
+
+//right side top menu sizes
 width = 256
-height = 512
+height = 384
+//right side bottom menu sizes
+widthb = 256
+heightb = 128
+
 op_border = 25
 op_space = 25
 manager = undefined
@@ -46,25 +53,3 @@ function set_args(_args)
 {
 	return
 }
-/*
-//character options
-options[4][0] = ["Back", to_characters]
-
-//character Equipment options
-options[5][0] = ["Back", to_equipment]
-
-//Choose to Equip options
-options[6][0] = ["Back", to_equipment]
-
-//op_length = array_length(options[0])
-
-
-party = undefined
-function set_party(_party)
-{
-	party = _party
-}
-selected_character = noone
-selected_equipment = noone
-select_character = false
-select_equipment = false*/

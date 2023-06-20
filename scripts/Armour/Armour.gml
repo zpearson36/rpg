@@ -15,25 +15,25 @@ enum ARMOURTYPES
 
 function CreateUnarmoured()
 {
-	return new Armour("Unarmoured", 0, 0, ARMOURTYPES.UNARMOURED, sArmourNone);
+	return new Armour("Unarmoured", 0, 0, ARMOURTYPES.UNARMOURED, sArmourNone, 0);
 }
 
 function CreateLightArmour()
 {
-	return new Armour("Light Armour", 3, .10, ARMOURTYPES.LIGHT, sArmourLight);
+	return new Armour("Light Armour", 3, .10, ARMOURTYPES.LIGHT, sArmourLight, 100);
 }
 
 function CreateMediumArmour()
 {
-	return new Armour("Medium Armour", 5, .20, ARMOURTYPES.MEDIUM, sArmourMedium);
+	return new Armour("Medium Armour", 5, .20, ARMOURTYPES.MEDIUM, sArmourMedium, 500);
 }
 
 function CreateHeavyArmour()
 {
-	return new Armour("Heavy Armour", 7, .35, ARMOURTYPES.HEAVY, sArmourHeavy);
+	return new Armour("Heavy Armour", 7, .35, ARMOURTYPES.HEAVY, sArmourHeavy, 1000);
 }
 
-function Armour(_name, _threshold, _resistance, _type, _sprite) constructor
+function Armour(_name, _threshold, _resistance, _type, _sprite, _value) constructor
 {
 	type = _type
 	name = _name
@@ -42,6 +42,12 @@ function Armour(_name, _threshold, _resistance, _type, _sprite) constructor
 	item_type = ItemTypes.ARMOUR
 	sprite = _sprite
 	id_num = gen_id_armour()
+	base_value = _value
+	
+	function get_value()
+	{
+		return base_value
+	}
 	
 	function get_id()
 	{

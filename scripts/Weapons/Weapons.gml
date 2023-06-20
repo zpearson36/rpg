@@ -14,20 +14,20 @@ enum WEAPONTYPE
 
 function CreateUnarmed()
 {
-	return new Weapon("Unarmed", WEAPONTYPE.UNARMED, 1, 1, 1, 5, sArmourNone)
+	return new Weapon("Unarmed", WEAPONTYPE.UNARMED, 1, 1, 1, 5, sArmourNone, 0)
 }
 
 function CreateSword()
 {
-	return new Weapon("Sword", WEAPONTYPE.SWORD, 1, 2, 7, 15, sWeaponSword)
+	return new Weapon("Sword", WEAPONTYPE.SWORD, 1, 2, 7, 15, sWeaponSword, 50)
 }
 
 function CreateBow()
 {
-	return new Weapon("Bow", WEAPONTYPE.SWORD, 3, 4, 7, 15, sWeaponBow)
+	return new Weapon("Bow", WEAPONTYPE.SWORD, 3, 4, 7, 15, sWeaponBow, 50)
 }
 
-function Weapon(_name, _type, _min_range, _max_range, _min_damage, _max_damage, _sprite) constructor
+function Weapon(_name, _type, _min_range, _max_range, _min_damage, _max_damage, _sprite, _value) constructor
 {
 	name = _name
 	type = _type
@@ -38,6 +38,12 @@ function Weapon(_name, _type, _min_range, _max_range, _min_damage, _max_damage, 
 	item_type = ItemTypes.WEAPON
 	sprite = _sprite
 	id_num = gen_id_weapon()
+	base_value = _value
+	
+	function get_value()
+	{
+		return base_value
+	}
 	
 	function get_id()
 	{

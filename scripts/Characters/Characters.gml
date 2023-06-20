@@ -154,6 +154,27 @@ function Party() constructor
 {
 	members = [];
 	inventory = new Inventory()
+	gold = 0
+	
+	function get_gold()
+	{
+		return gold
+	}
+	
+	function add_gold(_amount)
+	{
+		gold += _amount
+	}
+	
+	function remove_gold(_amount)
+	{
+		if(_amount <= gold)
+		{
+			gold -= _amount
+			return true
+		}
+		return false
+	}
 	
 	function add_member(_char)
 	{

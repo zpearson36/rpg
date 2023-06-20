@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "oMenuOld",
+  "name": "oStall",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
@@ -10,10 +10,13 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Menus",
-    "path": "folders/Objects/Menus.yy",
+    "name": "World",
+    "path": "folders/Objects/World.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "oCollidable",
+    "path": "objects/oCollidable/oCollidable.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -30,8 +33,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "sMenuBackground",
-    "path": "sprites/sMenuBackground/sMenuBackground.yy",
+    "name": "sStall",
+    "path": "sprites/sStall/sStall.yy",
   },
   "spriteMaskId": null,
   "visible": true,
