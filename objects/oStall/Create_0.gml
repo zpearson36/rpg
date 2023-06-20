@@ -21,5 +21,10 @@ menu_manager = instance_create_layer(x, y, "Menus", oMenuManager)
 
 function interact(_obj)
 {
-	menu_manager.open(oMenuStall)
+	menu_manager.open(oMenuStall, [self])
+}
+
+function get_inventory()
+{
+	return inventory
 }

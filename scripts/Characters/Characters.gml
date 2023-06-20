@@ -163,7 +163,7 @@ function Party() constructor
 	
 	function add_gold(_amount)
 	{
-		gold += amount
+		gold += _amount
 	}
 	
 	function take_gold(_amount)

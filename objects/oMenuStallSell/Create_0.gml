@@ -23,9 +23,9 @@ options = []
 scroll_hover_up = false
 scroll_hover_down = false
 scroll_offset = 0
-
+stall = undefined
 //menu functions
-function back() {manager.set_menu(oMenuStall, [])}
+function back() {manager.set_menu(oMenuStall, [stall])}
 
 //first level options
 options[0] = ["Back", back]
@@ -34,43 +34,15 @@ currently_selected = 0
 side_menu = false
 char_menu = false
 party = GameManager.get_player_party()
-//Characters options
-//options[1][0] = ["Back", to_main]
-
-//inventory options
-//options[2][0] = ["Back", to_main]
-
-//equipment options
-//options[3][0] = ["Back", to_main]
 
 function set_manager(_manager)
 {
 	manager = _manager
 }
 
+
+
 function set_args(_args)
 {
-	return
+	stall = _args[0]
 }
-/*
-//character options
-options[4][0] = ["Back", to_characters]
-
-//character Equipment options
-options[5][0] = ["Back", to_equipment]
-
-//Choose to Equip options
-options[6][0] = ["Back", to_equipment]
-
-//op_length = array_length(options[0])
-
-
-party = undefined
-function set_party(_party)
-{
-	party = _party
-}
-selected_character = noone
-selected_equipment = noone
-select_character = false
-select_equipment = false*/

@@ -53,25 +53,3 @@ function set_args(_args)
 {
 	return
 }
-/*
-//character options
-options[4][0] = ["Back", to_characters]
-
-//character Equipment options
-options[5][0] = ["Back", to_equipment]
-
-//Choose to Equip options
-options[6][0] = ["Back", to_equipment]
-
-//op_length = array_length(options[0])
-
-
-party = undefined
-function set_party(_party)
-{
-	party = _party
-}
-selected_character = noone
-selected_equipment = noone
-select_character = false
-select_equipment = false*/

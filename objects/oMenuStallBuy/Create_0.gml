@@ -19,7 +19,8 @@ op_space = 25
 manager = undefined
 options = []
 //menu functions
-function back() {manager.set_menu(oMenuStall, [])}
+stall = undefined
+function back() {manager.set_menu(oMenuStall, [stall])}
 
 //first level options
 options[0] = ["Back", back]
@@ -45,7 +46,7 @@ function set_manager(_manager)
 
 function set_args(_args)
 {
-	return
+	stall = _args[0]
 }
 /*
 //character options

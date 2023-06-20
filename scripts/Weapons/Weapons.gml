@@ -40,6 +40,11 @@ function Weapon(_name, _type, _min_range, _max_range, _min_damage, _max_damage, 
 	id_num = gen_id_weapon()
 	base_value = _value
 	
+	function get_value()
+	{
+		return base_value
+	}
+	
 	function get_id()
 	{
 		return id_num

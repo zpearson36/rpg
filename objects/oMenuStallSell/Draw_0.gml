@@ -30,7 +30,7 @@ for(var i = 0; i + scroll_offset < array_length(inv_keys) and i < 6; i++)
 		{
 			//draw weapon info
 			draw_text(x + op_border +  75, y + op_border +   5 + 70*i, $"Weapon: ")
-			draw_sprite(inv[? inv_keys[i + scroll_offset]].get_sprite(), -1, x + w - 175, y + op_border +  5 + 70*i)
+			draw_sprite(inv[? inv_keys[i + scroll_offset]].get_sprite(), -1, x + w - 225, y + op_border +  5 + 70*i)
 			draw_text(x + op_border + 160, y + op_border +   5 + 70*i, $"Name:   {inv[? inv_keys[i + scroll_offset]].get_name()}")
 			draw_text(x + op_border + 160, y + op_border +  25 + 70*i, $"Range:  {inv[? inv_keys[i + scroll_offset]].get_min_range()} / {inv[? inv_keys[i + scroll_offset]].get_max_range()}")
 			draw_text(x + op_border + 160, y + op_border +  45 + 70*i, $"Damage: {inv[? inv_keys[i + scroll_offset]].get_min_damage()} / {inv[? inv_keys[i + scroll_offset]].get_max_damage()}")
@@ -41,15 +41,20 @@ for(var i = 0; i + scroll_offset < array_length(inv_keys) and i < 6; i++)
 		{
 			//draw armour info
 			draw_text(x + op_border + 75, y + op_border +   5 + 70*i, $"Armour: ")
-			draw_sprite(inv[? inv_keys[i + scroll_offset]].get_sprite(), -1,  x + w - 150, y + op_border +  5 + 70*i)
+			draw_sprite(inv[? inv_keys[i + scroll_offset]].get_sprite(), -1,  x + w - 200, y + op_border +  5 + 70*i)
 			draw_text(x + op_border + 160,  y + op_border +   5 + 70*i, $"Name: {inv[? inv_keys[i + scroll_offset]].get_name()}")
 			draw_text(x + op_border + 160, y + op_border +    25 + 70*i, $"Damage Threshold:  {inv[? inv_keys[i + scroll_offset]].get_threshold()}")
 			draw_text(x + op_border + 160, y + op_border +    45 + 70*i, $"Damage Resistance: {inv[? inv_keys[i + scroll_offset]].get_resistance()}")
 			break;
 		}
 	}
+			draw_text(x + op_border + w - 150, y + op_border +   5 + 70*i, $"Sells For:")
+			draw_text(x + op_border + w - 100, y + op_border +  25 + 70*i, $"{inv[? inv_keys[i + scroll_offset]].get_value()}")
 }
-
+if(currently_selected != -1)
+{
+	draw_rectangle(x + op_border + 75, y + op_border + 5 + 70*currently_selected,  x + w - op_border , y + op_border + 5 + 70*(currently_selected + 1), true)
+}
 
 draw_text(x + w + op_border, y + height + op_border, "Gold:")
 draw_text(x + w + op_border, y + height + op_border + op_space, party.get_gold())

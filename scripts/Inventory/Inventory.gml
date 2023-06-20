@@ -11,8 +11,8 @@ function Inventory() constructor
 	
 	function get_item(_item)
 	{
-		var tmp = inv_map[? _item.get_name()]
-		ds_map_delete(inv_map, _item.get_name())
+		var tmp = inv_map[? $"{_item.get_name()}{_item.get_id()}"]
+		ds_map_delete(inv_map, $"{_item.get_name()}{_item.get_id()}")
 		
 		return tmp
 	}

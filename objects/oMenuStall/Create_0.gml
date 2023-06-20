@@ -18,9 +18,10 @@ op_border = 25
 op_space = 25
 manager = undefined
 options = []
+stall = undefined
 //menu functions
-function to_buy() {manager.set_menu(oMenuStallBuy, [])}
-function to_sell()  {manager.set_menu(oMenuStallSell, [])}
+function to_buy() {manager.set_menu(oMenuStallBuy, [stall])}
+function to_sell()  {manager.set_menu(oMenuStallSell, [stall])}
 function to_close()  {manager.close()}
 
 //first level options
@@ -33,14 +34,6 @@ currently_selected = 0
 side_menu = false
 char_menu = false
 party = GameManager.get_player_party()
-//Characters options
-//options[1][0] = ["Back", to_main]
-
-//inventory options
-//options[2][0] = ["Back", to_main]
-
-//equipment options
-//options[3][0] = ["Back", to_main]
 
 function set_manager(_manager)
 {
@@ -49,9 +42,5 @@ function set_manager(_manager)
 
 function set_args(_args)
 {
-	return
-}
-
-function set_stall(_stall)
-{
+	stall = _args[0]
 }
