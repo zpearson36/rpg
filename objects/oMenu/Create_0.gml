@@ -4,10 +4,17 @@ x = 50
 y = 50
 state = 1
 
+//left side menu sizes
 w = 640
 h = 512
+
+//right side top menu sizes
 width = 256
-height = 512
+height = 384
+//right side bottom menu sizes
+widthb = 256
+heightb = 128
+
 op_border = 25
 op_space = 25
 manager = undefined

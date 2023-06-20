@@ -5,6 +5,8 @@ bub = instance_create_layer(x, y, layer, oInteractBubble)
 bub.stall = self
 active = false
 
+inventory = new Inventory()
+
 function activate()
 {
 	active = true

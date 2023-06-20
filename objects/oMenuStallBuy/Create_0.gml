@@ -19,14 +19,10 @@ op_space = 25
 manager = undefined
 options = []
 //menu functions
-function to_buy() {manager.set_menu(oMenuStallBuy, [])}
-function to_sell()  {manager.set_menu(oMenuStallSell, [])}
-function to_close()  {manager.close()}
+function back() {manager.set_menu(oMenuStall, [])}
 
 //first level options
-options[0] = ["Buy", to_buy]
-options[1] = ["Sell", to_sell]
-options[2] = ["Exit", to_close]
+options[0] = ["Back", back]
 
 options_list = 0
 currently_selected = 0
@@ -51,7 +47,25 @@ function set_args(_args)
 {
 	return
 }
+/*
+//character options
+options[4][0] = ["Back", to_characters]
 
-function set_stall(_stall)
+//character Equipment options
+options[5][0] = ["Back", to_equipment]
+
+//Choose to Equip options
+options[6][0] = ["Back", to_equipment]
+
+//op_length = array_length(options[0])
+
+
+party = undefined
+function set_party(_party)
 {
+	party = _party
 }
+selected_character = noone
+selected_equipment = noone
+select_character = false
+select_equipment = false*/

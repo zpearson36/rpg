@@ -13,6 +13,5 @@ for(var i = 0; i < array_length(options); i++)
 	draw_text(x + w + op_border, y + op_border + op_space*i, options[i][0])
 	draw_set_color(c_white)
 }
-
 draw_text(x + w + op_border, y + height + op_border, "Gold:")
 draw_text(x + w + op_border, y + height + op_border + op_space, party.get_gold())

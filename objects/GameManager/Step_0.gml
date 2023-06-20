@@ -15,8 +15,8 @@ switch(state)
 		
 		if(keyboard_check_pressed(vk_escape))
 		{
-			if(menu_manager.is_open(oMenu)) menu_manager.close()
-			else menu_manager.open()
+			if(menu_manager.is_open()) menu_manager.close()
+			else menu_manager.open(oMenu)
 		}
 		break;
 	}
