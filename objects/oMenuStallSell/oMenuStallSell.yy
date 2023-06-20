@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Menus",
-    "path": "folders/Objects/Menus.yy",
+    "name": "Stall",
+    "path": "folders/Objects/Menus/Stall.yy",
   },
   "parentObjectId": null,
   "persistent": false,

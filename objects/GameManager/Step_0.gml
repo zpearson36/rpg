@@ -8,10 +8,6 @@ switch(state)
 	case GameStates.WORLD:
 	{
 		world_manager.activate(pc)
-		if(keyboard_check_pressed(vk_enter))
-		{
-			to_combat()
-		}
 		
 		if(keyboard_check_pressed(vk_escape))
 		{
@@ -22,8 +18,6 @@ switch(state)
 	}
 	case GameStates.COMBAT:
 	{
-		if(keyboard_check_pressed(vk_enter))
-			exit_combat()
 		if(fight_manager.get_state() == FMStates.INACTIVE)
 			state = GameStates.WORLD
 		break;

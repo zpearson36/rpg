@@ -2,16 +2,12 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "oStall",
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
-  ],
+  "eventList": [],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "World",
-    "path": "folders/Objects/World.yy",
+    "name": "Stalls",
+    "path": "folders/Objects/World/Stalls.yy",
   },
   "parentObjectId": {
     "name": "oCollidable",
@@ -32,10 +28,7 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": {
-    "name": "sStall",
-    "path": "sprites/sStall/sStall.yy",
-  },
+  "spriteId": null,
   "spriteMaskId": null,
   "visible": true,
 }
