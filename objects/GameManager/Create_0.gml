@@ -51,3 +51,17 @@ pc_party.get_inventory().add_item(CreateMediumArmour())
 pc_party.get_inventory().add_item(CreateHeavyArmour())
 pc_party.get_inventory().add_item(CreateHeavyArmour())
 //menu.set_party(pc_party)
+
+function to_combat()
+{
+	menu_manager.close()
+	world_manager.deactivate()
+	state = GameStates.COMBAT
+	fight_manager.activate(pc_party.get_members(), enemy_party.get_members())
+}
+
+function exit_combat()
+{
+	fight_manager.deactivate()
+	state = GameStates.WORLD
+}

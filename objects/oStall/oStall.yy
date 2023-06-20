@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "oPlayer",
+  "name": "oStall",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
@@ -13,8 +13,11 @@
     "name": "World",
     "path": "folders/Objects/World.yy",
   },
-  "parentObjectId": null,
-  "persistent": true,
+  "parentObjectId": {
+    "name": "oCollidable",
+    "path": "objects/oCollidable/oCollidable.yy",
+  },
+  "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
@@ -30,8 +33,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "sTmp",
-    "path": "sprites/sTmp/sTmp.yy",
+    "name": "sStall",
+    "path": "sprites/sStall/sStall.yy",
   },
   "spriteMaskId": null,
   "visible": true,

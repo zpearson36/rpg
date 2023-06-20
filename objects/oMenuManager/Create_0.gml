@@ -15,9 +15,9 @@ function set_menu(_menu, _char=[])
 	menu.set_manager(self)
 }
 
-function open()
+function open(_menu)
 {
-	set_menu(oMenu)
+	set_menu(_menu)
 }
 
 function close()

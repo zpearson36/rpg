@@ -1,3 +1,6 @@
+var interaction = collision_rectangle(character.get_x(), character.get_y(),
+				                   character.get_x() + 64, character.get_y() + 64,
+								   oInteractBubble, true, false)
 if(manager.get_state() == WMStates.RUNNING)
 {
 	if(character != noone)
@@ -14,7 +17,16 @@ if(manager.get_state() == WMStates.RUNNING)
 				
 				xSpd = 0;
 				ySpd = 0;
-				     if(keyboard_check(ord("D")))
+				
+				
+				if(interaction)
+				{
+					if(keyboard_check_pressed(vk_space))
+					{
+						interaction.interact(self)
+					}
+				}
+				if(keyboard_check(ord("D")))
 				{
 					character.set_state(PCStates.MOVING);
 					xSpd = spd;
@@ -38,6 +50,23 @@ if(manager.get_state() == WMStates.RUNNING)
 			}
 			case PCStates.MOVING:
 			{
+				var col = collision_rectangle(character.get_x() + xSpd, character.get_y() + ySpd,
+				                              character.get_x() + 64 + xSpd, character.get_y() + 64 + ySpd,
+											  oCollidable, true, false)
+				if(col)
+				{
+				    xSpd = 0
+					ySpd = 0
+				}
+				
+				
+				if(interaction)
+				{
+					if(keyboard_check_pressed(vk_space))
+					{
+						interaction.interact(self)
+					}
+				}
 				if(   keyboard_check_released(ord("D"))
 				   or keyboard_check_released(ord("S"))
 				   or keyboard_check_released(ord("A"))

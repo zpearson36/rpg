@@ -113,4 +113,4 @@ function move_character(_char)
 }
 
 gui = instance_create_layer(x, y, "Instances", FightGUI)
-spd = 3
+spd = 5
