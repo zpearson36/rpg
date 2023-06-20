@@ -35,7 +35,7 @@ for(var i = 0; i < array_length(equipment_list); i++)
 		}
 	}
 }
-if(currently_selected != -1)
+if(currently_selected != -1 and char_menu)
 {
 	draw_rectangle(x + op_border + 75, y + op_border + 5 + 70*currently_selected,  x + w - op_border , y + op_border + 5 + 70*(currently_selected + 1), true)
 }

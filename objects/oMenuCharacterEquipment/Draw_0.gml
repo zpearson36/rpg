@@ -28,7 +28,7 @@
 		draw_text(x + op_border + 160, y + op_border +   95, $"Damage Threshold:  {character.get_armour().get_threshold()}")
 		draw_text(x + op_border + 160, y + op_border +  115, $"Damage Resistance: {character.get_armour().get_resistance()}")
 		
-		if(currently_selected != -1)
+		if(currently_selected != -1 and char_menu)
 		{
 			draw_rectangle(x + op_border + 75, y + op_border + 5 + 70*currently_selected,  x + w - op_border , y + op_border + 5 + 70*(currently_selected + 1), true)
 		}

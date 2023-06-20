@@ -1,5 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
+char_menu = false
+side_menu = false
 currently_selected = -1
 if(mouse_x > x + w + op_border and mouse_x < x + w + width - op_border)
 {
