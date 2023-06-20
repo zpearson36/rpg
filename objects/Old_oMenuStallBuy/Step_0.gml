@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-currently_selected = -1
+
 if(mouse_x > x + w + op_border and mouse_x < x + w + width - op_border)
 {
 	side_menu = true
@@ -13,25 +13,7 @@ if(mouse_x > x + w + op_border and mouse_x < x + w + width - op_border)
 		script_execute(options[currently_selected][1])
 	}
 }
-if(mouse_x > x + 35 + op_border and mouse_x < x + w - op_border)
-{
-	char_menu = true
-	currently_selected = floor((mouse_y - (y + op_border)) / 70)
-	if(currently_selected >= ds_map_size(stall.get_inventory().get_inv()) or currently_selected > 5) currently_selected = -1
-	if(currently_selected < 0) currently_selected = -1
 
-	if(mouse_check_button_pressed(mb_left) and currently_selected != -1)
-	{
-		var s_inv = stall.get_inventory().get_inv()
-		var s_inv_keys = []
-		ds_map_keys_to_array(s_inv, s_inv_keys)
-		var item = s_inv[? s_inv_keys[currently_selected]]
-		
-		var p_inv = party.get_inventory()
-		party.remove_gold(item.get_value())
-		p_inv.add_item(stall.get_inventory().get_item(item))
-	}
-}
 //scroll bar functionality
 scroll_hover_up = false
 scroll_hover_down = false
@@ -40,7 +22,7 @@ if(mouse_x > x + 25 - 8 and mouse_x < x + 25 + 8 and mouse_y > y + h - 35 - 8 an
 if(scroll_hover_down and mouse_check_button_pressed(mb_left))
 {
 	scroll_offset++
-	scroll_offset = min(scroll_offset, max(ds_map_size(stall.get_inventory().get_inv()) - 6, 0))
+	scroll_offset = min(scroll_offset, max(ds_map_size(stall.get_inventory.get_inv()) - 6, 0))
 }
 if(scroll_hover_up and mouse_check_button_pressed(mb_left))
 {
@@ -48,8 +30,4 @@ if(scroll_hover_up and mouse_check_button_pressed(mb_left))
 	scroll_offset = max(scroll_offset, 0)
 }
 
-
-
-
-
-if(mouse_check_button_pressed(mb_right)) manager.close()
+	if(mouse_check_button_pressed(mb_right)) manager.close()

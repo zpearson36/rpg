@@ -166,7 +166,7 @@ function Party() constructor
 		gold += _amount
 	}
 	
-	function take_gold(_amount)
+	function remove_gold(_amount)
 	{
 		if(_amount <= gold)
 		{
