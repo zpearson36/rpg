@@ -3,7 +3,7 @@
 function Skill(_name) constructor
 {
 	name = _name
-	value = 15
+	value = 0
 	
 	function get_name()
 	{

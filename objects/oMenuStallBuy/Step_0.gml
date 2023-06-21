@@ -30,8 +30,8 @@ if(mouse_x > x + 35 + op_border and mouse_x < x + w - op_border)
 		var item = s_inv[? s_inv_keys[currently_selected]]
 		
 		var p_inv = party.get_inventory()
-		party.remove_gold(item.get_value())
-		p_inv.add_item(stall.get_inventory().get_item(item))
+		if(party.remove_gold(item.get_value()))
+		    p_inv.add_item(stall.get_inventory().get_item(item))
 	}
 }
 //scroll bar functionality

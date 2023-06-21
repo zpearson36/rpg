@@ -12,6 +12,11 @@ function Attribute(_name, _value) constructor
 	{
 		return value;
 	}
+	
+	function increase(_val)
+	{
+		value += _val
+	}
 }
 
 function Attributes() constructor
@@ -29,6 +34,7 @@ function Attributes() constructor
 		}
 		else
 		{
+			print("poop")
 			attribute_list[? "str"] = new Attribute("str", attr_array[0]);
 			attribute_list[? "spd"] = new Attribute("spd", attr_array[1]);
 			attribute_list[? "int"] = new Attribute("int", attr_array[2]);
@@ -44,5 +50,15 @@ function Attributes() constructor
 	function get_attributes()
 	{
 		return attribute_list
+	}
+	
+	function increment_attr(_attr)
+	{
+		attribute_list[? _attr].increase(1)
+	}
+	
+	function decrement_attr(_attr)
+	{
+		attribute_list[? _attr].increase(-1)
 	}
 }

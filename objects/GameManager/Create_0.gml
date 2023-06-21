@@ -40,16 +40,7 @@ function get_player_party()
 }
 menu_manager = instance_create_layer(x, y, "Menus", oMenuManager)
 //menu_manager.open()
-pc_party.get_inventory().add_item(CreateBow())
-pc_party.get_inventory().add_item(CreateBow())
-pc_party.get_inventory().add_item(CreateSword())
-pc_party.get_inventory().add_item(CreateSword())
-pc_party.get_inventory().add_item(CreateLightArmour())
-pc_party.get_inventory().add_item(CreateLightArmour())
-pc_party.get_inventory().add_item(CreateMediumArmour())
-pc_party.get_inventory().add_item(CreateMediumArmour())
-pc_party.get_inventory().add_item(CreateHeavyArmour())
-pc_party.get_inventory().add_item(CreateHeavyArmour())
+
 //menu.set_party(pc_party)
 
 function to_combat()

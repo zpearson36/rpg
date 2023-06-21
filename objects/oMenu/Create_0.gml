@@ -22,13 +22,23 @@ options = []
 //menu functions
 function to_characters() {manager.set_menu(oMenuCharacterSelect, [oMenuCharacterStats])}
 function to_inventory()  {}//{manager.set_menu(oMenuCharacters)}
+function to_close()  {manager.close()}
 function to_equipment()  {manager.set_menu(oMenuCharacterSelect, [oMenuCharacterEquipment])}
 
-//first level options
+//first level options - empty string indicates unused option.
 options[0] = ["Characters", to_characters]
 options[1] = ["Inventory", to_inventory]
 options[2] = ["Equipment", to_equipment]
-options[3] = ["Exit", game_end]
+options[3] = ""
+options[4] = ""
+options[5] = ""
+options[6] = ""
+options[7] = ""
+options[8] = ""
+options[9] = ""
+options[10] = ""
+options[11] = ["Exit", to_close]
+options[12] = ["Quit Game", game_end]
 
 options_list = 0
 currently_selected = 0
