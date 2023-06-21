@@ -33,7 +33,7 @@ switch(options_list)
 		for(var i = 0; i < ds_map_size(selected_character.get_attrs().get_attributes()); i++)
 		{
 			var tmp = selected_character.get_attrs().get_attributes()
-			draw_text(x + op_border + 75 + 75 * floor( i / 4 ), y + op_border +  75 + 20*(i % 4) , $"{ds_map_keys_to_array(tmp)[i]}: {selected_character.get_attr(ds_map_keys_to_array(tmp)[i])}")
+			draw_text(x + op_border + 75 + 75 * floor( i / 4 ), y + op_border +  75 + 20*(i % 4) , $"{ds_map_keys_to_array(tmp)[i]}: {selected_character.get_attr(ds_map_keys_to_array(tmp)[i]).get_value()}")
 		}
 		for(var i = 0; i < ds_map_size(selected_character.get_skills().get_skills()); i++)
 		{

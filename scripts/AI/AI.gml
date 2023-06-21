@@ -32,8 +32,8 @@ function generate_action_grid(char, grid)
 					var val = (t + 
 					(hit_chance * 100) / 
 					    max(ceil(grid.get_cell(i, j).get_path_cost() / 
-					    char.get_attr("spd")), .1) + 
-					(1 - (distance_to_targ / COMBATGRIDHEIGHT)))// - ceil(distance_to_tile / char.get_attr("spd")) + (char.get_attack_range_max() - distance_to_targ) + (distance_to_targ - char.get_attack_range_min())
+					    char.get_attr("spd").get_value()), .1) + 
+					(1 - (distance_to_targ / COMBATGRIDHEIGHT)))// - ceil(distance_to_tile / char.get_attr("spd").get_value()) + (char.get_attack_range_max() - distance_to_targ) + (distance_to_targ - char.get_attack_range_min())
 			
 					action_grid[# i, j] = [targ_array[0], val]
 				}
@@ -54,7 +54,7 @@ function generate_target_grid(char, grid)
 			var dist = dist_to_targ(char.get_tile(),
 							    	grid.get_cell(i, j)
 								    )
-			if(grid.get_cell(i, j).get_path_cost() <= char.get_ap() * char.get_attr("spd"))
+			if(grid.get_cell(i, j).get_path_cost() <= char.get_ap() * char.get_attr("spd").get_value())
 			{
 				target_grid[# i, j] = find_target(char, grid, grid.get_cell(i, j))
 			}

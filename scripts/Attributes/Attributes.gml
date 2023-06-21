@@ -44,7 +44,7 @@ function Attributes() constructor
 	
 	function get_attr(_attr)
 	{
-		return attribute_list[? _attr].get_value()
+		return attribute_list[? _attr]
 	}
 	
 	function get_attributes()
@@ -60,5 +60,16 @@ function Attributes() constructor
 	function decrement_attr(_attr)
 	{
 		attribute_list[? _attr].increase(-1)
+	}
+	
+	function total_attr_points()
+	{
+		var total = 0
+		total += get_attr("str").get_value()
+		total += get_attr("spd").get_value()
+		total += get_attr("int").get_value()
+		total += get_attr("end").get_value()
+		
+		return total
 	}
 }

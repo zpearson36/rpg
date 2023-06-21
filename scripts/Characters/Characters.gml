@@ -28,7 +28,7 @@ function Character() constructor
 	armour = script_execute(choose(CreateUnarmoured, CreateLightArmour, CreateMediumArmour, CreateHeavyArmour))
 	equipment = new Equipment()
 	//inventory = new Inventory()
-	max_hp = 30 + 4 * attributes.get_attr("end") + level * (4 + (1.2 * attributes.get_attr("end")))
+	max_hp = 30 + 4 * attributes.get_attr("end").get_value() + level * (4 + (1.2 * attributes.get_attr("end").get_value()))
 	hp = max_hp
 	
 	function equip(_item)
@@ -80,7 +80,7 @@ function Character() constructor
 	
 	function set_max_hp()
 	{
-		max_hp = attributes.get_attr("end")
+		max_hp = attributes.get_attr("end").get_value()
 	}
 	
 	function reset_hp()
@@ -154,7 +154,7 @@ function Party() constructor
 {
 	members = [];
 	inventory = new Inventory()
-	gold = 500
+	gold = 1500
 	
 	function get_gold()
 	{

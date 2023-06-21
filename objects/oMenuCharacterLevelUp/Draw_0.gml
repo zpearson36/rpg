@@ -19,6 +19,16 @@ draw_sprite(character.get_armour().get_sprite(), -1, x + op_border, y + op_borde
 draw_sprite(character.get_weapon().get_sprite(), -1, x + op_border, y + op_border)
 draw_text(x + op_border + 75, y + op_border +  5, $"Level: {character.get_level()}")
 draw_text(x + op_border + 75, y + op_border + 25, $"Health: {character.get_hp()} / {character.get_hp_max()}")
+
+draw_text(x + op_border + 50, y + op_border + 75, $"Cost of Next Attribute: ")
+draw_text(x + op_border + 340, y + op_border + 75, $"Total Attribute Cost: ")
+if(get_attribute_cost(1) > party.get_gold()) draw_set_color(c_red)
+draw_text(x + op_border + 260, y + op_border + 75, $"{get_attribute_cost(1) - get_attribute_cost()}")
+draw_set_color(c_white)
+if(get_attribute_cost(0) > party.get_gold()) draw_set_color(c_red)
+draw_text(x + op_border + 535, y + op_border + 75, $"{get_attribute_cost()}")
+draw_set_color(c_white)
+
 var c_attrs = character.get_attrs().get_attributes()
 var c_attrs_keys = []
 ds_map_keys_to_array(c_attrs, c_attrs_keys)
@@ -28,7 +38,7 @@ for(var i = 0; i < ds_map_size(character.get_attrs().get_attributes()); i++)
 	//draw arrows to increase or decrease value
 	var xx_left = x + op_border + 60 + 75 * floor( i / 4 )
 	var xx_right = x + op_border + 148 + 75 * floor( i / 4 )
-	var yy = y + op_border + 87 + 20*(i % 4)
+	var yy = y + op_border + 112 + 20*(i % 4)
 	var c1 = c_dkgray
 	var c2 = c_dkgray
 	var c3 = c_white
@@ -52,8 +62,8 @@ for(var i = 0; i < ds_map_size(character.get_attrs().get_attributes()); i++)
 	
 	//draw attribute name and value
 	print(c_attrs_keys[i])
-	if(attributes.get_attr(c_attrs_keys[i])) draw_set_color(c_yellow)
-	draw_text(x + op_border + 75 + 75 * floor( i / 4 ), y + op_border +  75 + 20*(i % 4) , $"{c_attrs_keys[i]}: {character.get_attr(c_attrs_keys[i]) + attributes.get_attr(c_attrs_keys[i])}")
+	if(attributes.get_attr(c_attrs_keys[i]).get_value()) draw_set_color(c_yellow)
+	draw_text(x + op_border + 75 + 75 * floor( i / 4 ), y + op_border +  100 + 20*(i % 4) , $"{c_attrs_keys[i]}: {character.get_attr(c_attrs_keys[i]).get_value() + attributes.get_attr(c_attrs_keys[i]).get_value()}")
 	draw_set_color(c_white)
 }
 for(var i = 0; i < ds_map_size(character.get_skills().get_skills()); i++)
