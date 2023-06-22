@@ -27,7 +27,17 @@ function to_close()  {manager.close()}
 //first level options
 options[0] = ["Buy", to_buy]
 options[1] = ["Sell", to_sell]
-options[2] = ["Exit", to_close]
+options[2] = ""
+options[3] = ""
+options[4] = ""
+options[5] = ""
+options[6] = ""
+options[7] = ""
+options[8] = ""
+options[9] = ""
+options[10] = ""
+options[11] = ""
+options[12] = ["Exit", to_close]
 
 options_list = 0
 currently_selected = 0

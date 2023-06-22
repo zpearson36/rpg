@@ -40,7 +40,7 @@ if(mouse_x > x + op_border and mouse_x < x + w - op_border)
 			if(inv[? keys[i]].get_item_type() == item_type)
 				array_push(matching_items, inv[? keys[i]])
 		}
-		manager.set_menu(next_menu, [character, matching_items])
+		manager.set_menu(next_menu, [character, matching_items, item_type])
 	}
 }
 	

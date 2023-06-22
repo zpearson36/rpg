@@ -24,9 +24,8 @@ if(mouse_x > x + op_border and mouse_x < x + w - op_border)
 	if(mouse_check_button_pressed(mb_left) and currently_selected != -1)
 	{
 		character.equip(party.get_inventory().get_item(equipment_list[currently_selected]))
-		
 		manager.set_menu(oMenuCharacterEquipment, [character])
 	}
 }
 	
-	if(mouse_check_button_pressed(mb_right)) back()
+if(mouse_check_button_pressed(mb_right)) back()

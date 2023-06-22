@@ -57,4 +57,4 @@ if(scroll_hover_up and mouse_check_button_pressed(mb_left))
 
 
 print(currently_selected+ scroll_offset)
-if(mouse_check_button_pressed(mb_right)) manager.close()
+if(mouse_check_button_pressed(mb_right)) back()
