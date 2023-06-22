@@ -24,7 +24,7 @@ draw_text(x + op_border + 75, y + op_border + 25, $"Health: {character.get_hp()}
 //draw attribute interface
 draw_text(x + op_border + 50, y + op_border + 75, $"Cost of Next Attribute: ")
 draw_text(x + op_border + 340, y + op_border + 75, $"Total Attribute Cost: ")
-if(get_attribute_cost(1) > party.get_gold()) draw_set_color(c_red)
+if(get_attribute_cost(1) + total_skill_cost> party.get_gold()) draw_set_color(c_red)
 draw_text(x + op_border + 260, y + op_border + 75, $"{get_attribute_cost(1) - get_attribute_cost()}")
 draw_set_color(c_white)
 if(get_attribute_cost(0) > party.get_gold()) draw_set_color(c_red)
@@ -94,7 +94,7 @@ for(var i = 0; i < ds_map_size(character.get_skills().get_skills()); i++)
 	
 	if(mouse_x > xx_left - 8 and mouse_x < xx_right + 8 and mouse_y > yy - 8 and mouse_y < yy + 8)
 	{
-		if(get_cost_of_next_skill(c_skills_keys[i]) + total_skill_cost > party.get_gold()) draw_set_color(c_red)
+		if(get_cost_of_next_skill(c_skills_keys[i]) + total_skill_cost + get_attribute_cost(0)> party.get_gold()) draw_set_color(c_red)
 		draw_text(x + op_border + 260, y + op_border + 225, $"{get_cost_of_next_skill(c_skills_keys[i])}")
 		draw_set_color(c_white)
 	}

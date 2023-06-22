@@ -35,7 +35,8 @@ for(var i = 0; i < ds_map_size(c_attrs); i++)
 		var c2 = c_dkgray
 		var c3 = c_white
 		var c4 = c_white
-		if(mouse_x > xx_left - 8 and mouse_x < xx_left + 8 and mouse_y > yy - 8 and mouse_y < yy + 8)
+		if(mouse_x > xx_left - 8 and mouse_x < xx_left + 8 and mouse_y > yy - 8 and mouse_y < yy + 8
+		   and get_attribute_cost(1) + total_skill_cost <= party.get_gold())
 		{
 			attributes.increment_attr(c_attrs_keys[i])
 		}
@@ -54,6 +55,9 @@ for(var i = 0; i < ds_map_size(skills.get_skills()); i++)
 	{
 		total_skill_cost += get_skill_cost(c_skills_keys[i])
 	}
+}
+for(var i = 0; i < ds_map_size(skills.get_skills()); i++)
+{
 	if(mouse_check_button_pressed(mb_left))
 	{
 		//skill increase/decrease
@@ -64,8 +68,13 @@ for(var i = 0; i < ds_map_size(skills.get_skills()); i++)
 		var c2 = c_dkgray
 		var c3 = c_white
 		var c4 = c_white
-		if(mouse_x > xx_left - 8 and mouse_x < xx_left + 8 and mouse_y > yy - 8 and mouse_y < yy + 8)
-		{
+		
+		if(mouse_x > xx_left - 8 and mouse_x < xx_left + 8 and mouse_y > yy - 8 and mouse_y < yy + 8
+		   and get_cost_of_next_skill(c_skills_keys[i]) + total_skill_cost + get_attribute_cost(0) <= party.get_gold())
+		{print(c_skills_keys[i])
+			print(get_cost_of_next_skill(c_skills_keys[i]))
+			print(total_skill_cost)
+			print(get_attribute_cost(0))
 			skills.get_skill(c_skills_keys[i]).increase_value()
 		}
 		if(mouse_x > xx_right - 8 and mouse_x < xx_right + 8 and mouse_y > yy - 8 and mouse_y < yy + 8)
@@ -75,4 +84,5 @@ for(var i = 0; i < ds_map_size(skills.get_skills()); i++)
 		}
 	}
 }
+
 if(mouse_check_button_pressed(mb_right)) back()
