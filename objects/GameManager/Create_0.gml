@@ -52,3 +52,8 @@ function exit_combat()
 	fight_manager.deactivate()
 	state = GameStates.WORLD
 }
+
+function to_world()
+{
+	state = GameStates.WORLD
+}
