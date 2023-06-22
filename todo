@@ -1,15 +1,18 @@
-combat:
  - terrain
 (DONE) - - Terrain Cost
  - - Terrain Height
 (DONE) - - A* path-finding
+ 
  - Character Customization
+(DONE) - - Menu System
+ - - - Initial Character creation
+(DONE) - - - Equipment Menu
+(DONE) - - Character Progression System
 (DONE) - - Skills
- - - - Base Skills (Str, Int, Dex, End, Spd, Agl)
- - - - - Thought: Available action points are determined by Agl.
-             Each action point left at EoT grants a dodge roll during combat.
+(DONE) - - - Base Skills (Str, Int, Dex, End, Spd, Agl)
 (DONE) - - - Weapon Skills (based on weapon type)
- - - Equipment 
+ 
+ - Equipment 
  - - - Weapons
 (DONE) - - - - Varied types (sword, spear, bow for starters, can expand later)
 (DONE) - - - - Each weapon will have associated Base Skills.
@@ -18,14 +21,8 @@ combat:
 (DONE) - - - Armour
 (DONE) - - - - Armour Rating gives flat damage reduction
 (DONE) - - - - Heavy Armours have higher DR but have negative impact on Spd and Agl
- - Character Creation and Customization
- - - Menu System
- - - - Initial Character creation
-(DONE) - - - Equipment Menu
- - Character Progression System
- - "Over World"
- - - (Place holder) Stalls to interact with
+
+(DONE) - "Over World"
+(DONE) - - (Place holder) Stalls to interact with
 (DONE) - - - Stall to purchase weapons/armour
 (DONE) - - - Stall to initiate combat
-
-
