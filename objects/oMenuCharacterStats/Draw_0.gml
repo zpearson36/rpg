@@ -17,7 +17,7 @@
 		for(var i = 0; i < ds_map_size(character.get_attrs().get_attributes()); i++)
 		{
 			var tmp = character.get_attrs().get_attributes()
-			draw_text(x + op_border + 75 + 75 * floor( i / 4 ), y + op_border +  75 + 20*(i % 4) , $"{ds_map_keys_to_array(tmp)[i]}: {character.get_attr(ds_map_keys_to_array(tmp)[i])}")
+			draw_text(x + op_border + 75 + 75 * floor( i / 4 ), y + op_border +  75 + 20*(i % 4) , $"{ds_map_keys_to_array(tmp)[i]}: {character.get_attr(ds_map_keys_to_array(tmp)[i]).get_value()}")
 		}
 		for(var i = 0; i < ds_map_size(character.get_skills().get_skills()); i++)
 		{

@@ -81,7 +81,7 @@ switch(state)
 						var mx = floor(mouse_x / COMBATCELLSIZE)
 						var my = floor(mouse_y / COMBATCELLSIZE)
 						if(grid.get_cell(mx, my).get_path_cost()
-										   <= units[party][character].get_ap() * units[party][character].get_attr("spd")
+										   <= units[party][character].get_ap() * units[party][character].get_attr("spd").get_value()
 						   and grid.get_cell(mx,my).get_occupant() == noone
 						)
 						{

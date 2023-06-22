@@ -6,16 +6,7 @@ bub.stall = self
 active = false
 
 inventory = new Inventory()
-inventory.add_item(CreateBow())
-inventory.add_item(CreateBow())
-inventory.add_item(CreateSword())
-inventory.add_item(CreateSword())
-inventory.add_item(CreateLightArmour())
-inventory.add_item(CreateLightArmour())
-inventory.add_item(CreateMediumArmour())
-inventory.add_item(CreateMediumArmour())
-inventory.add_item(CreateHeavyArmour())
-inventory.add_item(CreateHeavyArmour())
+
 function activate()
 {
 	active = true
@@ -30,7 +21,7 @@ menu_manager = instance_create_layer(x, y, "Menus", oMenuManager)
 
 function interact(_obj)
 {
-	menu_manager.open(oMenuStall, [self])
+	menu_manager.open(oMenuStallLevelUp, [self])
 }
 
 function get_inventory()

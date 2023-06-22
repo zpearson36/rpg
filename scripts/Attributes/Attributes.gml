@@ -12,6 +12,11 @@ function Attribute(_name, _value) constructor
 	{
 		return value;
 	}
+	
+	function increase(_val)
+	{
+		value += _val
+	}
 }
 
 function Attributes() constructor
@@ -22,10 +27,10 @@ function Attributes() constructor
 	{
 		if(array_length(attr_array) < 4) //temp value of 3 for str, spd, int
 		{
-			attribute_list[? "str"] = new Attribute("str", 3);
-			attribute_list[? "spd"] = new Attribute("spd", 3);
-			attribute_list[? "int"] = new Attribute("int", 3);
-			attribute_list[? "end"] = new Attribute("end", 3);
+			attribute_list[? "str"] = new Attribute("str", 1);
+			attribute_list[? "spd"] = new Attribute("spd", 1);
+			attribute_list[? "int"] = new Attribute("int", 1);
+			attribute_list[? "end"] = new Attribute("end", 1);
 		}
 		else
 		{
@@ -38,11 +43,32 @@ function Attributes() constructor
 	
 	function get_attr(_attr)
 	{
-		return attribute_list[? _attr].get_value()
+		return attribute_list[? _attr]
 	}
 	
 	function get_attributes()
 	{
 		return attribute_list
+	}
+	
+	function increment_attr(_attr)
+	{
+		attribute_list[? _attr].increase(1)
+	}
+	
+	function decrement_attr(_attr)
+	{
+		attribute_list[? _attr].increase(-1)
+	}
+	
+	function total_attr_points()
+	{
+		var total = 0
+		total += get_attr("str").get_value()
+		total += get_attr("spd").get_value()
+		total += get_attr("int").get_value()
+		total += get_attr("end").get_value()
+		
+		return total
 	}
 }

@@ -32,7 +32,7 @@ function chance_to_hit(_atkr, _targ, t = false, _tile = undefined)
 
 function ap_to_move(char, targ_pos)
 {
-	return ceil(dist_to_targ(char.get_tile(), targ_pos) / char.get_attr("spd"))
+	return ceil(dist_to_targ(char.get_tile(), targ_pos) / char.get_attr("spd").get_value())
 }
 
 function dist_to_targ(_curr, _targ)
@@ -42,4 +42,9 @@ function dist_to_targ(_curr, _targ)
 						  _curr.get_x(),
 						  _curr.get_y()
 						  )
+}
+
+function attribute_cost(_attr_points)
+{
+	return 6 * power(_attr_points, 2)//0.02 * power(_attr_points,3) + 3.06 * power(_attr_points,2) + 105.6 * _attr_points - 895
 }

@@ -54,7 +54,7 @@ function prepare_move()
 			var dist = dist_to_targ(get_character().get_tile(),
 									grid.get_cell(i, j)) 
 			if(grid.get_cell(i, j).get_occupant() == get_character()) grid.get_cell(i, j).set_path([], 0)
-			else if(dist <= get_character().get_attr("spd") * get_character().get_ap() and grid.get_cell(i, j).get_occupant() == noone
+			else if(dist <= get_character().get_attr("spd").get_value() * get_character().get_ap() and grid.get_cell(i, j).get_occupant() == noone
 			and (grid.get_cell(i, j).get_terrain().get_type() != TerrainType.IMPASSIBLE))
 			{
 				var tm = ""
@@ -106,7 +106,7 @@ function move_character(_char)
 	if(_char.get_tile() == _char.get_dest())
 	{
 		repeat(ceil(_char.get_dest().get_path_cost()
-					/ _char.get_attr("spd")))
+					/ _char.get_attr("spd").get_value()))
 		{_char.spend_ap();}
 		_char.to_idle()
 	}

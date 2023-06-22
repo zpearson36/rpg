@@ -71,7 +71,7 @@ switch(state)
 					for(j = 0; j < COMBATGRIDHEIGHT; j++)
 					{
 						if     (grid.get_cell(i, j).get_path_cost()
-						            <= units[party][character].get_ap() * units[party][character].get_attr("spd")
+						            <= units[party][character].get_ap() * units[party][character].get_attr("spd").get_value()
 							and grid.get_cell(i, j).get_occupant() == noone)
 						{
 							draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
@@ -79,8 +79,8 @@ switch(state)
 											c_blue, c_blue, c_blue, c_blue, false);
 						}
 						if     (grid.get_cell(i, j).get_path_cost()
-						            <= units[party][character].get_ap() * units[party][character].get_attr("spd")
-							and grid.get_cell(i, j).get_path_cost() > units[party][character].get_attr("spd")
+						            <= units[party][character].get_ap() * units[party][character].get_attr("spd").get_value()
+							and grid.get_cell(i, j).get_path_cost() > units[party][character].get_attr("spd").get_value()
 							and grid.get_cell(i, j).get_occupant() == noone)
 						{
 							draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,

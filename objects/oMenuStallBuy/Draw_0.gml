@@ -49,7 +49,9 @@ for(var i = 0; i + scroll_offset < array_length(inv_keys) and i < 6; i++)
 		}
 	}
 			draw_text(x + op_border + w - 150, y + op_border +   5 + 70*i, $"Buy For:")
+			if(inv[? inv_keys[i + scroll_offset]].get_value() > party.get_gold()) draw_set_color(c_red)
 			draw_text(x + op_border + w - 100, y + op_border +  25 + 70*i, $"{inv[? inv_keys[i + scroll_offset]].get_value()}")
+			draw_set_color(c_white)
 }
 if(currently_selected != -1 and char_menu)
 {
