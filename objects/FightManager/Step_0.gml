@@ -212,6 +212,7 @@ switch(state)
 		grid = undefined
 		gui.deactivateGUI()
 		state = FMStates.INACTIVE
+		GameManager.exit_combat()
 		break;
 	}
 	case FMStates.INACTIVE:

@@ -28,6 +28,7 @@
     {"name":"tilesets","order":4,"path":"folders/Sprites/tilesets.yy",},
     {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
+    {"name":"MainMenu","order":15,"path":"folders/Objects/Menus/MainMenu.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"sInteract","order":23,"path":"sprites/sInteract/sInteract.yy",},
@@ -59,6 +60,7 @@
     {"name":"point_click_rectangle","order":4,"path":"scripts/point_click_rectangle/point_click_rectangle.yy",},
     {"name":"Equipment","order":1,"path":"scripts/Equipment/Equipment.yy",},
     {"name":"point_in_sprite","order":6,"path":"scripts/point_in_sprite/point_in_sprite.yy",},
+    {"name":"MainMenu","order":1,"path":"rooms/MainMenu/MainMenu.yy",},
     {"name":"oPlayer","order":1,"path":"objects/oPlayer/oPlayer.yy",},
     {"name":"slider_rectangle","order":7,"path":"scripts/slider_rectangle/slider_rectangle.yy",},
     {"name":"Skills","order":3,"path":"scripts/Skills/Skills.yy",},

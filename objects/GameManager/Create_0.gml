@@ -39,10 +39,6 @@ function get_player_party()
 	return pc_party
 }
 menu_manager = instance_create_layer(x, y, "Menus", oMenuManager)
-//menu_manager.open()
-
-//menu.set_party(pc_party)
-
 function to_combat()
 {
 	menu_manager.close()
