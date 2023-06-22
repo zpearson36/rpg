@@ -4,6 +4,4 @@ function interact(_obj)
 {
 	if(stall != undefined)
 	    stall.interact(_obj)
-	else
-		print("Fuck You")
 }

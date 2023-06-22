@@ -51,6 +51,12 @@ function Skills() constructor
 			skill_map[? "Sword"].set_value(_skills[1])
 			skill_map[? "Bow"].set_value(_skills[2])
 		}
+		else
+		{
+			skill_map[? "Unarmed"].set_value(0)
+			skill_map[? "Sword"].set_value(0)
+			skill_map[? "Bow"].set_value(0)
+		}
 	}
 	
 	function get_skills()

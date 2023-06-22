@@ -45,13 +45,13 @@ function Equipment() constructor
 		switch(_item.get_item_type())
 		{
 			case ItemTypes.WEAPON:
-			{print("poop")
+			{
 				tmp = weapon
 				weapon = _item
 				break;
 			}
 			case ItemTypes.ARMOUR:
-			{print("fuck")
+			{
 				tmp = armour
 				armour = _item
 				break;
