@@ -27,11 +27,14 @@ if(mouse_x > x + 35 + op_border and mouse_x < x + w - op_border)
 		var s_inv = stall.get_inventory().get_inv()
 		var s_inv_keys = []
 		ds_map_keys_to_array(s_inv, s_inv_keys)
-		var item = s_inv[? s_inv_keys[currently_selected]]
+		var item = s_inv[? s_inv_keys[currently_selected + scroll_offset]]
 		
 		var p_inv = party.get_inventory()
 		if(party.remove_gold(item.get_value()))
 		    p_inv.add_item(stall.get_inventory().get_item(item))
+		
+		scroll_offset--
+		if(scroll_offset < 0) scroll_offset = 0
 	}
 }
 //scroll bar functionality
@@ -53,5 +56,5 @@ if(scroll_hover_up and mouse_check_button_pressed(mb_left))
 
 
 
-
-if(mouse_check_button_pressed(mb_right)) manager.close()
+print(currently_selected+ scroll_offset)
+if(mouse_check_button_pressed(mb_right)) back()

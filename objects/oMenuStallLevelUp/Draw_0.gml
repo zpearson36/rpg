@@ -5,6 +5,7 @@ draw_sprite_ext(sMenuBackground, -1, x + w, y, width / sprite_width, height / sp
 draw_sprite_ext(sMenuBackground, -1, x + w, y + height, widthb / sprite_width, (heightb / sprite_height), 0, c_white, 1)
 for(var i = 0; i < array_length(options); i++)
 {
+	
 	if(options[i] != "")
 	{
 		if(currently_selected == i and side_menu) draw_set_color(c_yellow)

@@ -1,13 +1,5 @@
 /// @description Insert description here
-for(var i = 0; i < array_length(units); i++)
-		{
-			if(array_length(units[i]) == 0)
-			{
-				state = FMStates.COMBATFINISHED
-				alarm[0] = 180
-				break;
-			}
-		}
+
 switch(state)
 {
 	case FMStates.INIT:
@@ -20,6 +12,15 @@ switch(state)
 	}
 	case FMStates.RUNNING:
 	{
+		for(var i = 0; i < array_length(units); i++)
+		{
+			if(array_length(units[i]) == 0)
+			{
+				state = FMStates.COMBATFINISHED
+				alarm[0] = 180
+				break;
+			}
+		}
 		for(i = 0; i < COMBATGRIDWIDTH; i++)
 		{
 			for(j = 0; j < COMBATGRIDHEIGHT; j++)

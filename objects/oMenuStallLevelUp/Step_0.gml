@@ -28,4 +28,4 @@ if(mouse_x > x + op_border and mouse_x < x + w - op_border)
 }
 	
 
-	if(mouse_check_button_pressed(mb_right)) back()
+	if(mouse_check_button_pressed(mb_right)) to_close()

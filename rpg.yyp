@@ -39,6 +39,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"tilesets","folderPath":"folders/Sprites/tilesets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"MainMenu","folderPath":"folders/Objects/Menus/MainMenu.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"blocks-16bit.ttf","CopyToMask":-1,"filePath":"datafiles",},
@@ -86,9 +87,11 @@
     {"id":{"name":"Equipment","path":"scripts/Equipment/Equipment.yy",},},
     {"id":{"name":"point_in_sprite","path":"scripts/point_in_sprite/point_in_sprite.yy",},},
     {"id":{"name":"GameManager","path":"objects/GameManager/GameManager.yy",},},
+    {"id":{"name":"MainMenu","path":"rooms/MainMenu/MainMenu.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
     {"id":{"name":"slider_rectangle","path":"scripts/slider_rectangle/slider_rectangle.yy",},},
     {"id":{"name":"oMenu","path":"objects/oMenu/oMenu.yy",},},
+    {"id":{"name":"oMainMenu","path":"objects/oMainMenu/oMainMenu.yy",},},
     {"id":{"name":"Skills","path":"scripts/Skills/Skills.yy",},},
     {"id":{"name":"oMenuCharacterStats","path":"objects/oMenuCharacterStats/oMenuCharacterStats.yy",},},
     {"id":{"name":"sMenuBackground","path":"sprites/sMenuBackground/sMenuBackground.yy",},},
@@ -135,10 +138,11 @@
     {"id":{"name":"Attributes","path":"scripts/Attributes/Attributes.yy",},},
     {"id":{"name":"oStallLevelup","path":"objects/oStallLevelup/oStallLevelup.yy",},},
     {"id":{"name":"sScrollArrowDown","path":"sprites/sScrollArrowDown/sScrollArrowDown.yy",},},
-    {"id":{"name":"MainMenu","path":"rooms/MainMenu/MainMenu.yy",},},
+    {"id":{"name":"Game","path":"rooms/Game/Game.yy",},},
   ],
   "RoomOrderNodes": [
     {"roomId":{"name":"MainMenu","path":"rooms/MainMenu/MainMenu.yy",},},
+    {"roomId":{"name":"Game","path":"rooms/Game/Game.yy",},},
   ],
   "TextureGroups": [
     {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","autocrop":true,"border":2,"compressFormat":"bz2","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"targets":-1,},

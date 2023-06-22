@@ -71,10 +71,7 @@ for(var i = 0; i < ds_map_size(skills.get_skills()); i++)
 		
 		if(mouse_x > xx_left - 8 and mouse_x < xx_left + 8 and mouse_y > yy - 8 and mouse_y < yy + 8
 		   and get_cost_of_next_skill(c_skills_keys[i]) + total_skill_cost + get_attribute_cost(0) <= party.get_gold())
-		{print(c_skills_keys[i])
-			print(get_cost_of_next_skill(c_skills_keys[i]))
-			print(total_skill_cost)
-			print(get_attribute_cost(0))
+		{
 			skills.get_skill(c_skills_keys[i]).increase_value()
 		}
 		if(mouse_x > xx_right - 8 and mouse_x < xx_right + 8 and mouse_y > yy - 8 and mouse_y < yy + 8)

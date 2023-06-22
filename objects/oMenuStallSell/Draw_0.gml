@@ -10,9 +10,12 @@ draw_sprite_ext(sMenuBackground, -1, x + w, y + height, widthb / sprite_width, (
 
 for(var i = 0; i < array_length(options); i++)
 {
-	if(currently_selected == i and side_menu) draw_set_color(c_yellow)
-	draw_text(x + w + op_border, y + op_border + op_space*i, options[i][0])
-	draw_set_color(c_white)
+	if(options[i] != "")
+	{
+		if(currently_selected == i and side_menu) draw_set_color(c_yellow)
+		draw_text(x + w + op_border, y + op_border + op_space*i, options[i][0])
+		draw_set_color(c_white)
+	}
 }
 var inv = party.get_inventory().get_inv()
 var inv_keys = []
