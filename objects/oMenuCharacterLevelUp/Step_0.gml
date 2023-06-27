@@ -23,7 +23,6 @@ ds_map_keys_to_array(c_skills, c_skills_keys)
 total_skill_cost = 0
 for(var i = 0; i < ds_map_size(c_attrs); i++)
 {
-	
 	if(mouse_check_button_pressed(mb_left))
 	{
 		//attribute increase/decrease
@@ -45,8 +44,6 @@ for(var i = 0; i < ds_map_size(c_attrs); i++)
 			if(attributes.get_attr(c_attrs_keys[i]).get_value() > 0)
 				attributes.decrement_attr(c_attrs_keys[i])
 		}
-		
-
 	}
 }
 for(var i = 0; i < ds_map_size(skills.get_skills()); i++)

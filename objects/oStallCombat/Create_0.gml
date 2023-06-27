@@ -22,7 +22,8 @@ menu_manager = instance_create_layer(x, y, "Menus", oMenuManager)
 
 function interact(_obj)
 {
-	GameManager.to_combat()
+	menu_manager.open(oMenuStallCombat, [self])
+	//GameManager.to_combat()
 }
 
 function get_inventory()

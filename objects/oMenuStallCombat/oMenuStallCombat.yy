@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "oMenuCharacterLevelUp",
+  "name": "oMenuStallCombat",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "LevelUpStall",
-    "path": "folders/Objects/Menus/Stall/LevelUpStall.yy",
+    "name": "CombatStall",
+    "path": "folders/Objects/Menus/Stall/CombatStall.yy",
   },
   "parentObjectId": null,
   "persistent": false,

@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Stall",
-    "path": "folders/Objects/Menus/Stall.yy",
+    "name": "LevelUpStall",
+    "path": "folders/Objects/Menus/Stall/LevelUpStall.yy",
   },
   "parentObjectId": null,
   "persistent": false,
