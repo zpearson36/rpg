@@ -65,27 +65,68 @@ switch(state)
 			}
 			case COMBATCHARACTERSTATES.INITIATE_MOVE:
 			{
+				//draw path to tile indicated by mouse
 				draw_set_alpha(.3)
 				for(i = 0; i < COMBATGRIDWIDTH; i++)
 				{
 					for(j = 0; j < COMBATGRIDHEIGHT; j++)
 					{
-						if     (grid.get_cell(i, j).get_path_cost()
-						            <= units[party][character].get_ap() * units[party][character].get_attr("spd").get_value()
-							and grid.get_cell(i, j).get_occupant() == noone)
+						//draw path
+						if(i == floor(mouse_x / COMBATCELLSIZE) and j == floor(mouse_y / COMBATCELLSIZE))
 						{
-							draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
-								            (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE,
-											c_blue, c_blue, c_blue, c_blue, false);
-						}
-						if     (grid.get_cell(i, j).get_path_cost()
-						            <= units[party][character].get_ap() * units[party][character].get_attr("spd").get_value()
-							and grid.get_cell(i, j).get_path_cost() > units[party][character].get_attr("spd").get_value()
-							and grid.get_cell(i, j).get_occupant() == noone)
-						{
-							draw_rectangle_color(i * COMBATCELLSIZE, j * COMBATCELLSIZE,
-								            (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE,
-											c_green, c_green, c_green, c_green, false);
+							print($"{i}, {j}")
+							var path = grid.get_cell(i, j).get_path()
+							var index = -1
+							for(var k = 0; k < array_length(path); k++)
+							{
+								if     (grid.get_cell(path[k][0], path[k][1]).get_path_cost()
+								            <= units[party][character].get_ap() * units[party][character].get_attr("spd").get_value()
+									and grid.get_cell(path[k][0], path[k][1]).get_occupant() == noone)
+								{
+									draw_rectangle_color(path[k][0] * COMBATCELLSIZE, path[k][1] * COMBATCELLSIZE,
+										            (path[k][0] + 1) * COMBATCELLSIZE, (path[k][1] + 1) * COMBATCELLSIZE,
+													c_blue, c_blue, c_blue, c_blue, false);
+													index = k
+								}
+								if     (grid.get_cell(path[k][0], path[k][1]).get_path_cost()
+								            <= units[party][character].get_ap() * units[party][character].get_attr("spd").get_value()
+									and grid.get_cell(path[k][0], path[k][1]).get_path_cost() > units[party][character].get_attr("spd").get_value()
+									and grid.get_cell(path[k][0], path[k][1]).get_occupant() == noone)
+								{
+									draw_rectangle_color(path[k][0] * COMBATCELLSIZE, path[k][1] * COMBATCELLSIZE,
+										            (path[k][0] + 1) * COMBATCELLSIZE, (path[k][1] + 1) * COMBATCELLSIZE,
+													c_green, c_green, c_green, c_green, false);
+													index = k
+								}
+							}
+							//index == -1 indicates no path object exists
+							if(index == -1) continue
+							//draw attack range of indicated tile
+							for(var m = path[index][0] - units[party][character].get_attack_range_max(); m <= path[index][0] + units[party][character].get_attack_range_max(); m++)
+							{
+								if(m < 0 or m >= COMBATGRIDWIDTH) continue
+								for(var n = path[index][1] - units[party][character].get_attack_range_max(); n <= path[index][1] + units[party][character].get_attack_range_max(); n++)
+								{
+									if(n < 0 or n >= COMBATGRIDWIDTH) continue
+									var dist = dist_to_targ(
+										grid.get_cell(path[index][0], path[index][1]),
+										grid.get_cell(m, n)
+										)
+										print(dist)
+									if (ceil(dist) <= units[party][character].get_attack_range_max()
+									    and ceil(dist) >= units[party][character].get_attack_range_min())
+									{
+										var c_color = c_red
+										var to_draw = true							
+										draw_set_alpha(.3)
+										draw_rectangle_color(m * COMBATCELLSIZE, n * COMBATCELLSIZE,
+													    (m + 1) * COMBATCELLSIZE, (n + 1) * COMBATCELLSIZE,
+														c_color, c_color, c_color, c_color, false);
+											
+										draw_set_alpha(1)
+									}
+								}
+							}
 						}
 					}
 				}
