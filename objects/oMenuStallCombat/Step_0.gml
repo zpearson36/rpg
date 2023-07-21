@@ -39,12 +39,12 @@ if(mouse_x > x + 25 - 8 and mouse_x < x + 25 + 8 and mouse_y > y + h - 35 - 8 an
 + $"::{mouse_x}::{x + 25 - 8}::{x + 25 + 8}"
 + $"::{mouse_y}::{y + h - 35 - 8}::{y + h - 35 + 8}")*/
 
-if(scroll_hover_down and mouse_check_button_pressed(mb_left))
+if((scroll_hover_down and mouse_check_button_pressed(mb_left)) or (char_menu and mouse_wheel_down()))
 {
 	scroll_offset++
 	scroll_offset = min(scroll_offset, max(array_length(scenarios) - number_per_page, 0))
 }
-if(scroll_hover_up and mouse_check_button_pressed(mb_left))
+if((scroll_hover_up and mouse_check_button_pressed(mb_left)) or (char_menu and mouse_wheel_up()))
 {
 	scroll_offset--
 	scroll_offset = max(scroll_offset, 0)

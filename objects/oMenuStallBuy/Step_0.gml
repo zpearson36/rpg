@@ -42,17 +42,16 @@ scroll_hover_up = false
 scroll_hover_down = false
 if(mouse_x > x + 25 - 8 and mouse_x < x + 25 + 8 and mouse_y > y + 35 - 8 and mouse_y < y + 35 + 8) scroll_hover_up = true
 if(mouse_x > x + 25 - 8 and mouse_x < x + 25 + 8 and mouse_y > y + h - 35 - 8 and mouse_y < y + h - 35 + 8) scroll_hover_down = true
-if(scroll_hover_down and mouse_check_button_pressed(mb_left))
+if((scroll_hover_down and mouse_check_button_pressed(mb_left)) or (char_menu and mouse_wheel_down()))
 {
 	scroll_offset++
 	scroll_offset = min(scroll_offset, max(ds_map_size(stall.get_inventory().get_inv()) - 6, 0))
 }
-if(scroll_hover_up and mouse_check_button_pressed(mb_left))
+if((scroll_hover_up and mouse_check_button_pressed(mb_left)) or (char_menu and mouse_wheel_up()))
 {
 	scroll_offset --
 	scroll_offset = max(scroll_offset, 0)
 }
-
 
 
 
