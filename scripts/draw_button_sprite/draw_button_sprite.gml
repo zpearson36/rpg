@@ -37,7 +37,7 @@ function draw_button_sprite() {
 	image_index = img_index;
 
 
-	if(instance_position(mouse_x,mouse_y,id))
+	if(instance_position(mouse_x - camera_get_view_x(view_camera[0]),mouse_y - camera_get_view_y(view_camera[0]),id))
 	{
 	hover = 1;
 	}

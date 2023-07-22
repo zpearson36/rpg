@@ -9,44 +9,6 @@ switch(state)
 	}
 	case FMStates.SETUP:
 	{
-		grid = new CombatGrid()
-		grid.init()
-		var deepwater    = Generate_Map(1, 30)
-		var walls        = Generate_Map(1, 40)
-		var shallowwater = Generate_Map(1, 30)
-		var muddy        = Generate_Map(1, 30)
-		for(var i = 0; i < COMBATGRIDWIDTH; i++)
-		{
-			for(var j = 0; j < COMBATGRIDHEIGHT; j++)
-			{
-				//if(muddy[i][j] == 1)        grid.get_cell(i, j).set_terrain(MuddyTerrain())
-				//if(shallowwater[i][j] == 1) grid.get_cell(i, j).set_terrain(ShallowWaterTerrain())
-				//if(deepwater[i][j] == 1)    grid.get_cell(i, j).set_terrain(DeepWaterTerrain())
-				if(walls[i][j] == 1)
-				{
-					grid.get_cell(i, j).set_terrain(ObstructionTerrain())
-					array_push(obstructions, instance_create_layer(i * COMBATCELLSIZE, j * COMBATCELLSIZE, layer, oWall))
-				}
-			}
-		}
-		for(var k = 0; k < array_length(units); k++)
-		{
-			for(var i = 0; i < array_length(units[k]); i++)
-			{
-				var xx = irandom(COMBATGRIDWIDTH - 1)
-				var yy = irandom(COMBATGRIDHEIGHT - 1)
-				while(grid.get_cell(xx, yy).get_occupant() != noone
-				      or grid.get_cell(xx, yy).get_terrain().get_type() == TerrainType.IMPASSIBLE)
-				{
-					xx = irandom(COMBATGRIDWIDTH - 1)
-					yy = irandom(COMBATGRIDHEIGHT - 1)
-				}
-				grid.get_cell(xx, yy).set_occupant(units[k][i])
-				units[k][i].set_xpos(xx * COMBATCELLSIZE)
-				units[k][i].set_ypos(yy * COMBATCELLSIZE)
-			}
-		}
-		state = FMStates.RUNNING
 		break;
 	}
 	case FMStates.RUNNING:
@@ -202,6 +164,7 @@ switch(state)
 	}
 	case FMStates.COMBATFINISHED:
 	{
+		camera_set_view_pos(view_camera[0], 0, 0)
 		gui.deactivateGUI()
 		break;
 	}

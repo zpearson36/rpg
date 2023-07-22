@@ -82,3 +82,4 @@ if(manager.get_state() == WMStates.RUNNING)
 		}
 	}
 }
+

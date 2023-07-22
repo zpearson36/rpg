@@ -154,7 +154,7 @@ function Party() constructor
 {
 	members = [];
 	inventory = new Inventory()
-	gold = 1500
+	gold = 15000
 	
 	function get_gold()
 	{
