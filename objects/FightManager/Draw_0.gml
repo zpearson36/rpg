@@ -66,7 +66,26 @@ switch(state)
 			case COMBATCHARACTERSTATES.INITIATE_MOVE:
 			{
 				draw_set_alpha(.3)
-				for(i = 0; i < COMBATGRIDWIDTH; i++)
+				var mx = floor(mouse_x / COMBATCELLSIZE)
+				var my = floor(mouse_y / COMBATCELLSIZE)
+				if(mx >= 0 and my >= 0 and mx < COMBATGRIDWIDTH and my < COMBATGRIDHEIGHT)
+				{
+					print($"{mx}, {my}")
+					var tile = grid.get_cell(mx,my)
+					var tile_path = tile.get_path()
+					for(i = 0; i < array_length(tile_path); i++)
+					{
+						var c_color = c_blue
+						if(grid.get_cell(tile_path[i][0],tile_path[i][1]).get_path_cost() > get_character().get_attr("spd").get_value()) c_color = c_yellow
+						if(grid.get_cell(tile_path[i][0],tile_path[i][1]).get_path_cost() > get_character().get_attr("spd").get_value() * get_character().get_ap()) c_color = c_red
+						draw_rectangle_color(tile_path[i][0] * COMBATCELLSIZE, tile_path[i][1] * COMBATCELLSIZE,
+											(tile_path[i][0] + 1) * COMBATCELLSIZE, (tile_path[i][1] + 1) * COMBATCELLSIZE,
+											c_color, c_color, c_color, c_color, false);
+					
+						draw_text(tile_path[i][0] * COMBATCELLSIZE, tile_path[i][1] * COMBATCELLSIZE,grid.get_cell(tile_path[i][0],tile_path[i][1]).get_path_cost())
+					}
+				}
+				/*for(i = 0; i < COMBATGRIDWIDTH; i++)
 				{
 					for(j = 0; j < COMBATGRIDHEIGHT; j++)
 					{
@@ -88,7 +107,7 @@ switch(state)
 											c_green, c_green, c_green, c_green, false);
 						}
 					}
-				}
+				}*/
 				draw_set_alpha(1)
 				break;
 			}
