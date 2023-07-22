@@ -1,6 +1,6 @@
 Expanding combat map
  - start with larger team
- - team starting locations near eachother
+(DONE) - team starting locations near eachother
  - ensure combat map is fully traversable (no 'pockets' isolated from rest of map)
  - add more emphasis on character roles
  - - add support/healer type character
