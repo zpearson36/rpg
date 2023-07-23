@@ -1,8 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 var cam = view_camera[0]
-var cam_width = camera_get_view_width(cam)
-var cam_height = camera_get_view_height(cam)
+var cam_width = 1024//camera_get_view_width(cam)
+var cam_height = 1024//camera_get_view_height(cam)
 var xx = 0//camera_get_view_x(cam)
 var yy = 0//camera_get_view_y(cam)
 switch(state)
