@@ -8,7 +8,6 @@ function gen_id_faction()
 function Faction(_name) constructor
 {
 	factionID = gen_id_faction()
-	show_debug_message(factionID)
 	name = _name
 	members = []
 	

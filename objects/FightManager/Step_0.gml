@@ -42,28 +42,16 @@ switch(state)
 					var my = floor(mouse_y / COMBATCELLSIZE)
 					if(mx >= 0 and my >= 0 and mx < COMBATGRIDWIDTH and my < COMBATGRIDHEIGHT)
 					{
-						print($"{mx}, {my}")
 						var is_path_valid = calculate_path(grid.get_cell(mx,my))
-						//if(is_path_valid)
-						//{
-							var tile_path = grid.get_cell(mx,my).get_path()
-							for(i = 0; i < array_length(tile_path); i++)
-							{
-								calculate_path(grid.get_cell(tile_path[i][0],tile_path[i][1]))
-							}
-						//}
+						var tile_path = grid.get_cell(mx,my).get_path()
+						for(i = 0; i < array_length(tile_path); i++)
+						{
+							calculate_path(grid.get_cell(tile_path[i][0],tile_path[i][1]))
+						}
 						if(mouse_check_button_pressed(mb_left) and is_path_valid)
 						{
-							/*var mx = floor(mouse_x / COMBATCELLSIZE)
-							var my = floor(mouse_y / COMBATCELLSIZE)
-							if(grid.get_cell(mx, my).get_path_cost()
-											   <= units[party][character].get_ap() * units[party][character].get_attr("spd").get_value()
-							   and grid.get_cell(mx,my).get_occupant() == noone
-							)*/
-							//{
-								units[party][character].set_dest(grid.get_cell(mx, my))
-								units[party][character].to_move()
-							//}
+							units[party][character].set_dest(grid.get_cell(mx, my))
+							units[party][character].to_move()
 						}
 					}
 					break; 
@@ -86,8 +74,6 @@ switch(state)
 						var mx = floor(mouse_x / COMBATCELLSIZE)
 						var my = floor(mouse_y / COMBATCELLSIZE)
 						var ch = random(1)
-						show_debug_message(ch)
-						show_debug_message(1 - (chance_to_hit(get_character(), grid.get_cell(mx,my).get_occupant()) / 100))
 						var hit = ch > (1 - (chance_to_hit(get_character(), grid.get_cell(mx,my).get_occupant())  / 100))
 						if(grid.get_cell(mx,my).get_occupant() != noone and not grid.get_cell(mx,my).is_obstructed()
 						   and FactionManager.get_relation(grid.get_cell(mx,my).get_occupant().get_faction(),
@@ -165,6 +151,7 @@ switch(state)
 	case FMStates.COMBATFINISHED:
 	{
 		camera_set_view_pos(view_camera[0], 0, 0)
+		camera_set_view_size(view_camera[0], 1024, 1024)
 		gui.deactivateGUI()
 		break;
 	}

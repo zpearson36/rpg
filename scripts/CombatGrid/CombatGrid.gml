@@ -66,6 +66,24 @@ function CombatCell(_x, _y) constructor
 	path = undefined
 	path_cost = undefined
 	obstructed = false
+	discovered = false
+	observed = false
+	
+	function set_observed()
+	{
+		observed = true
+		discovered = true
+	}
+	
+	function set_unobserved()
+	{
+		observed = false
+	}
+	
+	function is_observed()
+	{
+		return observed
+	}
 	
 	function set_obstructed()
 	{
@@ -80,6 +98,11 @@ function CombatCell(_x, _y) constructor
 	function is_obstructed()
 	{
 		return obstructed
+	}
+	
+	function is_discovered()
+	{
+		return discovered
 	}
 	
 	function set_terrain(_ter)

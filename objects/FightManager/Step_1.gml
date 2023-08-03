@@ -89,24 +89,33 @@ switch(state)
 	}
 	case FMStates.RUNNING:
 	{
+		var break_case = false
 		for(var i = 0; i < array_length(units); i++)
 		{
 			if(array_length(units[i]) == 0)
 			{
+				print("We done fucked up")
 				state = FMStates.COMBATFINISHED
 				alarm[0] = 180
-				break;
+				break_case = true
 			}
 		}
+		if(break_case) break
 		for(i = 0; i < COMBATGRIDWIDTH; i++)
 		{
 			for(j = 0; j < COMBATGRIDHEIGHT; j++)
 			{
-				grid.get_cell(i, j).set_unobstructed()
-				var obstructed = collision_line((units[party][character].get_tile().get_x() + .5) * COMBATCELLSIZE, (units[party][character].get_tile().get_y() + .5) * COMBATCELLSIZE,
+				grid.get_cell(i, j).set_unobserved()
+				for(var k = 0; k < array_length(units); k++)
+				{
+					if(units[k][0].get_faction() != GameManager.player_faction) continue
+					for(var l = 0; l < array_length(units[k]); l++)
+					{
+						var obstructed = collision_line((units[k][l].get_tile().get_x() + .5) * COMBATCELLSIZE, (units[k][l].get_tile().get_y() + .5) * COMBATCELLSIZE,
 						        grid.get_cell(i, j).get_x() * COMBATCELLSIZE, grid.get_cell(i, j).get_y() * COMBATCELLSIZE, oWall, false, false)
-				if(obstructed != noone) grid.get_cell(i, j).set_obstructed()
-				if(grid.get_cell(i, j).get_occupant() != noone and grid.get_cell(i, j).get_occupant().is_dead()) grid.get_cell(i, j).set_occupant(noone)
+						if(obstructed == noone) grid.get_cell(i, j).set_observed()
+					}
+				}
 			}
 		}
 		switch(units[party][character].get_state())

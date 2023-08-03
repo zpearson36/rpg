@@ -31,7 +31,6 @@ if(mouse_x > x + w + op_border and mouse_x < x + w + width - op_border)
 
 	if(mouse_check_button_pressed(mb_left) and currently_selected != -1)
 	{
-		//print(options[options_list][currently_selected][0])
 		script_execute(options[options_list][currently_selected][1])
 	}
 }
@@ -69,6 +68,3 @@ if(mouse_x > x + op_border and mouse_x < x + w - op_border)
 		}
 	}
 }
-
-//show_debug_message(currently_selected)
-print($"char:{currently_selected} equip:{selected_equipment}")
