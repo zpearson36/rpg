@@ -35,9 +35,7 @@ scroll_hover_up = false
 scroll_hover_down = false
 if(mouse_x > x + 25 - 8 and mouse_x < x + 25 + 8 and mouse_y > y + 35 - 8 and mouse_y < y + 35 + 8) scroll_hover_up = true
 if(mouse_x > x + 25 - 8 and mouse_x < x + 25 + 8 and mouse_y > y + h - 35 - 8 and mouse_y < y + h - 35 + 8) scroll_hover_down = true
-/*print($"{scroll_hover_down}::{scroll_hover_up}"
-+ $"::{mouse_x}::{x + 25 - 8}::{x + 25 + 8}"
-+ $"::{mouse_y}::{y + h - 35 - 8}::{y + h - 35 + 8}")*/
+
 
 if((scroll_hover_down and mouse_check_button_pressed(mb_left)) or (char_menu and mouse_wheel_down()))
 {
@@ -49,6 +47,4 @@ if((scroll_hover_up and mouse_check_button_pressed(mb_left)) or (char_menu and m
 	scroll_offset--
 	scroll_offset = max(scroll_offset, 0)
 }
-print(scroll_offset)
-
-	if(mouse_check_button_pressed(mb_right)) manager.close()
+if(mouse_check_button_pressed(mb_right)) manager.close()

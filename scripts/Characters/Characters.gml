@@ -28,7 +28,7 @@ function Character() constructor
 	armour = script_execute(choose(CreateUnarmoured, CreateLightArmour, CreateMediumArmour, CreateHeavyArmour))
 	equipment = new Equipment()
 	//inventory = new Inventory()
-	max_hp = 30 + 4 * attributes.get_attr("end").get_value() + level * (4 + (1.2 * attributes.get_attr("end").get_value()))
+	max_hp = 1//30 + 4 * attributes.get_attr("end").get_value() + level * (4 + (1.2 * attributes.get_attr("end").get_value()))
 	hp = max_hp
 	
 	function equip(_item)

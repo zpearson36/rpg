@@ -28,7 +28,7 @@ function Attributes() constructor
 		if(array_length(attr_array) < 4) //temp value of 3 for str, spd, int
 		{
 			attribute_list[? "str"] = new Attribute("str", 1);
-			attribute_list[? "spd"] = new Attribute("spd", 1);
+			attribute_list[? "spd"] = new Attribute("spd", 5);
 			attribute_list[? "int"] = new Attribute("int", 1);
 			attribute_list[? "end"] = new Attribute("end", 1);
 		}

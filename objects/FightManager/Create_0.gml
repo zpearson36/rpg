@@ -83,9 +83,6 @@ function calculate_path(_tile)
 	else if(_tile.get_occupant() == noone
 	and (_tile.get_terrain().get_type() != TerrainType.IMPASSIBLE))
 	{
-		var tm = ""
-		if(i < 10) tm += " "
-		if(j < 10) tm += " "
 		var path = pathfinding(get_character().get_tile(), _tile, grid)
 
 		var path_cost = grid.get_path_cost(path)

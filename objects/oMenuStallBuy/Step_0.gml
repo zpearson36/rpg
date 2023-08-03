@@ -52,8 +52,4 @@ if((scroll_hover_up and mouse_check_button_pressed(mb_left)) or (char_menu and m
 	scroll_offset --
 	scroll_offset = max(scroll_offset, 0)
 }
-
-
-
-print(currently_selected+ scroll_offset)
 if(mouse_check_button_pressed(mb_right)) back()
