@@ -10,7 +10,6 @@ inventory = new Inventory()
 
 function activate()
 {
-	print("Poo poo fuck pie")
 	active = true
 }
 
@@ -19,12 +18,9 @@ function deactivate()
 	active = false
 }
 
-menu_manager = instance_create_layer(x, y, "Menus", oMenuManager)
-
 function interact(_obj)
 {
-	menu_manager.open(oMenuStallCombat, [self])
-	//GameManager.to_combat()
+	GameManager.get_menu_manager().open(oMenuStallCombat, [self])
 }
 
 function get_inventory()

@@ -40,7 +40,7 @@ options[8] = ""
 options[9] = ""
 options[10] = ""
 options[11] = ""
-options[12] = ["Exit", to_close]
+options[12] = ["Back", back]
 options_list = 0
 currently_selected = 0
 side_menu = false
@@ -51,8 +51,6 @@ function set_manager(_manager)
 {
 	manager = _manager
 }
-
-
 
 function set_args(_args)
 {
