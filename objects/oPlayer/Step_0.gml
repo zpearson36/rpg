@@ -21,6 +21,7 @@ if(manager.get_state() == WMStates.RUNNING)
 				
 				if(interaction)
 				{
+					interaction.display_prompt()
 					if(keyboard_check_pressed(vk_space))
 					{
 						interaction.interact(self)
@@ -62,6 +63,7 @@ if(manager.get_state() == WMStates.RUNNING)
 				
 				if(interaction)
 				{
+					interaction.display_prompt()
 					if(keyboard_check_pressed(vk_space))
 					{
 						interaction.interact(self)

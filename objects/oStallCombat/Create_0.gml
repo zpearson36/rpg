@@ -10,6 +10,7 @@ inventory = new Inventory()
 
 function activate()
 {
+	print("Poo poo fuck pie")
 	active = true
 }
 

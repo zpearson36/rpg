@@ -97,6 +97,7 @@
     {"name":"draw_label","order":5,"path":"scripts/draw_label/draw_label.yy",},
     {"name":"Weapons","order":2,"path":"scripts/Weapons/Weapons.yy",},
     {"name":"sArmourHeavy","order":17,"path":"sprites/sArmourHeavy/sArmourHeavy.yy",},
+    {"name":"fnt_prompt","order":3,"path":"fonts/fnt_prompt/fnt_prompt.yy",},
     {"name":"sTileObstruction","order":14,"path":"sprites/sTileObstruction/sTileObstruction.yy",},
     {"name":"Inventory","order":3,"path":"scripts/Inventory/Inventory.yy",},
     {"name":"Encounters","order":2,"path":"scripts/Encounters/Encounters.yy",},

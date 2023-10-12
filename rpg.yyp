@@ -136,6 +136,7 @@
     {"id":{"name":"oMenuStallCombat","path":"objects/oMenuStallCombat/oMenuStallCombat.yy",},},
     {"id":{"name":"Weapons","path":"scripts/Weapons/Weapons.yy",},},
     {"id":{"name":"sArmourHeavy","path":"sprites/sArmourHeavy/sArmourHeavy.yy",},},
+    {"id":{"name":"fnt_prompt","path":"fonts/fnt_prompt/fnt_prompt.yy",},},
     {"id":{"name":"sTileObstruction","path":"sprites/sTileObstruction/sTileObstruction.yy",},},
     {"id":{"name":"Inventory","path":"scripts/Inventory/Inventory.yy",},},
     {"id":{"name":"click_rectangle","path":"scripts/click_rectangle/click_rectangle.yy",},},

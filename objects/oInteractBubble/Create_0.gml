@@ -5,3 +5,9 @@ function interact(_obj)
 	if(stall != undefined)
 	    stall.interact(_obj)
 }
+
+display = false
+function display_prompt()
+{
+	display = true
+}
