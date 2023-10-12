@@ -136,6 +136,13 @@ switch(state)
 				break;
 			}
 		}
+		if(units[party][character].get_faction() != GameManager.player_faction)
+		{
+			draw_set_color(c_red)
+			draw_set_font(fnt_prompt)
+			draw_set_font(-1)
+			draw_set_color(c_white)
+		}
 		break;
 	}
 	case FMStates.COMBATFINISHED:
