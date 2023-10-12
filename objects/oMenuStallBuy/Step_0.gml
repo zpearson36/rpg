@@ -12,7 +12,7 @@ if(mouse_x > x + w + op_border and mouse_x < x + w + width - op_border)
 
 	if(mouse_check_button_pressed(mb_left) and currently_selected != -1)
 	{
-		script_execute(options[currently_selected][1])
+		if(options[currently_selected] != "") script_execute(options[currently_selected][1])
 	}
 }
 if(mouse_x > x + 35 + op_border and mouse_x < x + w - op_border)
