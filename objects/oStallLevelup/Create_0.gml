@@ -17,11 +17,9 @@ function deactivate()
 	active = false
 }
 
-menu_manager = instance_create_layer(x, y, "Menus", oMenuManager)
-
 function interact(_obj)
 {
-	menu_manager.open(oMenuStallLevelUp, [self])
+	GameManager.get_menu_manager().open(oMenuStallLevelUp, [self])
 }
 
 function get_inventory()

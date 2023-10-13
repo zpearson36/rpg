@@ -71,3 +71,8 @@ function to_world()
 {
 	state = GameStates.WORLD
 }
+
+function get_menu_manager()
+{
+	return menu_manager
+}
