@@ -1,5 +1,5 @@
-var interaction = collision_rectangle(character.get_x(), character.get_y(),
-				                   character.get_x() + 64, character.get_y() + 64,
+var interaction = collision_rectangle(character.get_x() - 32, character.get_y() - 32,
+				                   character.get_x() + 32, character.get_y() + 32,
 								   oInteractBubble, true, false)
 if(manager.get_state() == WMStates.RUNNING)
 {
@@ -31,28 +31,32 @@ if(manager.get_state() == WMStates.RUNNING)
 				{
 					character.set_state(PCStates.MOVING);
 					xSpd = spd;
+					rot = -90
 				}
 				else if(keyboard_check(ord("W")))
 				{
 					character.set_state(PCStates.MOVING);
 					ySpd = -spd;
+					rot = 0
 				}
 				else if(keyboard_check(ord("S")))
 				{
 					character.set_state(PCStates.MOVING);
 					ySpd = spd;
+					rot = 180
 				}
 				else if(keyboard_check(ord("A")))
 				{
 					character.set_state(PCStates.MOVING);
 					xSpd = -spd;
+					rot = 90
 				}
 				break;
 			}
 			case PCStates.MOVING:
 			{
-				var col = collision_rectangle(character.get_x() + xSpd, character.get_y() + ySpd,
-				                              character.get_x() + 64 + xSpd, character.get_y() + 64 + ySpd,
+				var col = collision_rectangle(character.get_x() - 32+ xSpd, character.get_y()  - 32 + ySpd,
+				                              character.get_x() + 32 + xSpd, character.get_y() + 32 + ySpd,
 											  oCollidable, true, false)
 				if(col)
 				{

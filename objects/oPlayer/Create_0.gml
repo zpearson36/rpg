@@ -8,7 +8,7 @@ manager   = undefined;
 spd       = 5;
 xSpd      = 0;
 ySpd      = 0;
-
+rot = 0
 function set_char(_char)
 {
 	character = _char;
