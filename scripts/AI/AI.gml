@@ -78,18 +78,19 @@ function find_target(char, grid, tile)
 			{
 				var dist = dist_to_targ(tile, grid.get_cell(i, j))
 				if(ceil(dist) <= char.get_attack_range_max()
-				   and ceil(dist) >= char.get_attack_range_min())
+				   and ceil(dist) >= char.get_attack_range_min()
+				   and not grid.get_cell(i, j).is_obstructed())
 				{
 					if(targ == noone)
 					{
 						targ       = grid.get_cell(i, j).get_occupant()
-						hit_chance = chance_to_hit(char, grid.get_cell(i, j).get_occupant(), tile)
+						hit_chance = char.get_hit_chance(grid.get_cell(i, j).get_occupant())
 						targ_dist  = dist
 					}
-					else if(chance_to_hit(char, grid.get_cell(i, j).get_occupant()) > chance_to_hit(char, targ))
+					else if(char.get_hit_chance(grid.get_cell(i, j).get_occupant()) > char.get_hit_chance(targ))
 					{
 						targ = grid.get_cell(i, j).get_occupant()
-						hit_chance = chance_to_hit(char, grid.get_cell(i, j).get_occupant(), tile)
+						hit_chance = char.get_hit_chance(grid.get_cell(i, j).get_occupant())
 						targ_dist  = dist
 					}
 					

@@ -117,6 +117,9 @@ switch(state)
 						if(obstructed == noone)
 						{
 							grid.get_cell(i, j).set_observed()
+						}
+						else
+						{
 							if(character != undefined and get_character() == units[k][l]) grid.get_cell(i, j).set_obstructed()
 						}
 					}
