@@ -430,6 +430,12 @@ function CombatCharacter(_char) constructor
 	{
 		return dest;
 	}
+	
+	function get_hit_chance(_targ)
+	{
+		return get_weapon().hit_chance(dist_to_targ(get_tile(), _targ.get_tile()))//sqrt(sqr(get_tile().get_x() - _targ.get_tile().get_x()) +
+				    //get_tile().get_y() - _targ.get_tile().get_x()))
+	}
 }
 
 function WorldCharacter(_char, _x, _y) constructor

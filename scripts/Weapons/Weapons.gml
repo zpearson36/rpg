@@ -32,13 +32,14 @@ function Weapon(_name, _type, _min_range, _max_range, _min_damage, _max_damage, 
 	name = _name
 	type = _type
 	min_range = _min_range
-	max_range = _max_range
+	max_range = 11//_max_range
 	min_damage = _min_damage
 	max_damage = _max_damage
 	item_type = ItemTypes.WEAPON
 	sprite = _sprite
 	id_num = gen_id_weapon()
 	base_value = _value
+	range_function = function(dist){return -.5 * power(dist,3) + 5.91 * power(dist, 2) + dist - 30}
 	
 	function get_value()
 	{
@@ -88,5 +89,10 @@ function Weapon(_name, _type, _min_range, _max_range, _min_damage, _max_damage, 
 	function get_max_damage()
 	{
 		return max_damage
+	}
+	
+	function hit_chance(dist)
+	{
+		return range_function(dist)
 	}
 }
