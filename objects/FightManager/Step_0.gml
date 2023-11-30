@@ -124,7 +124,7 @@ switch(state)
 							}
 						}
 					}
-					
+					//AI change states
 					get_character().set_targ(tile_targ[1])
 					get_character().set_dest(grid.get_cell(tile_targ[0][0],tile_targ[0][1]))
 					if(get_character().get_tile() == get_character().get_dest()) get_character().to_attack()

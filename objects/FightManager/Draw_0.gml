@@ -98,8 +98,8 @@ switch(state)
 						var mx = floor(mouse_x / COMBATCELLSIZE)
 						var my = floor(mouse_y / COMBATCELLSIZE)
 						
-						draw_line(get_character().get_tile().get_x(), get_character().get_tile().get_y(),
-						    grid.get_cell(i, j).get_x(), grid.get_cell(i, j).get_y())
+						/*draw_line(get_character().get_tile().get_x() * COMBATCELLSIZE, get_character().get_tile().get_y() * COMBATCELLSIZE,
+						    grid.get_cell(i, j).get_x() * COMBATCELLSIZE, grid.get_cell(i, j).get_y() * COMBATCELLSIZE)*/
 						if(mx >= 0 and mx < COMBATGRIDWIDTH and my >= 0 and my < COMBATGRIDHEIGHT
 						           and grid.get_cell(mx,my).get_occupant() != noone)
 								draw_text_color(mx * COMBATCELLSIZE, my * COMBATCELLSIZE,

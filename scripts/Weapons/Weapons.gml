@@ -22,12 +22,17 @@ function CreateSword()
 	return new Weapon("Sword", WEAPONTYPE.SWORD, 1, 2, 7, 15, sWeaponSword, 50)
 }
 
-function CreateBow()
+function CreateSpear()
 {
-	return new Weapon("Bow", WEAPONTYPE.SWORD, 3, 4, 7, 15, sWeaponBow, 50)
+	return new Weapon("Spear", WEAPONTYPE.SWORD, 1, 2, 7, 15, sWeaponSword, 50, function(dist){return -20*power(dist - 1.5, 4) + 100})
 }
 
-function Weapon(_name, _type, _min_range, _max_range, _min_damage, _max_damage, _sprite, _value) constructor
+function CreateBow()
+{
+	return new Weapon("Bow", WEAPONTYPE.SWORD, 3, 4, 7, 15, sWeaponBow, 50, function(dist){return -30*power(dist-3, 4) + 100})
+}
+
+function Weapon(_name, _type, _min_range, _max_range, _min_damage, _max_damage, _sprite, _value, _func = function(dist){return -100 * power(dist - 1, 2) + 100}) constructor
 {
 	name = _name
 	type = _type
@@ -39,7 +44,7 @@ function Weapon(_name, _type, _min_range, _max_range, _min_damage, _max_damage, 
 	sprite = _sprite
 	id_num = gen_id_weapon()
 	base_value = _value
-	range_function = function(dist){return -.5 * power(dist,3) + 5.91 * power(dist, 2) + dist - 30}
+	range_function = _func
 	
 	function get_value()
 	{
