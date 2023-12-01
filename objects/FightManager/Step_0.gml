@@ -21,8 +21,8 @@ switch(state)
 			    sqrt(sqr(get_character().get_tile().get_x() - floor(mouse_x / COMBATCELLSIZE)) +
 				    sqr(get_character().get_tile().get_y() - floor(mouse_y / COMBATCELLSIZE)))
 				)*/
-			print(get_character().get_weapon().hit_chance(sqrt(sqr(get_character().get_tile().get_x() - floor(mouse_x / COMBATCELLSIZE)) +
-				    sqr(get_character().get_tile().get_y() - floor(mouse_y / COMBATCELLSIZE)))))
+			/*print(get_character().get_weapon().hit_chance(sqrt(sqr(get_character().get_tile().get_x() - floor(mouse_x / COMBATCELLSIZE)) +
+				    sqr(get_character().get_tile().get_y() - floor(mouse_y / COMBATCELLSIZE)))))*/
 			switch(get_character().get_state())
 			{
 				case COMBATCHARACTERSTATES.IDLE:
@@ -127,6 +127,7 @@ switch(state)
 					//AI change states
 					get_character().set_targ(tile_targ[1])
 					get_character().set_dest(grid.get_cell(tile_targ[0][0],tile_targ[0][1]))
+					print(action_grid)
 					if(get_character().get_tile() == get_character().get_dest()) get_character().to_attack()
 					else get_character().to_move()
 					break;

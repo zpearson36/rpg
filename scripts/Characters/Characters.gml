@@ -20,7 +20,7 @@ function Character() constructor
 	attributes = new Attributes();
 	attributes.init()
 	skills = new Skills();
-	skills.init([irandom_range(15,100), irandom_range(15,100), irandom_range(15,100)])
+	skills.init([irandom_range(15,100), irandom_range(15,100), irandom_range(15,100), irandom_range(15,100)])
 	party = undefined
 	faction = undefined
 	weapon = script_execute((choose(CreateSword, CreateBow)))
@@ -269,7 +269,7 @@ function CombatCharacter(_char) constructor
 	}
 	
 	function get_path_step()
-	{	
+	{
 		return path[pathPos]
 	}
 	function proceed_on_path()
@@ -434,6 +434,12 @@ function CombatCharacter(_char) constructor
 	function get_hit_chance(_targ)
 	{
 		return get_weapon().hit_chance(dist_to_targ(get_tile(), _targ.get_tile()))//sqrt(sqr(get_tile().get_x() - _targ.get_tile().get_x()) +
+				    //get_tile().get_y() - _targ.get_tile().get_x()))
+	}
+	
+	function get_hit_chance_hypothetical(_tile, _targ)
+	{
+		return get_weapon().hit_chance(dist_to_targ(_tile, _targ.get_tile()))//sqrt(sqr(get_tile().get_x() - _targ.get_tile().get_x()) +
 				    //get_tile().get_y() - _targ.get_tile().get_x()))
 	}
 }

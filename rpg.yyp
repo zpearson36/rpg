@@ -72,6 +72,7 @@
     {"id":{"name":"Menus","path":"scripts/Menus/Menus.yy",},},
     {"id":{"name":"WorldManager","path":"objects/WorldManager/WorldManager.yy",},},
     {"id":{"name":"oMenuStallLevelUp","path":"objects/oMenuStallLevelUp/oMenuStallLevelUp.yy",},},
+    {"id":{"name":"sWeaponSpear","path":"sprites/sWeaponSpear/sWeaponSpear.yy",},},
     {"id":{"name":"sBckGrnd","path":"sprites/sBckGrnd/sBckGrnd.yy",},},
     {"id":{"name":"sTileClear","path":"sprites/sTileClear/sTileClear.yy",},},
     {"id":{"name":"draw_button_sprite","path":"scripts/draw_button_sprite/draw_button_sprite.yy",},},
