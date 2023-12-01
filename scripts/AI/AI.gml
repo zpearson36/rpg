@@ -85,13 +85,13 @@ function find_target(char, grid, tile)
 					if(targ == noone)
 					{
 						targ       = grid.get_cell(i, j).get_occupant()
-						hit_chance = char.get_hit_chance(grid.get_cell(i, j).get_occupant())
+						hit_chance = char.get_hit_chance_hypothetical(tile, grid.get_cell(i, j).get_occupant())
 						targ_dist  = dist
 					}
 					else if(char.get_hit_chance_hypothetical(tile, grid.get_cell(i, j).get_occupant()) > char.get_hit_chance_hypothetical(tile, targ))
 					{
 						targ = grid.get_cell(i, j).get_occupant()
-						hit_chance = char.get_hit_chance(grid.get_cell(i, j).get_occupant())
+						hit_chance = char.get_hit_chance_hypothetical(tile, grid.get_cell(i, j).get_occupant())
 						targ_dist  = dist
 					}
 					

@@ -56,6 +56,7 @@ function to_combat(scenario)
 		enemy_party.add_member(new Character())
 		enemy_faction.add_member(enemy_party.get_members()[i])
 		enemy_party.get_members()[i].set_sprite(sTmp10)
+		enemy_party.get_members()[i].equip(CreateBow())
 	}
 	
 	fight_manager.activate(pc_party.get_members(), enemy_party.get_members())
