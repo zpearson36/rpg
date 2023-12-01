@@ -21,6 +21,8 @@ switch(state)
 				draw_set_alpha(.5)
 				if(not grid.get_cell(i, j).is_observed()) draw_rectangle(i * COMBATCELLSIZE, j * COMBATCELLSIZE, (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE, false)
 				draw_set_alpha(1)
+				//draw_set_color(c_blue)
+				//if(grid.get_cell(i, j).is_obstructed()) draw_rectangle(i * COMBATCELLSIZE, j * COMBATCELLSIZE, (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE, false)
 				draw_set_color(c_white)
 
 			}

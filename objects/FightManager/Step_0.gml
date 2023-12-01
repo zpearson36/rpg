@@ -141,7 +141,7 @@ switch(state)
 				{
 					var ch = random(1)
 					print("Attack!")
-					var hit = ch > (1 - (chance_to_hit(get_character(), get_character().get_targ()) / 100))
+					var hit = ch > (1 - (get_character().get_hit_chance(get_character().get_targ()) / 100))
 					if(hit) get_character().get_targ().damage(get_character().get_damage())
 					get_character().empty_ap()
 					get_character().to_idle()
