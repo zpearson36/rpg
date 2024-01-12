@@ -274,6 +274,9 @@ function CombatCharacter(_char) constructor
 	}
 	function proceed_on_path()
 	{
+		print("tile: " + string(get_tile().get_x()) + ", " + string(get_tile().get_y()))
+		print("dest: " + string(get_dest().get_x()) + ", " + string(get_dest().get_y()))
+		print(path)
 		pathPos++
 		if(pathPos >= array_length(path)) return noone
 		return path[pathPos]
@@ -353,6 +356,9 @@ function CombatCharacter(_char) constructor
 	
 	function to_move()
 	{
+		print("====================")
+		print("Moving to MOVE state")
+		print("====================")
 		state = COMBATCHARACTERSTATES.MOVING
 	}
 	
@@ -423,6 +429,7 @@ function CombatCharacter(_char) constructor
 	function set_dest(_dest)
 	{
 		dest = _dest;
+		print("setting dest: " + string(dest.get_x()) + "," + string(dest.get_y()))
 		set_path(dest.get_path())
 	}
 	

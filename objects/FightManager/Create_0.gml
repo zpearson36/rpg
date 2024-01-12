@@ -66,6 +66,8 @@ function prepare_move(is_ai = false)
 
 					var path_cost = grid.get_path_cost(path)
 					grid.get_cell(i, j).set_path(path, path_cost)
+					if(path[array_length(path) - 1][0] != i or path[array_length(path) - 1][1] != j)
+					    print("its fucked, cotton")
 				}
 			}
 		}

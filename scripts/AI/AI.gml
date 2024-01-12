@@ -36,7 +36,7 @@ function generate_action_grid(char, grid)
 					(1 - (distance_to_targ / COMBATGRIDHEIGHT)))// - ceil(distance_to_tile / char.get_attr("spd").get_value()) + (char.get_attack_range_max() - distance_to_targ) + (distance_to_targ - char.get_attack_range_min())
 			
 					action_grid[# i, j] = [targ_array[0], val]
-					if(val > -10000) print("yes")
+					//if(val > -10000) print("yes")
 				}
 		}
 	}

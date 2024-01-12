@@ -115,7 +115,7 @@ switch(state)
 						{
 							var c_color = c_red
 							var to_draw = true
-							if(not grid.get_cell(i, j).is_observed()) print(i)//to_draw = false
+							//if(not grid.get_cell(i, j).is_observed()) print(i)//to_draw = false
 							//print(grid.get_cell(i, j).is_obstructed())
 							if(grid.get_cell(i,j).get_occupant() != noone)
 							{

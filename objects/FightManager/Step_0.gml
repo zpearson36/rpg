@@ -116,8 +116,8 @@ switch(state)
 					{
 						for(var j = 0; j < COMBATGRIDHEIGHT; j++)
 						{
-							action_array[i][j] = action_grid[# i, j][1]
-							if(action_grid[# i, j] != noone)
+							action_array[i][j] = action_grid[# i, j][0]
+							if(action_array[i][j] != noone)
 							{
 								if(tile_targ == undefined) tile_targ = [[i, j], action_grid[# i, j][0]]
 								else if(action_grid[# i, j][1] > action_grid[# tile_targ[0][0], tile_targ[0][1]][1]) tile_targ = [[i, j], action_grid[# i, j][0]]
@@ -127,7 +127,7 @@ switch(state)
 					//AI change states
 					get_character().set_targ(tile_targ[1])
 					get_character().set_dest(grid.get_cell(tile_targ[0][0],tile_targ[0][1]))
-					print(action_grid)
+					//print(action_grid)
 					if(get_character().get_tile() == get_character().get_dest()) get_character().to_attack()
 					else get_character().to_move()
 					break;
