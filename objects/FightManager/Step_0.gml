@@ -15,9 +15,15 @@ switch(state)
 	{
 		
 		//Logic for player control
-		if(units[party][character].get_faction() == GameManager.player_faction)
+		if(get_character().get_faction() == GameManager.player_faction)
 		{
-			switch(units[party][character].get_state())
+			/*print(
+			    sqrt(sqr(get_character().get_tile().get_x() - floor(mouse_x / COMBATCELLSIZE)) +
+				    sqr(get_character().get_tile().get_y() - floor(mouse_y / COMBATCELLSIZE)))
+				)*/
+			/*print(get_character().get_weapon().hit_chance(sqrt(sqr(get_character().get_tile().get_x() - floor(mouse_x / COMBATCELLSIZE)) +
+				    sqr(get_character().get_tile().get_y() - floor(mouse_y / COMBATCELLSIZE)))))*/
+			switch(get_character().get_state())
 			{
 				case COMBATCHARACTERSTATES.IDLE:
 				{
@@ -35,7 +41,7 @@ switch(state)
 					gui.deactivateGUI()
 					if(mouse_check_button_pressed(mb_right))
 					{
-						units[party][character].to_idle()
+						get_character().to_idle()
 						break;
 					}
 					var mx = floor(mouse_x / COMBATCELLSIZE)
@@ -50,8 +56,8 @@ switch(state)
 						}
 						if(mouse_check_button_pressed(mb_left) and is_path_valid)
 						{
-							units[party][character].set_dest(grid.get_cell(mx, my))
-							units[party][character].to_move()
+							get_character().set_dest(grid.get_cell(mx, my))
+							get_character().to_move()
 						}
 					}
 					break; 
@@ -66,7 +72,7 @@ switch(state)
 					gui.deactivateGUI()
 					if(mouse_check_button_pressed(mb_right))
 					{
-						units[party][character].to_idle()
+						get_character().to_idle()
 						break;
 					}
 					if(mouse_check_button_pressed(mb_left))
@@ -74,7 +80,7 @@ switch(state)
 						var mx = floor(mouse_x / COMBATCELLSIZE)
 						var my = floor(mouse_y / COMBATCELLSIZE)
 						var ch = random(1)
-						var hit = ch > (1 - (chance_to_hit(get_character(), grid.get_cell(mx,my).get_occupant())  / 100))
+						var hit = ch > (1 - (get_character().get_hit_chance(grid.get_cell(mx,my).get_occupant()) / 100))
 						if(grid.get_cell(mx,my).get_occupant() != noone and not grid.get_cell(mx,my).is_obstructed()
 						   and FactionManager.get_relation(grid.get_cell(mx,my).get_occupant().get_faction(),
 						                                   get_character().get_faction()) < 0
@@ -97,32 +103,33 @@ switch(state)
 		//logic for AI control
 		else
 		{
-			switch(units[party][character].get_state())
+			switch(get_character().get_state())
 			{
 				case COMBATCHARACTERSTATES.IDLE:
 				{
 					print("TO IDLE")
 					prepare_move(true)
-					var action_grid = generate_action_grid(units[party][character], grid)
+					var action_grid = generate_action_grid(get_character(), grid)
 					var action_array = []
 					var tile_targ = undefined
 					for(var i = 0; i < COMBATGRIDWIDTH; i++)
 					{
 						for(var j = 0; j < COMBATGRIDHEIGHT; j++)
 						{
-							action_array[i][j] = action_grid[# i, j][1]
-							if(action_grid[# i, j] != noone)
+							action_array[i][j] = action_grid[# i, j][0]
+							if(action_array[i][j] != noone)
 							{
 								if(tile_targ == undefined) tile_targ = [[i, j], action_grid[# i, j][0]]
 								else if(action_grid[# i, j][1] > action_grid[# tile_targ[0][0], tile_targ[0][1]][1]) tile_targ = [[i, j], action_grid[# i, j][0]]
 							}
 						}
 					}
-					
-					units[party][character].set_targ(tile_targ[1])
-					units[party][character].set_dest(grid.get_cell(tile_targ[0][0],tile_targ[0][1]))
-					if(units[party][character].get_tile() == units[party][character].get_dest()) units[party][character].to_attack()
-					else units[party][character].to_move()
+					//AI change states
+					get_character().set_targ(tile_targ[1])
+					get_character().set_dest(grid.get_cell(tile_targ[0][0],tile_targ[0][1]))
+					//print(action_grid)
+					if(get_character().get_tile() == get_character().get_dest()) get_character().to_attack()
+					else get_character().to_move()
 					break;
 				}
 				case COMBATCHARACTERSTATES.MOVING:
@@ -134,10 +141,10 @@ switch(state)
 				{
 					var ch = random(1)
 					print("Attack!")
-					var hit = ch > (1 - (chance_to_hit(units[party][character], units[party][character].get_targ()) / 100))
-					if(hit) units[party][character].get_targ().damage(get_character().get_damage())
-					units[party][character].empty_ap()
-					units[party][character].to_idle()
+					var hit = ch > (1 - (chance_to_hit(get_character(), get_character().get_targ()) / 100))
+					if(hit) get_character().get_targ().damage(get_character().get_damage())
+					get_character().empty_ap()
+					get_character().to_idle()
 					break;
 				}
 				case COMBATCHARACTERSTATES.DEAD:

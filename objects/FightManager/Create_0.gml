@@ -50,35 +50,35 @@ function prepare_move(is_ai = false)
 	{
 		for(var i = 0; i < COMBATGRIDWIDTH; i++)
 		{
-			for(var j = 0; j < COMBATGRIDWIDTH; j++)
+			for(var j = 0; j < COMBATGRIDHEIGHT; j++)
 			{
 				grid.get_cell(i, j).set_path(undefined, undefined)
 				var dist = dist_to_targ(get_character().get_tile(),
 										grid.get_cell(i, j)) 
 				if(grid.get_cell(i, j).get_occupant() == get_character()) grid.get_cell(i, j).set_path([], 0)
-				else if(dist <= get_character().get_attr("spd").get_value() * get_character().get_ap() and grid.get_cell(i, j).get_occupant() == noone
+				else if(dist <= get_character().get_attr("spd").get_value() * get_character().get_ap()
+				and (grid.get_cell(i, j).get_occupant() == noone or grid.get_cell(i, j).get_occupant().is_dead())
 				and (grid.get_cell(i, j).get_terrain().get_type() != TerrainType.IMPASSIBLE))
 				{
-					var tm = ""
-					if(i < 10) tm += " "
-					if(j < 10) tm += " "
 					var path = pathfinding(get_character().get_tile(), grid.get_cell(i, j), grid)
-
-					var path_cost = grid.get_path_cost(path)
-					grid.get_cell(i, j).set_path(path, path_cost)
+					if(path != undefined)
+					{
+						var path_cost = grid.get_path_cost(path)
+						//checks path cost to ensure full path is traversable with given action points
+						if(path_cost <= get_character().get_attr("spd").get_value() * get_character().get_ap())
+						    grid.get_cell(i, j).set_path(path, path_cost)
+					}
 				}
 			}
 		}
 	}
-	get_character().to_init_move()
+	get_character().to_init_move() //Line only affects player characters. AI controlled characters ignore this
 }
 
 function calculate_path(_tile)
 {
 	var valid_path = false
 	_tile.set_path(undefined, undefined)
-	var dist = dist_to_targ(get_character().get_tile(),
-							_tile) 
 	if(_tile.get_occupant() == get_character()) _tile.set_path([], 0)
 	else if(_tile.get_occupant() == noone
 	and (_tile.get_terrain().get_type() != TerrainType.IMPASSIBLE))

@@ -36,6 +36,7 @@ function generate_action_grid(char, grid)
 					(1 - (distance_to_targ / COMBATGRIDHEIGHT)))// - ceil(distance_to_tile / char.get_attr("spd").get_value()) + (char.get_attack_range_max() - distance_to_targ) + (distance_to_targ - char.get_attack_range_min())
 			
 					action_grid[# i, j] = [targ_array[0], val]
+					//if(val > -10000) print("yes")
 				}
 		}
 	}
@@ -78,18 +79,19 @@ function find_target(char, grid, tile)
 			{
 				var dist = dist_to_targ(tile, grid.get_cell(i, j))
 				if(ceil(dist) <= char.get_attack_range_max()
-				   and ceil(dist) >= char.get_attack_range_min())
+				   and ceil(dist) >= char.get_attack_range_min()
+				   and not grid.get_cell(i, j).is_obstructed())
 				{
 					if(targ == noone)
 					{
 						targ       = grid.get_cell(i, j).get_occupant()
-						hit_chance = chance_to_hit(char, grid.get_cell(i, j).get_occupant(), tile)
+						hit_chance = char.get_hit_chance(grid.get_cell(i, j).get_occupant())
 						targ_dist  = dist
 					}
-					else if(chance_to_hit(char, grid.get_cell(i, j).get_occupant()) > chance_to_hit(char, targ))
+					else if(char.get_hit_chance_hypothetical(tile, grid.get_cell(i, j).get_occupant()) > char.get_hit_chance_hypothetical(tile, targ))
 					{
 						targ = grid.get_cell(i, j).get_occupant()
-						hit_chance = chance_to_hit(char, grid.get_cell(i, j).get_occupant(), tile)
+						hit_chance = char.get_hit_chance(grid.get_cell(i, j).get_occupant())
 						targ_dist  = dist
 					}
 					

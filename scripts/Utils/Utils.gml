@@ -27,6 +27,11 @@ function chance_to_hit(_atkr, _targ, t = false, _tile = undefined)
 	if(ceil(dist) >= _atkr.get_attack_range_min() and ceil(dist) <= _atkr.get_attack_range_max() and not _targ.get_tile().is_obstructed())
 	    hit_chance = _atkr.get_skills().get_skill(_atkr.get_weapon().get_name()).get_value()
 	
+	var obstruction = collision_line((_atkr.get_tile().get_x() + .5) * COMBATCELLSIZE, (_atkr.get_tile().get_y() + .5) * COMBATCELLSIZE,
+		_targ.get_tile().get_x() * COMBATCELLSIZE, _targ.get_tile().get_y() * COMBATCELLSIZE, oWall, false, false)
+	
+	if(obstruction != noone) hit_chance -= obstruction.get_cover_value() * 100
+	
 	return hit_chance
 }
 

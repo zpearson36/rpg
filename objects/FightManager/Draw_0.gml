@@ -58,7 +58,7 @@ switch(state)
 			}
 		}
 		
-		switch(units[party][character].get_state())
+		switch(get_character().get_state())
 		{
 			case COMBATCHARACTERSTATES.IDLE:
 			{
@@ -98,27 +98,29 @@ switch(state)
 						var mx = floor(mouse_x / COMBATCELLSIZE)
 						var my = floor(mouse_y / COMBATCELLSIZE)
 						
-									   draw_line(units[party][character].get_tile().get_x(), units[party][character].get_tile().get_y(),
-						               grid.get_cell(i, j).get_x(), grid.get_cell(i, j).get_y())
+						/*draw_line(get_character().get_tile().get_x() * COMBATCELLSIZE, get_character().get_tile().get_y() * COMBATCELLSIZE,
+						    grid.get_cell(i, j).get_x() * COMBATCELLSIZE, grid.get_cell(i, j).get_y() * COMBATCELLSIZE)*/
 						if(mx >= 0 and mx < COMBATGRIDWIDTH and my >= 0 and my < COMBATGRIDHEIGHT
 						           and grid.get_cell(mx,my).get_occupant() != noone)
 								draw_text_color(mx * COMBATCELLSIZE, my * COMBATCELLSIZE,
-								string(chance_to_hit(units[party][character], grid.get_cell(mx,my).get_occupant(), true)) + "%",
+								string(get_character().get_hit_chance(grid.get_cell(mx,my).get_occupant())) + "%",
 								c_black, c_black, c_black, c_black, 1)
 						var dist = dist_to_targ(
-								            units[party][character].get_tile(),
+								            get_character().get_tile(),
 											grid.get_cell(i, j)
 											)
-						if (ceil(dist) <= units[party][character].get_attack_range_max()
-						and ceil(dist) >= units[party][character].get_attack_range_min()
-						and not grid.get_cell(i, j).is_obstructed())
+						if(ceil(dist) <= get_character().get_attack_range_max()
+						    and get_character().get_weapon().hit_chance(dist) > 0
+						    and not grid.get_cell(i, j).is_obstructed())
 						{
 							var c_color = c_red
 							var to_draw = true
+							//if(not grid.get_cell(i, j).is_observed()) print(i)//to_draw = false
+							//print(grid.get_cell(i, j).is_obstructed())
 							if(grid.get_cell(i,j).get_occupant() != noone)
 							{
 								var fac1 = grid.get_cell(i,j).get_occupant().get_faction()
-								var fac2 = units[party][character].get_faction()
+								var fac2 = get_character().get_faction()
 								
 								if(FactionManager.get_relation(fac1, fac2) < 0) c_color = c_lime
 								else to_draw = false
@@ -136,7 +138,7 @@ switch(state)
 				break;
 			}
 		}
-		if(units[party][character].get_faction() != GameManager.player_faction)
+		if(get_character().get_faction() != GameManager.player_faction)
 		{
 			draw_set_color(c_red)
 			draw_set_font(fnt_prompt)

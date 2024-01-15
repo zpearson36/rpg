@@ -190,4 +190,30 @@ function CombatGrid() constructor
 		
 		return cost
 	}
+	
+	function grid_to_string()
+	{
+		str = "["
+		for(i = 0; i < COMBATGRIDHEIGHT; i++)
+		{
+			str += "["
+			for(j = 0; j < COMBATGRIDWIDTH; j++)
+			{
+				var tmp = get_cell(j, i).get_path_cost()
+				if(tmp == undefined)
+				    tmp = "#"
+				else if(tmp == 10)
+				    tmp = "X"
+				else
+				    tmp = string(tmp)
+				str += tmp
+				if(j < COMBATGRIDWIDTH - 1)
+				    str += ", "
+			}
+		    str += "]\n"
+		}
+		str += "]"
+		
+	    return str
+	}
 }

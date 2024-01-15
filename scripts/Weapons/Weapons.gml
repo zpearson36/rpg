@@ -22,23 +22,29 @@ function CreateSword()
 	return new Weapon("Sword", WEAPONTYPE.SWORD, 1, 2, 7, 15, sWeaponSword, 50)
 }
 
-function CreateBow()
+function CreateSpear()
 {
-	return new Weapon("Bow", WEAPONTYPE.SWORD, 3, 4, 7, 15, sWeaponBow, 50)
+	return new Weapon("Spear", WEAPONTYPE.SWORD, 1, 2, 7, 15, sWeaponSpear, 50, function(dist){return -20*power(dist - 1.5, 4) + 100})
 }
 
-function Weapon(_name, _type, _min_range, _max_range, _min_damage, _max_damage, _sprite, _value) constructor
+function CreateBow()
+{
+	return new Weapon("Bow", WEAPONTYPE.SWORD, 3, 4, 7, 15, sWeaponBow, 50, function(dist){return -30*power(dist-3, 4) + 100})
+}
+
+function Weapon(_name, _type, _min_range, _max_range, _min_damage, _max_damage, _sprite, _value, _func = function(dist){return -100 * power(dist - 1, 2) + 100}) constructor
 {
 	name = _name
 	type = _type
 	min_range = _min_range
-	max_range = _max_range
+	max_range = 11//_max_range
 	min_damage = _min_damage
 	max_damage = _max_damage
 	item_type = ItemTypes.WEAPON
 	sprite = _sprite
 	id_num = gen_id_weapon()
 	base_value = _value
+	range_function = _func
 	
 	function get_value()
 	{
@@ -88,5 +94,10 @@ function Weapon(_name, _type, _min_range, _max_range, _min_damage, _max_damage, 
 	function get_max_damage()
 	{
 		return max_damage
+	}
+	
+	function hit_chance(dist)
+	{
+		return range_function(dist)
 	}
 }

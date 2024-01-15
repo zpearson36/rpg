@@ -47,6 +47,7 @@
     {"name":"spr_checkbox","order":6,"path":"sprites/spr_checkbox/spr_checkbox.yy",},
     {"name":"Menus","order":3,"path":"scripts/Menus/Menus.yy",},
     {"name":"oMenuStallLevelUp","order":1,"path":"objects/oMenuStallLevelUp/oMenuStallLevelUp.yy",},
+    {"name":"sWeaponSpear","order":27,"path":"sprites/sWeaponSpear/sWeaponSpear.yy",},
     {"name":"sBckGrnd","order":1,"path":"sprites/sBckGrnd/sBckGrnd.yy",},
     {"name":"sTileClear","order":10,"path":"sprites/sTileClear/sTileClear.yy",},
     {"name":"draw_button_sprite","order":4,"path":"scripts/draw_button_sprite/draw_button_sprite.yy",},
