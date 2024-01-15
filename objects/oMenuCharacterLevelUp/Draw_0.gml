@@ -17,8 +17,12 @@ for(var i = 0; i < array_length(options); i++)
 draw_sprite(character.get_sprite(), -1, x + op_border, y + op_border)
 draw_sprite(character.get_armour().get_sprite(), -1, x + op_border, y + op_border)
 draw_sprite(character.get_weapon().get_sprite(), -1, x + op_border, y + op_border)
-draw_text(x + op_border + 75, y + op_border +  5, $"Level: {character.get_level()}")
-draw_text(x + op_border + 75, y + op_border + 25, $"Health: {character.get_hp()} / {character.get_hp_max()}")
+if(attributes.total_attr_points()) draw_set_color(c_yellow)
+draw_text(x + op_border + 75, y + op_border +  5, $"Level: {character.get_level() + attributes.total_attr_points()}")
+draw_set_color(c_white)
+if(attributes.get_attr("end").get_value()) draw_set_color(c_yellow)
+draw_text(x + op_border + 75, y + op_border + 25, $"Health: {character.get_hp()} / {character.get_hypothetical_hp_max(attributes.get_attr("end").get_value(), attributes.total_attr_points())}")
+draw_set_color(c_white)
 
 
 //draw attribute interface

@@ -29,6 +29,7 @@ function levelup()
 		character.get_attrs().get_attr("end").increase(attributes.get_attr("end").get_value())
 		character.get_attrs().get_attr("spd").increase(attributes.get_attr("spd").get_value())
 		character.get_attrs().get_attr("int").increase(attributes.get_attr("int").get_value())
+		character.set_level(character.get_level() + attributes.total_attr_points())
 		attributes.init([0,0,0,0])
 		var c_skills = character.get_skills()
 		var c_skills_keys = []
@@ -39,6 +40,7 @@ function levelup()
 			var n_skill = skills.get_skill(c_skills_keys[i])
 			c_skill.set_value(c_skill.get_value() + n_skill.get_value())
 		}
+		character.update_stats()
 		skills.init()
 	}
 }
