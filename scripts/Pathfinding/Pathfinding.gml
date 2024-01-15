@@ -74,28 +74,41 @@ function pathfinding(_obj1, _objDest, grid){
 		for(var i = 0; i < array_length(children); i++)
 		{
 			if(check_is_in_array(closedList, children[i]) >= 0) continue
-			children[i].set_g(currentNode.get_g() + grid.get_cell(children[i].xpos, children[i].ypos).get_terrain().get_cost())//point_distance(children[i].xpos, children[i].ypos, currentNode.xpos, currentNode.ypos))
+			// g reflects the movement cost of the tiles in the path up to node children[i]
+			children[i].set_g(
+			    currentNode.get_g()
+				+ grid.get_cell(children[i].xpos, children[i].ypos).get_terrain().get_cost()
+				)
+			// h contains the distance of node children[i] to the destination node
 			children[i].set_h(point_distance(children[i].xpos, children[i].ypos, dest.xpos, dest.ypos))
+			// f combines the two
 			children[i].set_f(children[i].get_g() + children[i].get_h())
+			// checks to see if node children[i] has already been included in a potential path
+			// if so, whichever instance has the smaller cost is kept
 			var tmpind = check_is_in_array(openList, children[i])
 			if(tmpind >= 0 and children[i].get_g() > openList[tmpind].get_g()) continue
 			if(tmpind >= 0) array_delete(openList, tmpind, 1)
 			array_push(openList, children[i])
 		}
 	}
-	var path = []
-	var current = currentNode
-	while(current.get_parent() != noone)
+	if(done)
 	{
-		array_push(path, [current.xpos, current.ypos])
-		current = current.get_parent()
+		var path = []
+		var current = currentNode
+		while(current.get_parent() != noone)
+		{
+			array_push(path, [current.xpos, current.ypos])
+			current = current.get_parent()
+		}
+		var tmp = []
+		for(var i = array_length(path) - 1; i >= 0; i--)
+		{
+			tmp[array_length(path) - 1 - i] = path[i]
+		}
+		path = tmp
 	}
-	var tmp = []
-	for(var i = array_length(path) - 1; i >= 0; i--)
-	{
-		tmp[array_length(path) - 1 - i] = path[i]
-	}
-	path = tmp
+	else
+	    path = undefined
 	return path
 }
 

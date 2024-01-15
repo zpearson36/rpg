@@ -94,7 +94,6 @@ switch(state)
 		{
 			if(array_length(units[i]) == 0)
 			{
-				print("We done fucked up")
 				state = FMStates.COMBATFINISHED
 				alarm[0] = 180
 				break_case = true
