@@ -183,6 +183,9 @@ switch(state)
 		character = undefined
 		grid = undefined
 		gui.deactivateGUI()
+		if(player_wins)
+		    GameManager.get_player_party().add_gold(reward)
+        player_wins = false
 		state = FMStates.INACTIVE
 		break;
 	}

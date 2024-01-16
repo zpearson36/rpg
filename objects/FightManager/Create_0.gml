@@ -14,6 +14,8 @@ party = undefined
 grid = undefined
 units = []
 obstructions = []
+reward = 0
+player_wins = false
 function get_state()
 {
 	return state;
@@ -22,15 +24,16 @@ function activate()
 {
 	if(state == FMStates.INACTIVE)
 	{
-		for(var k = 0; k < argument_count; k++)
+		for(var k = 1; k < argument_count; k++)
 		{
 			for(var i = 0; i < array_length(argument[k]); i++)
 			{
-				units[k][i] = new CombatCharacter(argument[k][i])
+				units[k-1][i] = new CombatCharacter(argument[k][i])
 			}
 		}
 		party = 0
 		character = 0
+		reward = calculate_reward(argument[0])
 		state = FMStates.INIT
 	}
 }

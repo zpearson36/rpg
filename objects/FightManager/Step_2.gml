@@ -13,6 +13,7 @@ switch(state)
 		var break_case = false
 		for(var k = 0; k < array_length(units); k++)
 		{
+			var is_pc_party = units[k][0].get_faction() == GameManager.get_player_faction()
 			for(var l = 0; l < array_length(units[k]); l++)
 			{
 				if(units[k][l].get_state() == COMBATCHARACTERSTATES.DEAD)
@@ -21,6 +22,7 @@ switch(state)
 			if(array_length(units[k]) <= 0)
 			{
 				break_case = true
+				if(not is_pc_party) player_wins = true
 				break
 			}
 		}

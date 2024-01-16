@@ -24,11 +24,11 @@ stall = undefined
 scroll_offset = 0
 number_per_page = 4
 scenarios = [
-new Encounter(1),
-new Encounter(2),
-new Encounter(3),
-new Encounter(4),
-new Encounter(5)
+new Encounter([1, 0, 0, 0, 0]),
+new Encounter([2, 1, 0, 0, 0]),
+new Encounter([3, 0, 1, 0, 0]),
+new Encounter([4, 0, 0, 1, 0]),
+new Encounter([5, 0, 0, 0, 1])
 ]
 scroll_hover_up = false
 scroll_hover_down = false
