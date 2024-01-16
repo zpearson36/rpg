@@ -25,7 +25,8 @@ for(var i = 0; i < array_length(options); i++)
 for(var i = 0; i + scroll_offset < array_length(scenarios) and i < number_per_page; i++)
 {
 	// Draw Character and Equipment
-	draw_text(x + op_border + 75, y + op_border + sc_space * min(1, i) + sc_height*i, $"Enemy Number: {scenarios[i + scroll_offset].get_enemy_count()}")
+	draw_text(x + op_border + 75, y + op_border + sc_space * min(1, i) + sc_height*i, $"Encounter Level: {scenarios[i + scroll_offset].get_encounter_level()}")
+	draw_text(x + op_border + 275, y + op_border + sc_space * min(1, i) + sc_height*i, $"Reward: {calculate_reward(scenarios[i + scroll_offset].get_encounter_level())}")
 	//draw_text(x + op_border + 75, y + op_border + 25 + 125*i, $"Level: {party.get_members()[i].get_hp()} / {party.get_members()[i].get_hp_max()}")
 	if(currently_selected == i and  char_menu) draw_rectangle(x + op_border + 16, y + op_border + sc_space * min(1, i) + sc_height*i, x + w - op_border, y + op_border + sc_height*(i + 1), true)
 	else{

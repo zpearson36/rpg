@@ -72,3 +72,8 @@ function Attributes() constructor
 		return total
 	}
 }
+
+function calculate_max_hp(_end, _level)
+	{
+		return 30 + 4 * _end + _level * (4 + (1.2 * _end))
+	}

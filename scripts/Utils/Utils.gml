@@ -53,3 +53,8 @@ function attribute_cost(_attr_points)
 {
 	return 6 * power(_attr_points, 2)//0.02 * power(_attr_points,3) + 3.06 * power(_attr_points,2) + 105.6 * _attr_points - 895
 }
+
+function calculate_reward(encounter_level)
+{
+	return 100 * encounter_level
+}

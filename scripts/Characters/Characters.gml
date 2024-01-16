@@ -28,8 +28,10 @@ function Character() constructor
 	armour = script_execute(choose(CreateUnarmoured, CreateLightArmour, CreateMediumArmour, CreateHeavyArmour))
 	equipment = new Equipment()
 	//inventory = new Inventory()
-	max_hp = 1//30 + 4 * attributes.get_attr("end").get_value() + level * (4 + (1.2 * attributes.get_attr("end").get_value()))
+	max_hp = calculate_max_hp(attributes.get_attr("end").get_value(), level)
 	hp = max_hp
+	
+
 	
 	function equip(_item)
 	{
@@ -68,6 +70,7 @@ function Character() constructor
 	{
 		return equipment.get_armour()
 	}
+	
 	function get_hp()
 	{
 		return hp
@@ -78,9 +81,17 @@ function Character() constructor
 		return max_hp
 	}
 	
+	
+	
+	function get_hypothetical_hp_max(_end, _level)
+	{
+		return calculate_max_hp(attributes.get_attr("end").get_value() + _end, level + _level)
+	}
+	
 	function set_max_hp()
 	{
-		max_hp = attributes.get_attr("end").get_value()
+		max_hp = calculate_max_hp(attributes.get_attr("end").get_value(), level)
+		reset_hp()
 	}
 	
 	function reset_hp()
@@ -91,6 +102,11 @@ function Character() constructor
 	function modify_hp(_mod)
 	{
 		hp += _mod
+	}
+	
+	function update_stats()
+	{
+		set_max_hp()
 	}
 	
 	function get_weapon()

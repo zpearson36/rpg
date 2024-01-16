@@ -51,14 +51,17 @@ function to_combat(scenario)
 	world_manager.deactivate()
 	state = GameStates.COMBAT
 	var enemy_party = new Party()
-	for(var i = 0; i < scenario.get_enemy_count(); i++)
+	for(var i = 0; i < array_length(scenario.get_enemy_count()); i++)
 	{
-		enemy_party.add_member(new Character())
-		enemy_faction.add_member(enemy_party.get_members()[i])
-		enemy_party.get_members()[i].set_sprite(sTmp10)
+		for(var j = 0; j < scenario.get_enemy_count()[i]; j++)
+		{
+			enemy_party.add_member(new Character())
+			enemy_faction.add_member(enemy_party.get_members()[i+j])
+			enemy_party.get_members()[i+j].set_sprite(sTmp10)
+		}
 	}
 	
-	fight_manager.activate(pc_party.get_members(), enemy_party.get_members())
+	fight_manager.activate(scenario.get_encounter_level(), pc_party.get_members(), enemy_party.get_members())
 }
 
 function exit_combat()
