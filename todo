@@ -1,39 +1,44 @@
 Expanding combat map
-(DONE) - start with larger team
-(DONE) - team starting locations near eachother
- - ensure combat map is fully traversable (no 'pockets' isolated from rest of map)
+p2 - ensure combat map is fully traversable (no 'pockets' isolated from rest of map)
  - add more emphasis on character roles
- - - add support/healer type character
- - Add battle rewards
- - Add enemy types
+p3 - - add support/healer type character
+p2 - Add enemy types
 
 ****************************************************
 ****************************************************
 - terrain
-(DONE) - - Terrain Cost
- - - Terrain Height
-(DONE) - - A* path-finding
+p3 - - Terrain Height
  
  - Character Customization
-(DONE) - - Menu System
- - - - Initial Character creation
-(DONE) - - - Equipment Menu
-(DONE) - - Character Progression System
-(DONE) - - Skills
-(DONE) - - - Base Skills (Str, Int, Dex, End, Spd, Agl)
-(DONE) - - - Weapon Skills (based on weapon type)
+p1 - - - Initial Character creation
  
  - Equipment 
  - - - Weapons
-(DONE) - - - - Varied types (sword, spear, bow for starters, can expand later)
-(DONE) - - - - Each weapon will have associated Base Skills.
-(DONE) - - - - Weapon Skill determines hit chance
- - - - - Associated base skills modify damage
-(DONE) - - - Armour
-(DONE) - - - - Armour Rating gives flat damage reduction
-(DONE) - - - - Heavy Armours have higher DR but have negative impact on Spd and Agl
+p0 - - - - Associated base skills modify damage
 
-(DONE) - "Over World"
-(DONE) - - (Place holder) Stalls to interact with
-(DONE) - - - Stall to purchase weapons/armour
-(DONE) - - - Stall to initiate combat
+p0 - line of site fix
+
+p2 - attack variety and special skills
+
+- art
+- - character art
+p0 - - - directional art
+p0 - - - movement animation
+p0 - - - recieving damage animation
+- - - attack animation
+p0 - - - - sword
+p0 - - - - bow
+- - - - spear
+p1 - - Armour
+p1 - - weapons
+
+- Sound
+p1 - - music
+- - attack sound
+p0 - - - bow
+p0 - - - sword
+p0 - - - spear
+- - character sound
+p0 - - - getting hit
+- - menu sounds
+p1 - - - classic rpg sound package
