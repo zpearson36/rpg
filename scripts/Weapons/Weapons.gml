@@ -24,7 +24,7 @@ function CreateSword()
 
 function CreateSpear()
 {
-	return new Weapon("Spear", WEAPONTYPE.SWORD, 1, 2, 7, 15, sWeaponSpear, 50, function(dist){return -20*power(dist - 1.5, 4) + 100})
+	return new Weapon("Spear", WEAPONTYPE.SWORD, 1, 2, 7, 15, sWeaponSpear, 50, function(dist){return -250*power(dist - 1.75, 4) + 100})
 }
 
 function CreateBow()

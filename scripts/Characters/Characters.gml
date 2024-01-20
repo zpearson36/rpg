@@ -452,13 +452,14 @@ function CombatCharacter(_char) constructor
 	
 	function get_hit_chance(_targ)
 	{
-		return get_weapon().hit_chance(dist_to_targ(get_tile(), _targ.get_tile()))//sqrt(sqr(get_tile().get_x() - _targ.get_tile().get_x()) +
+		print($"{get_weapon().get_name()}: {get_skills().get_skill(get_weapon().get_name()).get_value() / 100}")
+		return get_weapon().hit_chance(dist_to_targ(get_tile(), _targ.get_tile())) * (get_skills().get_skill(get_weapon().get_name()).get_value() / 100)//sqrt(sqr(get_tile().get_x() - _targ.get_tile().get_x()) +
 				    //get_tile().get_y() - _targ.get_tile().get_x()))
 	}
 	
 	function get_hit_chance_hypothetical(_tile, _targ)
 	{
-		return get_weapon().hit_chance(dist_to_targ(_tile, _targ.get_tile()))//sqrt(sqr(get_tile().get_x() - _targ.get_tile().get_x()) +
+		return get_weapon().hit_chance(dist_to_targ(_tile, _targ.get_tile())) * (get_skills().get_skill(get_weapon().get_name()).get_value() / 100)//sqrt(sqr(get_tile().get_x() - _targ.get_tile().get_x()) +
 				    //get_tile().get_y() - _targ.get_tile().get_x()))
 	}
 }
