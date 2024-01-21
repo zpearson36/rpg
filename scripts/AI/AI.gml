@@ -33,7 +33,7 @@ function generate_action_grid(char, grid)
 					(hit_chance * 100) / 
 					    max(ceil(grid.get_cell(i, j).get_path_cost() / 
 					    char.get_attr("spd").get_value()), .1) + 
-					(1 - (distance_to_targ / COMBATGRIDHEIGHT)))// - ceil(distance_to_tile / char.get_attr("spd").get_value()) + (char.get_attack_range_max() - distance_to_targ) + (distance_to_targ - char.get_attack_range_min())
+					(1 - (distance_to_targ / COMBATGRIDHEIGHT)))
 			
 					action_grid[# i, j] = [targ_array[0], val]
 					//if(val > -10000) print("yes")
@@ -78,8 +78,7 @@ function find_target(char, grid, tile)
 			   and not grid.get_cell(i, j).get_occupant().is_dead())
 			{
 				var dist = dist_to_targ(tile, grid.get_cell(i, j))
-				if(ceil(dist) <= char.get_attack_range_max()
-				   and ceil(dist) >= char.get_attack_range_min()
+				if(char.get_hit_chance_hypothetical(tile, grid.get_cell(i, j).get_occupant()) > 0
 				   and not grid.get_cell(i, j).is_obstructed())
 				{
 					if(targ == noone)

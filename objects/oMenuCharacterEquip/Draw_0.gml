@@ -21,8 +21,26 @@ for(var i = 0; i < array_length(equipment_list); i++)
 			draw_text(x + op_border +  75, y + op_border +   5 + 70*i, $"Weapon: ")
 			draw_sprite(equipment_list[i].get_sprite(), -1, x + op_border, y + op_border +  5 + 70*i)
 			draw_text(x + op_border + 160, y + op_border +   5 + 70*i, $"Name:   {equipment_list[i].get_name()}")
-			draw_text(x + op_border + 160, y + op_border +  25 + 70*i, $"Range:  {equipment_list[i].get_min_range()} / {equipment_list[i].get_max_range()}")
-			draw_text(x + op_border + 160, y + op_border +  45 + 70*i, $"Damage: {equipment_list[i].get_min_damage()} / {equipment_list[i].get_max_damage()}")
+			draw_text(x + op_border + 160, y + op_border +  25 + 70*i, $"Base Damage: {equipment_list[i].get_base_damage()} +{equipment_list[i].get_scaling_damage(character.get_attrs()) * equipment_list[i].get_base_damage()}")
+			
+			var scaling = equipment_list[i].get_scaling().get_attributes()
+			var scaling_keys = ds_map_keys_to_array(scaling)
+			var scaling_string = ""
+			for(var scale_ind = 0; scale_ind < array_length(scaling_keys); scale_ind++)
+			{
+				var tmp = ""
+				var val = scaling[? scaling_keys[scale_ind]].get_value()
+				if(val == 0)      tmp = "-"
+				else if(val < 20) tmp = "E"
+				else if(val < 40) tmp = "D"
+				else if(val < 60) tmp = "C"
+				else if(val < 80) tmp = "B"
+				else              tmp = "A"
+				scaling_string += $"{scaling_keys[scale_ind]}:{tmp}"
+				if(scale_ind < array_length(scaling_keys))
+				    scaling_string += " "
+			}
+			draw_text(x + op_border + 160, y + op_border +  45 + 70*i, $"Scaling: {scaling_string}")
 
 			break;
 		}

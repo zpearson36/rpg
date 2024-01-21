@@ -27,10 +27,11 @@ function Attributes() constructor
 	{
 		if(array_length(attr_array) < 4) //temp value of 3 for str, spd, int
 		{
-			attribute_list[? "str"] = new Attribute("str", 1);
+			attribute_list[? "str"] = new Attribute("str", irandom(10) + 1);
 			attribute_list[? "spd"] = new Attribute("spd", 5);
-			attribute_list[? "int"] = new Attribute("int", 1);
-			attribute_list[? "end"] = new Attribute("end", 1);
+			attribute_list[? "int"] = new Attribute("int", irandom(10) + 1);
+			attribute_list[? "end"] = new Attribute("end", irandom(10) + 1);
+			attribute_list[? "dex"] = new Attribute("dex", irandom(10) + 1);
 		}
 		else
 		{
@@ -38,6 +39,7 @@ function Attributes() constructor
 			attribute_list[? "spd"] = new Attribute("spd", attr_array[1]);
 			attribute_list[? "int"] = new Attribute("int", attr_array[2]);
 			attribute_list[? "end"] = new Attribute("end", attr_array[3]);
+			attribute_list[? "dex"] = new Attribute("dex", attr_array[4]);
 		}
 	}
 	
@@ -68,6 +70,7 @@ function Attributes() constructor
 		total += get_attr("spd").get_value()
 		total += get_attr("int").get_value()
 		total += get_attr("end").get_value()
+		total += get_attr("dex").get_value()
 		
 		return total
 	}

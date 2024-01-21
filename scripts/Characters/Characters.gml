@@ -114,6 +114,17 @@ function Character() constructor
 		return equipment.get_weapon()
 	}
 	
+	function get_scaling_damage()
+	{
+		var str = attributes.get_attr("str").get_value() * get_weapon().get_scaling().get_attr("str").get_value() / 100
+		var spd = attributes.get_attr("spd").get_value() * get_weapon().get_scaling().get_attr("spd").get_value() / 100
+		var dex = attributes.get_attr("dex").get_value() * get_weapon().get_scaling().get_attr("dex").get_value() / 100
+		var endu = attributes.get_attr("end").get_value() * get_weapon().get_scaling().get_attr("end").get_value() / 100
+		var int = attributes.get_attr("int").get_value() * get_weapon().get_scaling().get_attr("int").get_value() / 100
+		
+		return str + spd + dex + endu + int
+	}
+	
 	function set_faction(_faction)
 	{
 		faction = _faction
@@ -407,19 +418,15 @@ function CombatCharacter(_char) constructor
 		return state
 	}
 	
+	function get_scaling_damage()
+	{
+		return character.get_scaling_damage()
+	}
+	
 	function get_damage()
 	{
-		return irandom_range(get_weapon().get_min_damage(), get_weapon().get_max_damage())
-	}
-	
-	function get_attack_range_max()
-	{
-		return character.get_weapon().get_max_range()
-	}
-	
-	function get_attack_range_min()
-	{
-		return character.get_weapon().get_min_range()
+		scaling = get_scaling_damage()
+		return get_weapon().get_base_damage() * (1 + scaling)
 	}
 	
 	function get_faction()
@@ -452,13 +459,13 @@ function CombatCharacter(_char) constructor
 	
 	function get_hit_chance(_targ)
 	{
-		return get_weapon().hit_chance(dist_to_targ(get_tile(), _targ.get_tile()))//sqrt(sqr(get_tile().get_x() - _targ.get_tile().get_x()) +
+		return get_weapon().hit_chance(dist_to_targ(get_tile(), _targ.get_tile())) * (get_skills().get_skill(get_weapon().get_name()).get_value() / 100)//sqrt(sqr(get_tile().get_x() - _targ.get_tile().get_x()) +
 				    //get_tile().get_y() - _targ.get_tile().get_x()))
 	}
 	
 	function get_hit_chance_hypothetical(_tile, _targ)
 	{
-		return get_weapon().hit_chance(dist_to_targ(_tile, _targ.get_tile()))//sqrt(sqr(get_tile().get_x() - _targ.get_tile().get_x()) +
+		return get_weapon().hit_chance(dist_to_targ(_tile, _targ.get_tile())) * (get_skills().get_skill(get_weapon().get_name()).get_value() / 100)//sqrt(sqr(get_tile().get_x() - _targ.get_tile().get_x()) +
 				    //get_tile().get_y() - _targ.get_tile().get_x()))
 	}
 }
