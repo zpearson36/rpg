@@ -109,8 +109,7 @@ switch(state)
 								            get_character().get_tile(),
 											grid.get_cell(i, j)
 											)
-						if(ceil(dist) <= get_character().get_attack_range_max()
-						    and get_character().get_weapon().hit_chance(dist) > 0
+						if(get_character().get_weapon().hit_chance(dist) > 0
 						    and not grid.get_cell(i, j).is_obstructed())
 						{
 							var c_color = c_red

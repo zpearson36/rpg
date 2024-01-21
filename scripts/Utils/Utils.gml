@@ -19,27 +19,6 @@ function print(str)
 	show_debug_message(str)
 }
 
-function chance_to_hit(_atkr, _targ, t = false, _tile = undefined)
-{
-	if(_tile == undefined) _tile = _atkr.get_tile()
-	var dist = dist_to_targ(_tile, _targ.get_tile())
-	var hit_chance = 0
-	if(ceil(dist) >= _atkr.get_attack_range_min() and ceil(dist) <= _atkr.get_attack_range_max() and not _targ.get_tile().is_obstructed())
-	    hit_chance = _atkr.get_skills().get_skill(_atkr.get_weapon().get_name()).get_value()
-	
-	var obstruction = collision_line((_atkr.get_tile().get_x() + .5) * COMBATCELLSIZE, (_atkr.get_tile().get_y() + .5) * COMBATCELLSIZE,
-		_targ.get_tile().get_x() * COMBATCELLSIZE, _targ.get_tile().get_y() * COMBATCELLSIZE, oWall, false, false)
-	
-	if(obstruction != noone) hit_chance -= obstruction.get_cover_value() * 100
-	
-	return hit_chance
-}
-
-function ap_to_move(char, targ_pos)
-{
-	return ceil(dist_to_targ(char.get_tile(), targ_pos) / char.get_attr("spd").get_value())
-}
-
 function dist_to_targ(_curr, _targ)
 {
 	return point_distance(_targ.get_x(),

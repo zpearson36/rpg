@@ -50,7 +50,7 @@ side_menu = false
 char_menu = false
 
 attributes = new Attributes()
-attributes.init([0,0,0,0])
+attributes.init([0,0,0,0,0])
 skills = new Skills()
 cost_per_skill = 50
 total_skill_cost = 0

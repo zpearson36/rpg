@@ -42,8 +42,8 @@ for(var i = 0; i < ds_map_size(character.get_attrs().get_attributes()); i++)
 {
 	
 	//draw arrows to increase or decrease value
-	var xx_left = x + op_border + 60 + 75 * floor( i / 4 )
-	var xx_right = x + op_border + 148 + 75 * floor( i / 4 )
+	var xx_left = x + op_border + 60 + 150 * floor( i / 4 )
+	var xx_right = x + op_border + 148 + 150 * floor( i / 4 )
 	var yy = y + op_border + 112 + 20*(i % 4)
 	var c1 = c_dkgray
 	var c2 = c_dkgray
@@ -68,7 +68,7 @@ for(var i = 0; i < ds_map_size(character.get_attrs().get_attributes()); i++)
 	
 	//draw attribute name and value
 	if(attributes.get_attr(c_attrs_keys[i]).get_value()) draw_set_color(c_yellow)
-	draw_text(x + op_border + 75 + 75 * floor( i / 4 ), y + op_border +  100 + 20*(i % 4) , $"{c_attrs_keys[i]}: {character.get_attr(c_attrs_keys[i]).get_value() + attributes.get_attr(c_attrs_keys[i]).get_value()}")
+	draw_text(x + op_border + 75 + 150 * floor( i / 4 ), y + op_border +  100 + 20*(i % 4) , $"{c_attrs_keys[i]}: {character.get_attr(c_attrs_keys[i]).get_value() + attributes.get_attr(c_attrs_keys[i]).get_value()}")
 	draw_set_color(c_white)
 }
 

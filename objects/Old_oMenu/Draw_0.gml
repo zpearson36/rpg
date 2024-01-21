@@ -53,8 +53,7 @@ switch(options_list)
 		draw_text(x + op_border + 75, y + op_border +  5, $"Weapon: ")
 		draw_sprite(selected_character.get_weapon().get_sprite(), -1, x + w - 150, y + op_border +  5)
 		draw_text(x + op_border + 160, y + op_border +   5, $"Name:   {selected_character.get_weapon().get_name()}")
-		draw_text(x + op_border + 160, y + op_border +  25, $"Range:  {selected_character.get_weapon().get_min_range()} / {selected_character.get_weapon().get_max_range()}")
-		draw_text(x + op_border + 160, y + op_border +  45, $"Damage: {selected_character.get_weapon().get_min_damage()} / {selected_character.get_weapon().get_max_damage()}")
+		draw_text(x + op_border + 160, y + op_border +  25, $"Base Damage: {selected_character.get_weapon().get_base_damage()}")
 		
 		//draw armour info
 		draw_text(x + op_border + 75, y + op_border +  75, $"Armour: ")
@@ -86,8 +85,7 @@ switch(options_list)
 						draw_text(x + op_border +  75, y + op_border +   5, $"Weapon: ")
 						draw_sprite(selected_character.get_weapon().get_sprite(), -1, x + op_border, y + op_border +  5)
 						draw_text(x + op_border + 160, y + op_border +   5, $"Name:   {selected_character.get_weapon().get_name()}")
-						draw_text(x + op_border + 160, y + op_border +  25, $"Range:  {selected_character.get_weapon().get_min_range()} / {selected_character.get_weapon().get_max_range()}")
-						draw_text(x + op_border + 160, y + op_border +  45, $"Damage: {selected_character.get_weapon().get_min_damage()} / {selected_character.get_weapon().get_max_damage()}")
+						draw_text(x + op_border + 160, y + op_border +  25, $"Base Damage: {selected_character.get_weapon().get_base_damage()}")
 					}
 					break;
 				}
