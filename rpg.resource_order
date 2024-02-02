@@ -88,6 +88,7 @@
     {"name":"sArmourNone","order":15,"path":"sprites/sArmourNone/sArmourNone.yy",},
     {"name":"hover_rectangle","order":2,"path":"scripts/hover_rectangle/hover_rectangle.yy",},
     {"name":"oMenuCharacterSelect","order":3,"path":"objects/oMenuCharacterSelect/oMenuCharacterSelect.yy",},
+    {"name":"sGoblin","order":31,"path":"sprites/sGoblin/sGoblin.yy",},
     {"name":"fnt_hitchance","order":2,"path":"fonts/fnt_hitchance/fnt_hitchance.yy",},
     {"name":"spr_slider","order":7,"path":"sprites/spr_slider/spr_slider.yy",},
     {"name":"FightGUI","order":1,"path":"objects/FightGUI/FightGUI.yy",},

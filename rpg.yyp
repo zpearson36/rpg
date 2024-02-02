@@ -124,6 +124,7 @@
     {"id":{"name":"sArmourNone","path":"sprites/sArmourNone/sArmourNone.yy",},},
     {"id":{"name":"hover_rectangle","path":"scripts/hover_rectangle/hover_rectangle.yy",},},
     {"id":{"name":"oMenuCharacterSelect","path":"objects/oMenuCharacterSelect/oMenuCharacterSelect.yy",},},
+    {"id":{"name":"sGoblin","path":"sprites/sGoblin/sGoblin.yy",},},
     {"id":{"name":"fnt_hitchance","path":"fonts/fnt_hitchance/fnt_hitchance.yy",},},
     {"id":{"name":"FightManager","path":"objects/FightManager/FightManager.yy",},},
     {"id":{"name":"spr_slider","path":"sprites/spr_slider/spr_slider.yy",},},

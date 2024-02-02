@@ -25,8 +25,8 @@ enemy_party.add_member(new Character())
 enemy_party.add_member(new Character())
 enemy_faction.add_member(enemy_party.get_members()[0])
 enemy_faction.add_member(enemy_party.get_members()[1])
-enemy_party.get_members()[0].set_sprite(sTmp10)
-enemy_party.get_members()[1].set_sprite(sTmp10)
+enemy_party.get_members()[0].set_sprite(sChar)
+enemy_party.get_members()[1].set_sprite(sChar)
 
 state = GameStates.MAINMENU
 fight_manager = instance_create_layer(x, y, layer, FightManager)
@@ -57,7 +57,7 @@ function to_combat(scenario)
 		{
 			enemy_party.add_member(new Character())
 			enemy_faction.add_member(enemy_party.get_members()[i+j])
-			enemy_party.get_members()[i+j].set_sprite(sTmp10)
+			enemy_party.get_members()[i+j].set_sprite(sGoblin)
 		}
 	}
 	
