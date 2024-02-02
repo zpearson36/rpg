@@ -33,7 +33,10 @@ switch(state)
 				if(units[i][j].get_tile().is_observed() || units[i][j].get_faction().get_id() == GameManager.get_player_faction().get_id())
 				{
 					// Draw Character and Equipment
-					draw_sprite(units[i][j].get_sprite(), -1,
+					draw_sprite(units[i][j].get_sprite(),
+					       OFFSET_MULTIPLIER * 
+							    (units[i][j].get_character().get_char_action() + units[i][j].get_character().get_facing())
+								+ units[i][j].get_character().get_frame(),
 					       units[i][j].get_xpos(), units[i][j].get_ypos())
 					draw_sprite(units[i][j].get_armour().get_sprite(), -1,
 					       units[i][j].get_xpos(), units[i][j].get_ypos())

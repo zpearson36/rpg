@@ -14,9 +14,9 @@ if(manager.get_state() == WMStates.RUNNING)
 			}
 			case PCStates.IDLE:
 			{
-				action = STANDING
-                action_length = 0
-                frame = 0
+				character.get_character().set_char_action(STANDING)
+                character.get_character().set_action_length(0)
+                character.get_character().set_frame_zero()
 				
 				xSpd = 0;
 				ySpd = 0;
@@ -32,29 +32,29 @@ if(manager.get_state() == WMStates.RUNNING)
 				}
 				if(keyboard_check(ord("D")))
 				{
-					alarm[0] = frame_speed
-                    facing = DIRECTION.RIGHT
+                    alarm[0] = character.get_character().get_frame_speed()
+                    character.get_character().set_facing(DIRECTION.RIGHT)
 					character.set_state(PCStates.MOVING);
 					xSpd = spd;
 				}
 				else if(keyboard_check(ord("W")))
 				{
-					alarm[0] = frame_speed
-                    facing = DIRECTION.UP
+                    alarm[0] = character.get_character().get_frame_speed()
+                    character.get_character().set_facing(DIRECTION.UP)
 					character.set_state(PCStates.MOVING);
 					ySpd = -spd;
 				}
 				else if(keyboard_check(ord("S")))
 				{
-					alarm[0] = frame_speed
-                    facing = DIRECTION.DOWN
+                    alarm[0] = character.get_character().get_frame_speed()
+                    character.get_character().set_facing(DIRECTION.DOWN)
 					character.set_state(PCStates.MOVING);
 					ySpd = spd;
 				}
 				else if(keyboard_check(ord("A")))
 				{
-					alarm[0] = frame_speed
-                    facing = DIRECTION.LEFT
+                    alarm[0] = character.get_character().get_frame_speed()
+                    character.get_character().set_facing(DIRECTION.LEFT)
 					character.set_state(PCStates.MOVING);
 					xSpd = -spd;
 				}
@@ -62,8 +62,8 @@ if(manager.get_state() == WMStates.RUNNING)
 			}
 			case PCStates.MOVING:
 			{
-				action = WALK
-                action_length = WALK_LENGTH
+				character.get_character().set_char_action(WALK)
+                character.get_character().set_action_length(WALK_LENGTH)
 				var col = collision_rectangle(character.get_x() + xSpd, character.get_y() + ySpd,
 				                              character.get_x() + 64 + xSpd, character.get_y() + 64 + ySpd,
 											  oCollidable, true, false)
