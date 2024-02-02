@@ -1,1 +1,1 @@
-draw_sprite(character.get_sprite(), -1, character.get_x(), character.get_y())
+draw_sprite(character.get_sprite(), OFFSET_MULTIPLIER * (action + facing) + frame, character.get_x(), character.get_y())

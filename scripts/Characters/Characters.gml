@@ -16,7 +16,7 @@ function Character() constructor
 	//Character specific variables
 	charID = gen_id_char();
 	name = undefined;
-	sprite = sTmp;
+	sprite = sChar//sTmp;
 	attributes = new Attributes();
 	attributes.init()
 	skills = new Skills();

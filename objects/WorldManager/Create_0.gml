@@ -3,7 +3,7 @@ function set_character(_char)
 {
 	player = instance_create_layer(0, 0, "Instances", oPlayer)
 	player.set_char(new WorldCharacter(_char, 50, 50))
-	player.get_char().set_sprite(sTmp)
+	//player.get_char().set_sprite(sTmp)
 	player.set_manager(self)
 }
 
