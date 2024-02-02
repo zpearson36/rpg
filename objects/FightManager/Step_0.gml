@@ -17,12 +17,6 @@ switch(state)
 		//Logic for player control
 		if(get_character().get_faction() == GameManager.player_faction)
 		{
-			/*print(
-			    sqrt(sqr(get_character().get_tile().get_x() - floor(mouse_x / COMBATCELLSIZE)) +
-				    sqr(get_character().get_tile().get_y() - floor(mouse_y / COMBATCELLSIZE)))
-				)*/
-			/*print(get_character().get_weapon().hit_chance(sqrt(sqr(get_character().get_tile().get_x() - floor(mouse_x / COMBATCELLSIZE)) +
-				    sqr(get_character().get_tile().get_y() - floor(mouse_y / COMBATCELLSIZE)))))*/
 			switch(get_character().get_state())
 			{
 				case COMBATCHARACTERSTATES.IDLE:

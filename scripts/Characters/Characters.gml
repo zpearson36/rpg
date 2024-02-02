@@ -36,7 +36,7 @@ function Character() constructor
 	action = STANDING
 	action_length = 0
 	frame = 0
-	frame_speed = 4
+	frame_speed = 3
 	
 	function get_frame_speed()
 	{
@@ -302,8 +302,20 @@ function CombatCharacter(_char) constructor
 	pathPos = -1
 	dest = undefined
 	
+	frame_counter = 0
+	
 	//variable for NPC AI
 	targ = noone
+	
+	function frame_count()
+	{
+		frame_counter += 1
+		if(frame_counter == character.get_frame_speed())
+		{
+		    character.next_frame()
+			frame_counter = 0
+		}
+	}
 	
 	function get_character()
 	{
@@ -431,6 +443,9 @@ function CombatCharacter(_char) constructor
 	
 	function to_idle()
 	{
+		character.set_char_action(STANDING)
+		character.set_action_length(0)
+		character.set_frame_zero()
 		state = COMBATCHARACTERSTATES.IDLE
 	}
 	
@@ -444,6 +459,8 @@ function CombatCharacter(_char) constructor
 		print("====================")
 		print("Moving to MOVE state")
 		print("====================")
+		character.set_char_action(WALK)
+		character.set_action_length(WALK_LENGTH)
 		state = COMBATCHARACTERSTATES.MOVING
 	}
 	

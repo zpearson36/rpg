@@ -114,6 +114,7 @@ function next_party()
 
 function move_character(_char)
 {
+	_char.frame_count()
 	var dx = _char.get_path_step()[0] - _char.get_tile().get_x()
 	var dy = _char.get_path_step()[1] - _char.get_tile().get_y()
 	_char.set_xpos(_char.get_xpos() + (spd * dx))
