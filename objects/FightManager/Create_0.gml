@@ -36,6 +36,8 @@ function activate()
 		reward = calculate_reward(argument[0])
 		state = FMStates.INIT
 	}
+	layer_set_visible("buildings", false)
+	layer_set_visible("roof", false)
 }
 function deactivate()
 {

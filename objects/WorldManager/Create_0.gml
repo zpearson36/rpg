@@ -26,6 +26,8 @@ function activate(_player)
 {
 	if(state == WMStates.INACTIVE)
 	{
+		layer_set_visible("buildings", true)
+		layer_set_visible("roof", true)
 		set_character(_player)
 		state = WMStates.INIT
 	}
