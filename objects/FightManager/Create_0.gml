@@ -114,10 +114,15 @@ function next_party()
 
 function move_character(_char)
 {
+	_char.frame_count()
 	var dx = _char.get_path_step()[0] - _char.get_tile().get_x()
 	var dy = _char.get_path_step()[1] - _char.get_tile().get_y()
 	_char.set_xpos(_char.get_xpos() + (spd * dx))
 	_char.set_ypos(_char.get_ypos() + (spd * dy))
+	if(dx == -1) _char.get_character().set_facing(DIRECTION.LEFT)
+	if(dx ==  1) _char.get_character().set_facing(DIRECTION.RIGHT)
+	if(dy == -1) _char.get_character().set_facing(DIRECTION.UP)
+	if(dy ==  1) _char.get_character().set_facing(DIRECTION.DOWN)
 	
 	if(    ( ceil(_char.get_xpos() / COMBATCELLSIZE) != _char.get_tile().get_x() and dx == -1)
 		or (floor(_char.get_xpos() / COMBATCELLSIZE) != _char.get_tile().get_x() and dx ==  1)
@@ -126,7 +131,7 @@ function move_character(_char)
 		)
 	{
 		grid.get_cell(_char.get_path_step()[0], _char.get_path_step()[1]).set_occupant(_char)
-		_char.proceed_on_path()
+		var next_tile = _char.proceed_on_path()
 	}
 	if(_char.get_tile() == _char.get_dest())
 	{

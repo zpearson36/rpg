@@ -16,7 +16,7 @@ function Character() constructor
 	//Character specific variables
 	charID = gen_id_char();
 	name = undefined;
-	sprite = sTmp;
+	sprite = sChar//sTmp;
 	attributes = new Attributes();
 	attributes.init()
 	skills = new Skills();
@@ -31,7 +31,63 @@ function Character() constructor
 	max_hp = calculate_max_hp(attributes.get_attr("end").get_value(), level)
 	hp = max_hp
 	
+	// animation requirements
+	facing = DIRECTION.DOWN
+	action = STANDING
+	action_length = 0
+	frame = 0
+	frame_speed = 3
+	
+	function get_frame_speed()
+	{
+		return frame_speed
+	}
 
+	function next_frame()
+	{
+		frame += 1
+		if(frame == action_length) frame = 0
+	}
+	
+	function get_frame()
+	{
+		return frame
+	}
+	
+	function set_frame_zero()
+	{
+		frame = 0
+	}
+	
+	function get_facing()
+	{
+		return facing
+	}
+	
+	function set_facing(_facing)
+	{
+		facing = _facing
+	}
+	
+	function get_action_length()
+	{
+		return action_length
+	}
+	
+	function set_action_length(_length)
+	{
+		action_length = _length
+	}
+	
+	function get_char_action()
+	{
+		return action
+	}
+	
+	function set_char_action(_action)
+	{
+		action = _action
+	}
 	
 	function equip(_item)
 	{
@@ -246,8 +302,25 @@ function CombatCharacter(_char) constructor
 	pathPos = -1
 	dest = undefined
 	
+	frame_counter = 0
+	
 	//variable for NPC AI
 	targ = noone
+	
+	function frame_count()
+	{
+		frame_counter += 1
+		if(frame_counter == character.get_frame_speed())
+		{
+		    character.next_frame()
+			frame_counter = 0
+		}
+	}
+	
+	function get_character()
+	{
+		return character
+	}
 	
 	function get_skills()
 	{
@@ -370,6 +443,9 @@ function CombatCharacter(_char) constructor
 	
 	function to_idle()
 	{
+		character.set_char_action(STANDING)
+		character.set_action_length(0)
+		character.set_frame_zero()
 		state = COMBATCHARACTERSTATES.IDLE
 	}
 	
@@ -383,6 +459,8 @@ function CombatCharacter(_char) constructor
 		print("====================")
 		print("Moving to MOVE state")
 		print("====================")
+		character.set_char_action(WALK)
+		character.set_action_length(WALK_LENGTH)
 		state = COMBATCHARACTERSTATES.MOVING
 	}
 	
@@ -477,6 +555,10 @@ function WorldCharacter(_char, _x, _y) constructor
 	pos_y = _y;
 	state = undefined
 	
+	function get_character()
+	{
+		return character
+	}
 	function set_sprite(_sprite)
 	{
 		character.set_sprite(_sprite);
