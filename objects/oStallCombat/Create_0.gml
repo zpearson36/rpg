@@ -20,8 +20,6 @@ function deactivate()
 
 function interact(_obj)
 {
-	print(self)
-	print(oMenuStallCombat)
 	GameManager.get_menu_manager().open(oMenuStallCombat, [self])
 }
 

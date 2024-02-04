@@ -52,13 +52,15 @@ function to_combat(scenario)
 	state = GameStates.COMBAT
 	room_goto(CombatRoom)
 	var enemy_party = new Party()
+	var index = 0
 	for(var i = 0; i < array_length(scenario.get_enemy_count()); i++)
 	{
 		for(var j = 0; j < scenario.get_enemy_count()[i]; j++)
 		{
 			enemy_party.add_member(new Character())
-			enemy_faction.add_member(enemy_party.get_members()[i+j])
+			enemy_faction.add_member(enemy_party.get_members()[index])
 			enemy_party.get_members()[i+j].set_sprite(sGoblin)
+			index++
 		}
 	}
 	
@@ -79,9 +81,4 @@ function to_world()
 function get_menu_manager()
 {
 	return menu_manager
-}
-
-function say_shit()
-{
-	print("fuck yo couch")
 }
