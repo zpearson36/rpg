@@ -50,6 +50,7 @@ function to_combat(scenario)
 	menu_manager.close()
 	world_manager.deactivate()
 	state = GameStates.COMBAT
+	room_goto(CombatRoom)
 	var enemy_party = new Party()
 	for(var i = 0; i < array_length(scenario.get_enemy_count()); i++)
 	{
@@ -78,4 +79,9 @@ function to_world()
 function get_menu_manager()
 {
 	return menu_manager
+}
+
+function say_shit()
+{
+	print("fuck yo couch")
 }
