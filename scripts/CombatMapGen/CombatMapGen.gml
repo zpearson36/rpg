@@ -12,7 +12,34 @@ function Generate_Map(iterations,
 	{
 		mp = Update_Map(mp, awake_threshold, sleep_threshold)
 	}
+	Map_Cleanup(mp)
 	return  mp
+}
+
+function Map_Cleanup(_map)
+{
+	var dir_array = [[-1, -1], [0, -1], [1, -1],
+	                 [-1, 0], [1, 0],
+					 [-1, 1], [0, 1], [1, 1]]
+	for(var i = 0; i < COMBATGRIDWIDTH; i++)
+	{
+		for(var j = 0; j < COMBATGRIDHEIGHT; j++)
+		{
+			var num_neighbors = 0
+			for(var k = 0; k < array_length(dir_array); k++)
+			{
+				var xx = i+dir_array[k][0]
+				var yy = j+dir_array[k][1]
+				if(xx < 0 or xx >= COMBATGRIDWIDTH) continue
+				if(yy < 0 or yy >= COMBATGRIDHEIGHT) continue
+				num_neighbors += _map[xx][yy]
+			}
+			if(num_neighbors <= 2)
+			{
+				_map[i][j] = 0
+			}
+		}
+	}
 }
 
 function Create_Map(chance){
