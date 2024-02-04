@@ -87,6 +87,7 @@
     {"id":{"name":"sScrollArrowUp","path":"sprites/sScrollArrowUp/sScrollArrowUp.yy",},},
     {"id":{"name":"LPC_CHARACTER_OFFSETS","path":"scripts/LPC_CHARACTER_OFFSETS/LPC_CHARACTER_OFFSETS.yy",},},
     {"id":{"name":"sWeaponSword","path":"sprites/sWeaponSword/sWeaponSword.yy",},},
+    {"id":{"name":"CombatRoom","path":"rooms/CombatRoom/CombatRoom.yy",},},
     {"id":{"name":"AI","path":"scripts/AI/AI.yy",},},
     {"id":{"name":"hover_sprite","path":"scripts/hover_sprite/hover_sprite.yy",},},
     {"id":{"name":"sAPAvailable","path":"sprites/sAPAvailable/sAPAvailable.yy",},},
@@ -158,6 +159,7 @@
   "RoomOrderNodes": [
     {"roomId":{"name":"MainMenu","path":"rooms/MainMenu/MainMenu.yy",},},
     {"roomId":{"name":"Game","path":"rooms/Game/Game.yy",},},
+    {"roomId":{"name":"CombatRoom","path":"rooms/CombatRoom/CombatRoom.yy",},},
   ],
   "TextureGroups": [
     {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","autocrop":true,"border":2,"compressFormat":"bz2","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"targets":-1,},

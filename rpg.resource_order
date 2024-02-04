@@ -61,6 +61,7 @@
     {"name":"sScrollArrowUp","order":25,"path":"sprites/sScrollArrowUp/sScrollArrowUp.yy",},
     {"name":"LPC_CHARACTER_OFFSETS","order":4,"path":"scripts/LPC_CHARACTER_OFFSETS/LPC_CHARACTER_OFFSETS.yy",},
     {"name":"sWeaponSword","order":19,"path":"sprites/sWeaponSword/sWeaponSword.yy",},
+    {"name":"CombatRoom","order":2,"path":"rooms/CombatRoom/CombatRoom.yy",},
     {"name":"hover_sprite","order":3,"path":"scripts/hover_sprite/hover_sprite.yy",},
     {"name":"sAPAvailable","order":2,"path":"sprites/sAPAvailable/sAPAvailable.yy",},
     {"name":"point_click_rectangle","order":4,"path":"scripts/point_click_rectangle/point_click_rectangle.yy",},

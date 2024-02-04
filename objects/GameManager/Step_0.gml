@@ -48,6 +48,7 @@ switch(state)
 		if(fight_manager.get_state() == FMStates.INACTIVE)
 		{
 			state = GameStates.WORLD
+			room_goto(Game)
 		}
 		break;
 	}
