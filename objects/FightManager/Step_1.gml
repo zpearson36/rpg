@@ -10,10 +10,11 @@ switch(state)
 	{
 		grid = new CombatGrid()
 		grid.init()
-		var deepwater    = Generate_Map(1, 30)
+		grass            = Generate_Map(1, 70)
+		//var deepwater    = Generate_Map(1, 30)
 		var walls        = Generate_Map(1, 40)
-		var shallowwater = Generate_Map(1, 30)
-		var muddy        = Generate_Map(1, 30)
+		//var shallowwater = Generate_Map(1, 30)
+		//var muddy        = Generate_Map(1, 30)
 		
 		var player_quad = irandom(3)
 		var xl = 0

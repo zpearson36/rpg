@@ -7,7 +7,7 @@ enum FMStates
 	DEACTIVATING,
 	INACTIVE
 }
-
+grass = []
 state = FMStates.INACTIVE
 character = undefined
 party = undefined
