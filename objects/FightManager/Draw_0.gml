@@ -15,6 +15,251 @@ switch(state)
 			for(j = 0; j < COMBATGRIDHEIGHT; j++)
 			{
 				var c_color = c_white
+				draw_sprite(sDirt, 4, i * COMBATCELLSIZE, j * COMBATCELLSIZE)
+				// Commented out code intended to add grass in a visually consistent way
+				/*if(grass[i][j] == 1)
+				{
+					var sprite_name = sArmourNone
+					var sprite_ind = -1
+					var dir_array = [[-1, -1], [ 0, -1], [ 1, -1],
+	                                 [-1,  0], [ 0,  0], [ 1,  0],
+					                 [-1,  1], [ 0,  1], [ 1,  1]]
+					
+					var prime_array = [17,  3, 19,
+					                    7,  0, 11,
+									   23, 13, 29]
+									   
+					var cardinal_array = [1, 3, 5, 7]
+					var unique_val = 0
+					for(var k = 0; k < array_length(cardinal_array); k++)
+					{
+						var xx = i + dir_array[cardinal_array[k]][0]
+						var yy = j + dir_array[cardinal_array[k]][1]
+						if(xx >= 0 and xx < COMBATGRIDWIDTH and yy >= 0 and yy < COMBATGRIDHEIGHT)
+						    unique_val += grass[xx][yy] * prime_array[cardinal_array[k]]
+					}
+					
+					//var unique_val = top + left + right + bottom
+					
+					switch(unique_val)
+					{
+						// First 5 cases are fall through as each results in the same sprite
+						case 0:
+						{
+							sprite_name = sGrass3
+							sprite_ind = -1
+							break;
+						}
+						case 3:
+						{
+							sprite_name = sGrass4
+							sprite_ind = 3
+							break;
+						}
+						case 7:
+						{
+							sprite_name = sGrass4
+							sprite_ind = 2
+							break;
+						}
+						case 11:
+						{
+							sprite_name = sGrass4
+							sprite_ind = 1
+							break;
+						}
+						case 13:
+						{
+							sprite_name = sGrass4
+							sprite_ind = 0
+							break;
+						}
+						case 16:
+						{
+							sprite_name = sGrass4
+							sprite_ind = 22
+							break;
+						}
+						case 18:
+						{
+							sprite_name = sGrass4
+							sprite_ind = 23
+							break;
+						}
+						case 10:
+						{
+							sprite_name = sGrass1
+							sprite_ind = 8
+							break;
+						}
+						case 14:
+						{
+							sprite_name = sGrass1
+							sprite_ind = 6
+							break;
+						}
+						case 20:
+						{
+							sprite_name = sGrass1
+							sprite_ind = 2
+							break;
+						}
+						case 24:
+						{
+							sprite_name = sGrass1
+							sprite_ind = 0
+							break;
+						}
+						case 21:
+						{
+							sprite_name = sGrass1
+							sprite_ind = 7
+							break;
+						}
+						case 23:
+						{
+							sprite_name = sGrass1
+							sprite_ind = 5
+							break;
+						}
+						case 27:
+						{
+							sprite_name = sGrass1
+							sprite_ind = 3
+							break;
+						}
+						case 31:
+						{
+							sprite_name = sGrass1
+							sprite_ind = 1
+							break;
+						}
+						case 34:
+						{
+							var diagonal_array = [0, 2, 6, 8]
+							unique_val = 0
+							for(var k = 0; k < array_length(diagonal_array); k++)
+							{
+								var xx = i + dir_array[diagonal_array[k]][0]
+								var yy = j + dir_array[diagonal_array[k]][1]
+								if(xx >= 0 and xx < COMBATGRIDWIDTH and yy >= 0 and yy < COMBATGRIDHEIGHT)
+								    unique_val += grass[xx][yy] * prime_array[diagonal_array[k]]
+							}
+							
+							switch(unique_val)
+							{
+								case 0:
+								{
+									sprite_name = sGrass1
+									sprite_ind = 8
+									break;
+								}
+								case 17:
+								{
+									sprite_name = sGrass4
+									sprite_ind = 5
+									break;
+								}
+								case 19:
+								{
+									sprite_name = sGrass4
+									sprite_ind = 6
+									break;
+								}
+								case 23:
+								{
+									sprite_name = sGrass4
+									sprite_ind = 4
+									break;
+								}
+								case 29:
+								{
+									sprite_name = sGrass4
+									sprite_ind = 7
+									break;
+								}
+								case 36:
+								{
+									sprite_name = sGrass4
+									sprite_ind = 21
+									break;
+								}
+								case 40:
+								{
+									sprite_name = sGrass4
+									sprite_ind = 18
+									break;
+								}
+								case 46:
+								{
+									sprite_name = sGrass4
+									sprite_ind = 17
+									break;
+								}
+								case 42:
+								{
+									sprite_name = sGrass4
+									sprite_ind = 16
+									break;
+								}
+								case 48:
+								{
+									sprite_name = sGrass1
+									sprite_ind = 19
+									break
+								}
+								case 52:
+								{
+									sprite_name = sGrass1
+									sprite_ind = 20
+									break;
+								}
+								case 59:
+								{
+									sprite_name = sGrass2
+									sprite_ind = 0
+									break;
+								}
+								case 65:
+								{
+									sprite_name = sGrass2
+									sprite_ind = 1
+									break;
+								}
+								case 69:
+								{
+									sprite_name = sGrass2
+									sprite_ind = 2
+									break;
+								}
+								case 71:
+								{
+									sprite_name = sGrass2
+									sprite_ind = 3
+									break;
+								}
+								case 88:
+								{
+									sprite_name = sGrass1
+									sprite_ind = 4
+									break;
+								}
+							}
+							break;
+						}
+						default:
+						{
+							sprite_name = sTileObstruction
+							sprite_ind = -1
+							break;
+						}
+					}
+					
+					
+					
+					//draw_sprite(sprite_name, sprite_ind, i * COMBATCELLSIZE, j * COMBATCELLSIZE)
+				}*/
+				
 				draw_sprite(grid.get_cell(i, j).get_terrain().get_sprite(), -1, i * COMBATCELLSIZE, j * COMBATCELLSIZE)
 				draw_set_color(c_black)
 				if(not grid.get_cell(i, j).is_discovered()) draw_rectangle(i * COMBATCELLSIZE, j * COMBATCELLSIZE, (i + 1) * COMBATCELLSIZE, (j + 1) * COMBATCELLSIZE, false)

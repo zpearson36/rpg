@@ -34,7 +34,7 @@ function Terrain(_type, _cost, _sprite) constructor
 
 function ClearTerrain()
 {
-	return new Terrain(TerrainType.NORMAL, 1, sTileClear)
+	return new Terrain(TerrainType.NORMAL, 1, sArmourNone)
 }
 
 function MuddyTerrain()

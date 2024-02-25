@@ -32,5 +32,5 @@
     "path": "sprites/sTileObstruction/sTileObstruction.yy",
   },
   "spriteMaskId": null,
-  "visible": true,
+  "visible": false,
 }
